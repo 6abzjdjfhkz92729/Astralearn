@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AstraLearn — Révisions scolaires 5e à Terminale</title>
-<meta name="description" content="AstraLearn : une plateforme de révision scolaire de la 5e à la Terminale avec cours, fiches, quiz et EVA.">
+<meta name="description" content="AstraLearn : révisions scolaires de la 5e à la Terminale avec cours, fiches, quiz, brevet, bac et assistant EVA.">
+<link rel="canonical" href="https://6abzjdjfhkz92729.github.io/Astralearn/">
+<meta property="og:title" content="AstraLearn — Révisions scolaires 5e à Terminale">
+<meta property="og:description" content="Cours, fiches, quiz, examens et EVA pour réviser de la 5e à la Terminale.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://6abzjdjfhkz92729.github.io/Astralearn/">
 <style>
 :root{
  --bg:#050b16;--bg2:#071225;--panel:#0b172b;--panel2:#0d1d36;--line:#1c3556;
@@ -232,7 +237,7 @@ footer{padding:46px 0 65px;color:#6f859d;font-size:11px;line-height:1.7;border-t
   <div class="exam-grid">
     <div class="exam-card"><span class="badge">COLLÈGE</span><h3>Brevet</h3><p>Sujets, documents, questions, correction et entraînement chronométré.</p><button class="btn primary" onclick="document.querySelector('[data-ai=brevet]').click()">Démarrer avec EVA</button></div>
     <div class="exam-card"><span class="badge">LYCÉE</span><h3>Bac</h3><p>Entraînement aux méthodes, analyse, argumentation et sujets types.</p><button class="btn" onclick="document.querySelector('[data-ai=terminale]').click()">Mode Terminale</button></div>
-    <div class="exam-card"><span class="badge">IMPRESSON A4</span><h3>Sujets à imprimer</h3><p>Le site garde un format pensé pour travailler sur feuille, avec questions séparées des réponses.</p><a class="btn" href="#cours" style="display:inline-block;text-decoration:none">Voir les cours</a></div>
+    <div class="exam-card"><span class="badge">IMPRESSION A4</span><h3>Sujets à imprimer</h3><p>Le site garde un format pensé pour travailler sur feuille, avec questions séparées des réponses.</p><a class="btn" href="#cours" style="display:inline-block;text-decoration:none">Voir les cours</a></div>
   </div>
 </div></section>
 
@@ -240,10 +245,10 @@ footer{padding:46px 0 65px;color:#6f859d;font-size:11px;line-height:1.7;border-t
   <div class="section-head"><div><span class="eyebrow">SUIVI</span><h2>Ma progression</h2><p>La progression locale peut devenir ton tableau de bord personnel.</p></div></div>
   <div class="progress-panel">
     <div class="progress-main">
-      <div class="progress-stat"><span>Chapitres maîtrisés</span><strong>À suivre</strong></div>
-      <div class="progress-stat"><span>Moyenne aux quiz</span><strong>À suivre</strong></div>
-      <div class="progress-stat"><span>Temps de révision</span><strong>À suivre</strong></div>
-      <div class="progress-stat"><span>Série en cours</span><strong>À suivre</strong></div>
+      <div class="progress-stat"><span>Chapitres maîtrisés</span><strong id="homeMastery">À suivre</strong></div>
+      <div class="progress-stat"><span>Moyenne aux quiz</span><strong id="homeQuiz">À suivre</strong></div>
+      <div class="progress-stat"><span>Temps de révision</span><strong id="homeTime">À suivre</strong></div>
+      <div class="progress-stat"><span>Dernier chapitre</span><strong id="homeLast">Aucun</strong></div>
       <div class="progress-stat"><span>Objectif du jour</span><strong>15 min</strong></div>
       <div class="progress-bar"><div class="progress-fill"></div></div>
     </div>
@@ -371,6 +376,7 @@ function openSubject(subject){
 }
 function closeModal(){document.getElementById("modal").hidden=true}
 function openChapter(subject,chapter){
+ try{localStorage.setItem("astralearn_lastChapter",JSON.stringify({level:level,subject:subject,chapter:chapter}));}catch(e){}
  document.getElementById("box").innerHTML='<div class="head"><div><span class="badge">'+esc(level)+' · '+esc(subject)+'</span><h2>'+esc(chapter)+'</h2></div><button class="btn" onclick="openSubject('+JSON.stringify(subject)+')">← Chapitres</button></div><div class="tabs"><button class="tab active" onclick="showTab(0)">Fiche 1 — Essentiel</button><button class="tab" onclick="showTab(1)">Fiche 2 — Méthode</button><button class="tab" onclick="showTab(2)">Quiz 1</button><button class="tab" onclick="showTab(3)">Quiz 2</button></div><div id="content"></div>';
  window.current={subject,chapter};showTab(0);
 }
@@ -395,6 +401,7 @@ render();
  const saveUser=function(u){localStorage.setItem(KEY,JSON.stringify(u))};
  const auth=document.getElementById("auth"), accountBtn=document.getElementById("accountBtn"), mascot=document.getElementById("mascot"), eva=document.getElementById("eva");
  function refreshAccount(){var u=getUser();accountBtn.textContent=u?"👤 "+u.name:"👤 Se connecter";document.getElementById("evaHello").textContent=u?"Salut "+u.name+" ! Choisis ton mode de révision.":"Connecte-toi pour qu'EVA puisse garder ta progression."}
+ function refreshHome(){var u=getUser(),p=u&&u.progress||{xp:0,quizzes:0,flashcards:0};var q=document.getElementById("homeQuiz"),m=document.getElementById("homeMastery"),t=document.getElementById("homeTime"),last=document.getElementById("homeLast");if(q)q.textContent=p.quizzes+" quiz";if(m)m.textContent=Math.min(100,Math.round((p.xp||0)/5))+" XP";if(t)t.textContent=(p.flashcards||0)+" cartes";try{var l=JSON.parse(localStorage.getItem("astralearn_lastChapter")||"null");if(last&&l)last.textContent=l.chapter}catch(e){}}
  function openAuth(){auth.hidden=false} function closeAuth(){auth.hidden=true}
  document.getElementById("authClose").onclick=closeAuth;
  accountBtn.onclick=openAuth;
@@ -424,7 +431,7 @@ render();
    var start=document.getElementById("evaStart");if(start)start.onclick=function(){alert("Épreuve lancée !")};
  }
  document.querySelectorAll("[data-ai]").forEach(function(b){b.onclick=function(){output(b.dataset.ai)}});
- refreshAccount();
+ refreshAccount();refreshHome();
 })();
 </script></body>
 </html>
