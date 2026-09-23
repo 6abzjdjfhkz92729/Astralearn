@@ -116,7 +116,7 @@ const P={
 }
 };
 const levels=Object.keys(P);let level="5e";
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",""":"&quot;","'":"&#39;"}[m]))}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
 function kind(subject){return /spécialité|HGGSP|HLP|SES|NSI|Arts|LLCER|LLCA|Sciences de l’ingénieur|EPPCS/.test(subject)?"specialite":levels.indexOf(level)<3?"college":"lycee"}
 function render(){
  document.getElementById("levels").innerHTML=levels.map(l=>'<button class="level '+(l===level?'active':'')+'" onclick="level='+JSON.stringify(l)+';render()">'+l+'</button>').join("");
