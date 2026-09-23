@@ -9,8 +9,23 @@
 :root{--bg:#070b16;--panel:#10182b;--line:#263a5d;--cyan:#67e8f9;--violet:#9b7bff;--pink:#ff6fbd;--text:#f7fbff;--muted:#a6b3c8;--ok:#79e28f}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 5%,#211b4a,transparent 35%),linear-gradient(#070b16,#0a1020);color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif}.container{width:min(1200px,calc(100% - 30px));margin:auto}header{position:sticky;top:0;z-index:10;background:#070b16ee;border-bottom:1px solid #ffffff12;backdrop-filter:blur(15px)}.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-size:25px;font-weight:900;background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;color:transparent}.nav a{color:var(--muted);text-decoration:none;margin-left:18px}.hero{padding:55px 0 25px}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1;margin:0 0 15px}.gradient{background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:17px;line-height:1.6;max-width:800px}.glass{background:#10182be8;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 55px #0005}.toolbar{padding:16px;display:grid;grid-template-columns:1fr auto;gap:12px}.input,.select{width:100%;padding:12px;border-radius:11px;border:1px solid var(--line);background:#ffffff08;color:var(--text)}.levels{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.level,.tab,.btn{padding:10px 14px;border-radius:11px;border:1px solid var(--line);background:#ffffff06;color:var(--text);cursor:pointer;font-weight:700}.level.active,.tab.active,.btn.primary{background:linear-gradient(135deg,#9b7bff,#67e8f9);color:#07101a;border-color:transparent}.summary{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}.badge{padding:7px 10px;border-radius:999px;background:#67e8f915;color:var(--cyan);border:1px solid #67e8f925;font-size:12px}.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.subject{padding:18px}.subject h3{margin:8px 0}.subject p{color:var(--muted);line-height:1.5}.chapters{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.chapter{padding:16px;cursor:pointer}.chapter:hover{border-color:#67e8f980;transform:translateY(-2px)}.chapter small{color:var(--muted)}.modal{position:fixed;inset:0;background:#02050cdd;backdrop-filter:blur(8px);z-index:30;padding:18px;overflow:auto}.box{width:min(1050px,100%);margin:20px auto;padding:22px}.head{display:flex;justify-content:space-between;gap:15px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.lesson,.quiz{padding:20px;line-height:1.7}.lesson h3,.quiz h3{margin-top:0}.quiz-option{display:block;width:100%;text-align:left;margin:9px 0;padding:12px;border-radius:10px;border:1px solid var(--line);background:#ffffff06;color:var(--text);cursor:pointer}.quiz-option:hover{border-color:var(--cyan)}.result{margin-top:12px;font-weight:800}.close{font-size:18px}.counts{color:var(--muted)}footer{padding:45px 0;color:var(--muted);font-size:13px}@media(max-width:850px){.subjects,.chapters{grid-template-columns:1fr 1fr}}@media(max-width:580px){.subjects,.chapters{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}.navlinks{display:none}}
 </style>
-</head>
-<body>
+<style>
+#accountBtn{position:fixed;top:18px;right:22px;z-index:50}.auth{position:fixed;inset:0;background:rgba(4,8,20,.72);display:grid;place-items:center;z-index:100}.auth[hidden]{display:none}.authbox{width:min(430px,92vw);padding:28px;border-radius:24px;background:#11182b;color:#fff;box-shadow:0 20px 70px #0008}.authbox input{width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #34405e;background:#0b1020;color:#fff}.authrow{display:flex;gap:10px;margin-top:12px}.mascot{position:fixed;right:22px;bottom:22px;width:72px;height:72px;border:0;border-radius:50%;font-size:38px;cursor:pointer;z-index:60;background:#182442;box-shadow:0 8px 30px #0006}.eva{position:fixed;right:22px;bottom:105px;width:min(390px,calc(100vw - 44px));max-height:70vh;overflow:auto;padding:20px;border-radius:22px;background:#11182b;color:#fff;z-index:59;box-shadow:0 18px 60px #0008}.eva[hidden]{display:none}.eva-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}.eva-card{padding:12px;border:1px solid #34405e;border-radius:14px;background:#18213a;cursor:pointer;color:#fff}.account-name{font-weight:700}.progressline{font-size:13px;opacity:.8;margin-top:8px}
+</style></head>
+<body><button id="accountBtn" class="btn">👤 Se connecter</button>
+<button id="mascot" class="mascot" title="EVA, ton assistant">🦫</button>
+<div id="auth" class="auth" hidden><div class="authbox">
+<h2>Bienvenue sur AstraLearn 👋</h2><p id="authIntro">Crée ton compte pour retrouver ta progression sur cet appareil.</p>
+<input id="authName" placeholder="Prénom / pseudo"><input id="authEmail" type="email" placeholder="E-mail">
+<div class="authrow"><button class="btn primary" id="signupBtn">Créer mon compte</button><button class="btn" id="loginBtn">Se connecter</button><button class="btn close" id="authClose">✕</button></div>
+<p class="progressline">La version GitHub Pages peut mémoriser le compte localement dans ton navigateur. Pour un vrai compte utilisable sur plusieurs appareils, il faudra connecter une base d'authentification.</p>
+</div></div>
+<div id="eva" class="eva" hidden><div style="display:flex;justify-content:space-between;align-items:center"><div><h2 style="margin:0">🦫 EVA</h2><small>Ton coach AstraLearn</small></div><button class="btn" id="evaClose">✕</button></div>
+<p id="evaHello">Je peux t'aider à réviser.</p><div class="eva-grid">
+<button class="eva-card" data-ai="flash">🃏 Flashcards</button><button class="eva-card" data-ai="quiz">🧠 Quiz express</button>
+<button class="eva-card" data-ai="fiche">📚 Fiche express</button><button class="eva-card" data-ai="brevet">🏆 Mode brevet</button>
+<button class="eva-card" data-ai="terminale">🎓 Mode Terminale</button><button class="eva-card" data-ai="progress">📈 Ma progression</button>
+</div><div id="evaOut" style="margin-top:14px"></div></div>
 <header><div class="container nav"><div class="brand">AstraLearn</div><nav class="navlinks"><a href="#cours">Cours</a><a href="#programmes">Programmes</a><a href="#quiz">Quiz</a></nav></div></header>
 <main>
 <section class="hero"><div class="container"><span class="badge">PROGRAMME COMPLET · 5e → TERMINALE</span><h1>Tout le programme.<br><span class="gradient">2 fiches + 2 quiz par chapitre.</span></h1><p>AstraLearn organise les enseignements et les axes des programmes officiels par niveau. Chaque entrée ouvre automatiquement deux fiches de révision et deux quiz. Les nouveaux programmes sont distingués par niveau pour suivre leur calendrier d'application.</p></div></section>
@@ -150,5 +165,29 @@ function showTab(n){
 function answer(btn,given,correct){const box=btn.parentElement;box.querySelectorAll(".quiz-option").forEach(x=>x.disabled=true);const r=box.querySelector(".result");r.textContent=given===correct?"✅ Bonne réponse !":"❌ À revoir — réponse attendue : "+correct;r.style.color=given===correct?"var(--ok)":"var(--pink)"}
 render();
 </script>
-</body>
+<script>
+(function(){
+ const KEY="astralearn_account_v1";
+ const getUser=()=>{try{return JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){return null}};
+ const saveUser=u=>localStorage.setItem(KEY,JSON.stringify(u));
+ const auth=document.getElementById("auth"), accountBtn=document.getElementById("accountBtn"), mascot=document.getElementById("mascot"), eva=document.getElementById("eva");
+ function refreshAccount(){const u=getUser();accountBtn.textContent=u?"👤 "+u.name:"👤 Se connecter";document.getElementById("evaHello").textContent=u?"Salut "+u.name+" ! Choisis ton mode de révision.":"Connecte-toi pour qu'EVA puisse garder ta progression."; }
+ function openAuth(){auth.hidden=false} function closeAuth(){auth.hidden=true}
+ document.getElementById("authClose").onclick=closeAuth; accountBtn.onclick=openAuth;
+ document.getElementById("signupBtn").onclick=()=>{const name=document.getElementById("authName").value.trim(),email=document.getElementById("authEmail").value.trim().toLowerCase();if(!name||!email)return alert("Remplis ton prénom/pseudo et ton e-mail.");saveUser({name,email,createdAt:Date.now(),progress:{xp:0,quizzes:0,flashcards:0}});closeAuth();refreshAccount();alert("Compte enregistré ! Tu pourras le retrouver sur ce navigateur.");};
+ document.getElementById("loginBtn").onclick=()=>{const email=document.getElementById("authEmail").value.trim().toLowerCase(),u=getUser();if(u&&u.email===email){closeAuth();refreshAccount();alert("Connexion réussie, "+u.name+" !");}else alert("Aucun compte local ne correspond à cet e-mail.");};
+ mascot.onclick=()=>eva.hidden=!eva.hidden; document.getElementById("evaClose").onclick=()=>eva.hidden=true;
+ function currentChapter(){const u=window.current;return u&&u.chapter?u.chapter:"un chapitre de ton choix";}
+ function output(type){const ch=currentChapter(),out=document.getElementById("evaOut");
+ if(type==="flash")out.innerHTML="<h3>🃏 Flashcards — "+ch+"</h3><p><b>Carte 1 :</b> Quelle est l'idée essentielle ? → Reformule-la avec tes propres mots.</p><p><b>Carte 2 :</b> Quels sont les 3 mots-clés à retenir ? → Écris-les puis vérifie dans ton cours.</p><p><b>Carte 3 :</b> Donne un exemple précis permettant d'illustrer la notion.</p>";
+ if(type==="fiche")out.innerHTML="<h3>📚 Fiche express — "+ch+"</h3><ul><li>Définition / notion centrale</li><li>3 connaissances indispensables</li><li>1 exemple précis</li><li>1 méthode à appliquer</li><li>1 erreur fréquente à éviter</li></ul><p><b>Défi :</b> explique le chapitre en 60 secondes sans regarder tes notes.</p>";
+ if(type==="quiz")out.innerHTML="<h3>🧠 Quiz express</h3><p>1. Quelle notion est au cœur de <b>"+ch+"</b> ?</p><button class='eva-card' onclick="this.nextElementSibling.textContent='Réponse attendue : une explication précise et justifiée, pas seulement une définition.'">Afficher la correction</button><p></p><p>2. Donne un exemple concret et explique son lien avec le chapitre.</p>";
+ if(type==="brevet")out.innerHTML="<h3>🏆 Mode brevet</h3><p>EVA te prépare une question de compréhension, une question de rédaction et un exercice de méthode sur <b>"+ch+"</b>.</p><button class='btn primary' onclick="alert('Épreuve générée : commence par rédiger une réponse justifiée en 5 à 8 lignes.')">Commencer</button>";
+ if(type==="terminale")out.innerHTML="<h3>🎓 Mode Terminale</h3><p>Version approfondie : définition précise → problématique → argumentation → exemple → conclusion sur <b>"+ch+"</b>.</p>";
+ if(type==="progress"){const u=getUser();out.innerHTML=u?"<h3>📈 Progression de "+u.name+"</h3><p>XP : "+u.progress.xp+" · Quiz : "+u.progress.quizzes+" · Flashcards : "+u.progress.flashcards+"</p>":"<p>Connecte-toi pour enregistrer ta progression.</p>";}
+ }
+ document.querySelectorAll("[data-ai]").forEach(b=>b.onclick=()=>output(b.dataset.ai));
+ refreshAccount();
+})();
+</script></body>
 </html>
