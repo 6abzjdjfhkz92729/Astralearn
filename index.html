@@ -1,639 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AstraLearn — Plateforme d'Aide aux Devoirs Futuriste</title>
-  <style>
-    :root {
-      --bg: #080a10;
-      --card-bg: rgba(18, 24, 40, 0.75);
-      --border: rgba(0, 242, 254, 0.25);
-      --primary: #00f2fe;
-      --secondary: #7f00ff;
-      --accent: #ff007f;
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(127, 0, 255, 0.2) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(0, 242, 254, 0.2) 0%, transparent 40%);
-    }
-
-    .glass-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-      transition: all 0.3s ease;
-    }
-
-    .glass-card:hover {
-      border-color: var(--primary);
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
-    }
-
-    .btn-futuristic {
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
-      border: none;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
-    }
-
-    .btn-futuristic:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
-    }
-
-    #auth-screen {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .auth-box {
-      width: 100%;
-      max-width: 420px;
-      text-align: center;
-    }
-
-    .auth-box h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .auth-box p {
-      color: var(--text-muted);
-      margin-bottom: 25px;
-    }
-
-    .input-group {
-      margin-bottom: 18px;
-      text-align: left;
-    }
-
-    .input-group label {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .input-group input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.05);
-      color: white;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-
-    .input-group input:focus {
-      border-color: var(--primary);
-    }
-
-    #app-workspace {
-      display: none;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-bottom: 120px;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 15px;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .user-badge {
-      font-size: 0.9rem;
-      color: var(--primary);
-      border: 1px solid var(--primary);
-      padding: 6px 14px;
-      border-radius: 20px;
-      background: rgba(0, 242, 254, 0.1);
-    }
-
-    .levels-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-
-    .level-btn {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      color: white;
-      padding: 18px;
-      border-radius: 12px;
-      cursor: pointer;
-      text-align: center;
-      font-weight: bold;
-      transition: all 0.3s;
-    }
-
-    .level-btn.active, .level-btn:hover {
-      background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(127, 0, 255, 0.2));
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    .tabs {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 25px;
-      overflow-x: auto;
-      padding-bottom: 5px;
-    }
-
-    .tab-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 10px 22px;
-      border-radius: 20px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.3s;
-    }
-
-    .tab-btn.active {
-      background: var(--primary);
-      color: #080a10;
-      font-weight: bold;
-      border-color: var(--primary);
-    }
-
-    .view-content {
-      display: none;
-    }
-
-    .view-content.active {
-      display: block;
-    }
-
-    .grid-subjects {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .subject-card h3 {
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: rgba(0, 242, 254, 0.15);
-      color: var(--primary);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      margin-bottom: 12px;
-      font-weight: bold;
-    }
-
-    .exam-tag {
-      background: rgba(255, 0, 127, 0.2);
-      color: var(--accent);
-      border: 1px solid var(--accent);
-    }
-
-    .calc-box {
-      max-width: 500px;
-    }
-
-    .calc-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .calc-row input {
-      flex: 1;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.05);
-      color: white;
-    }
-
-    .ai-widget {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 1000;
-    }
-
-    .ai-toggle {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
-      border: none;
-      color: white;
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .ai-window {
-      display: none;
-      width: 340px;
-      height: 460px;
-      position: absolute;
-      bottom: 75px;
-      right: 0;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(20px);
-      border-radius: 16px;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    .ai-header {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 15px;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      color: var(--primary);
-    }
-
-    .ai-messages {
-      flex: 1;
-      padding: 15px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 0.9rem;
-    }
-
-    .msg {
-      padding: 10px 14px;
-      border-radius: 12px;
-      max-width: 85%;
-      line-height: 1.4;
-    }
-
-    .msg.bot {
-      background: rgba(0, 242, 254, 0.15);
-      border: 1px solid var(--border);
-      align-self: flex-start;
-    }
-
-    .msg.user {
-      background: var(--secondary);
-      align-self: flex-end;
-    }
-
-    .ai-input {
-      display: flex;
-      padding: 10px;
-      border-top: 1px solid var(--border);
-      background: rgba(0, 0, 0, 0.3);
-    }
-
-    .ai-input input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      color: white;
-      padding: 8px;
-      outline: none;
-    }
-
-    .ai-input button {
-      background: var(--primary);
-      border: none;
-      color: #080a10;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AstraLearn — Révisions, Brevet, Bac & Assistant IA</title>
+<meta name="description" content="AstraLearn : cours, fiches, quiz, flashcards, sujets type Brevet et Bac, simulateur de notes et aide aux devoirs.">
+<style>
+:root{--bg:#070b16;--panel:rgba(16,24,43,.88);--panel2:rgba(11,17,33,.94);--line:rgba(103,232,249,.18);--cyan:#67e8f9;--violet:#9b7bff;--pink:#ff6fbd;--text:#f7fbff;--muted:#a6b3c8;--ok:#79e28f;--shadow:0 24px 70px rgba(0,0,0,.32)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 12% 8%,rgba(155,123,255,.24),transparent 32%),radial-gradient(circle at 86% 12%,rgba(103,232,249,.17),transparent 28%),linear-gradient(#070b16,#0a1020 55%,#070b16);font-family:Inter,Segoe UI,system-ui,sans-serif}
+button,input,select{font:inherit}.hidden{display:none!important}.container{width:min(1180px,calc(100% - 32px));margin:auto}
+.glass{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+.btn{border:0;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:800}.btn-primary{background:linear-gradient(135deg,var(--violet),var(--cyan));color:#08101b;box-shadow:0 12px 28px rgba(103,232,249,.16)}.btn-ghost{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--line)}
+header{position:sticky;top:0;z-index:20;background:rgba(7,11,22,.74);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:1000;font-size:24px;letter-spacing:-.5px;background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.navlinks{display:flex;gap:18px;color:var(--muted);font-size:14px}.navlinks a{color:inherit;text-decoration:none}.nav-actions{display:flex;gap:10px;align-items:center}
+.hero{padding:72px 0 36px}.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:stretch}.hero h1{font-size:clamp(42px,6vw,72px);line-height:.96;margin:0 0 18px;letter-spacing:-3px}.gradient{background:linear-gradient(90deg,var(--cyan),#fff,var(--violet));-webkit-background-clip:text;color:transparent}.hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:720px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.school-card{padding:24px;overflow:hidden;position:relative}.school-card:before{content:"";position:absolute;inset:-30% auto auto 55%;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(103,232,249,.25),transparent 65%)}.school-card h3{margin:0 0 10px;font-size:21px}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.mini{padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03)}.mini b{display:block;font-size:22px}.mini span{font-size:12px;color:var(--muted)}
+section{padding:28px 0}.section-title{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px}.section-title h2{margin:0;font-size:28px}.section-title p{margin:0;color:var(--muted);max-width:650px}
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature{padding:18px}.feature .icon{font-size:24px}.feature h3{margin:10px 0 6px}.feature p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+.levels{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.level{padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}.level.active{background:rgba(103,232,249,.11);color:var(--cyan);border-color:rgba(103,232,249,.5)}
+.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.subject{padding:20px}.subject h3{margin:4px 0 8px}.subject p{color:var(--muted);font-size:14px;line-height:1.5}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{font-size:12px;padding:6px 9px;border-radius:999px;background:rgba(103,232,249,.09);color:var(--cyan);border:1px solid rgba(103,232,249,.16)}.tag.exam{color:var(--pink);background:rgba(255,111,189,.08);border-color:rgba(255,111,189,.18)}
+.exam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.exam{padding:20px}.exam .meta{color:var(--muted);font-size:13px}.exam h3{margin:10px 0}.exam button{margin-top:14px}
+.progress{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.bar{height:12px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}.bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--cyan));border-radius:999px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{padding:15px;border:1px solid var(--line);border-radius:16px}.stat b{font-size:24px}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.flash{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.flash-card{min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(103,232,249,.06),rgba(155,123,255,.07))}.flash-card h3{font-size:25px;line-height:1.25}.answer{color:var(--cyan);font-size:18px;font-weight:800;margin-top:12px}.quiz-list{display:grid;gap:10px}.quiz-q{padding:16px;border:1px solid var(--line);border-radius:16px}.quiz-q button{margin-top:10px;margin-right:7px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:18px}.calc-box{padding:22px}.rows{display:grid;gap:10px}.row{display:grid;grid-template-columns:1.3fr .7fr .6fr;gap:8px}.input,.select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);outline:none}.result{font-size:34px;font-weight:900;color:var(--cyan);margin-top:14px}
+.ai-panel{position:fixed;right:22px;bottom:22px;z-index:30}.ai-window{width:min(390px,calc(100vw - 30px));height:520px;display:none;flex-direction:column;overflow:hidden}.ai-head{padding:15px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.ai-head strong{color:var(--cyan)}.msgs{flex:1;padding:14px;overflow:auto;display:flex;flex-direction:column;gap:10px}.msg{max-width:86%;padding:10px 13px;border-radius:15px;line-height:1.45;font-size:14px}.msg.bot{background:rgba(103,232,249,.09);border:1px solid var(--line);align-self:flex-start}.msg.user{background:linear-gradient(135deg,var(--violet),#6e64f3);align-self:flex-end}.ai-form{padding:10px;border-top:1px solid var(--line);display:flex;gap:8px}.ai-form input{flex:1;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;border-radius:10px;padding:10px}.ai-toggle{width:62px;height:62px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--violet),var(--cyan));font-weight:900;cursor:pointer;box-shadow:0 16px 35px rgba(0,0,0,.35)}
+.modal-wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(3,6,12,.72);backdrop-filter:blur(10px);z-index:40;padding:15px}.modal{width:min(500px,100%);padding:24px}.auth-buttons{display:grid;gap:10px;margin:14px 0}.auth-btn{padding:13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.04);color:#fff;cursor:pointer;font-weight:800;text-align:center}.divider{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}.divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-grid .full{grid-column:1/-1}.small{color:var(--muted);font-size:12px;line-height:1.5}
+footer{padding:55px 0 80px;color:var(--muted);font-size:13px}
+@media(max-width:930px){.hero-grid,.calc,.progress,.flash{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr 1fr}.subjects,.exam-grid{grid-template-columns:1fr 1fr}.navlinks{display:none}}
+@media(max-width:620px){.feature-grid,.subjects,.exam-grid,.stats{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr 1fr}.hero{padding-top:48px}.nav{height:64px}}
+</style>
 </head>
 <body>
+<header><div class="container nav"><a href="#" class="brand">AstraLearn</a><nav class="navlinks"><a href="#cours">Cours</a><a href="#examens">Brevet & Bac</a><a href="#quiz">Quiz</a><a href="#outils">Outils</a></nav><div class="nav-actions"><button class="btn btn-ghost" onclick="openAuth('login')">Se connecter</button><button class="btn btn-primary" onclick="openAuth('signup')">Créer un compte</button></div></div></header>
 
-  <div id="auth-screen">
-    <div class="glass-card auth-box">
-      <h1>AstraLearn</h1>
-      <p>Accède à ton espace de révision augmenté par l'IA</p>
-      
-      <form onsubmit="handleAuth(event)">
-        <div class="input-group">
-          <label>Adresse e-mail</label>
-          <input type="email" placeholder="eleve@lycee.fr" required>
-        </div>
-        <div class="input-group">
-          <label>Mot de passe</label>
-          <input type="password" placeholder="••••••••" required>
-        </div>
-        <button type="submit" class="btn-futuristic" style="width: 100%; margin-top: 10px;">Se connecter / S'inscrire</button>
-      </form>
-    </div>
-  </div>
+<main>
+<section class="hero"><div class="container hero-grid"><div><div class="tag" style="display:inline-block;margin-bottom:12px">🎓 Révisions scolaires & examens</div><h1>Révise mieux avec <span class="gradient">AstraLearn</span>.</h1><p>Un espace pensé pour les collégiens et lycéens : cours synthétiques, fiches, quiz, flashcards, sujets d'entraînement type Brevet et Bac, suivi de progression et assistant IA pour comprendre tes cours.</p><div class="hero-actions"><button class="btn btn-primary" onclick="scrollToId('cours')">Commencer à réviser</button><button class="btn btn-ghost" onclick="openAuth('signup')">Créer mon espace élève</button></div></div><div class="glass school-card"><h3>Ton tableau de bord scolaire</h3><div class="mini-grid"><div class="mini"><b>📚</b><span>Cours & fiches</span></div><div class="mini"><b>🧠</b><span>Quiz & flashcards</span></div><div class="mini"><b>📝</b><span>Sujets type examen</span></div><div class="mini"><b>🤖</b><span>Aide aux devoirs</span></div></div><p class="small" style="margin-top:15px">Objectif : t'aider à apprendre, t'entraîner et suivre tes progrès.</p></div></div></section>
 
-  <div id="app-workspace">
-    <header>
-      <div class="logo">AstraLearn</div>
-      <div class="user-badge" id="user-display">Élève — Connecté</div>
-    </header>
+<section><div class="container"><div class="section-title"><div><h2>Tout pour l'école</h2><p>Une structure inspirée des usages d'une application de révision, avec du contenu original et des parcours adaptés au niveau choisi.</p></div></div><div class="feature-grid"><div class="glass feature"><div class="icon">📖</div><h3>Mini-cours</h3><p>Des notions découpées en petites fiches faciles à relire.</p></div><div class="glass feature"><div class="icon">🃏</div><h3>Flashcards</h3><p>Teste ta mémoire avec des cartes question/réponse.</p></div><div class="glass feature"><div class="icon">🏫</div><h3>Préparation examens</h3><p>Parcours Brevet et Bac avec sujets d'entraînement et méthode.</p></div><div class="glass feature"><div class="icon">📈</div><h3>Progression</h3><p>Objectifs de révision, moyenne et compteur de quiz.</p></div></div></div></section>
 
-    <div class="levels-grid">
-      <button class="level-btn active" onclick="selectLevel('3ème')">3ème</button>
-      <button class="level-btn" onclick="selectLevel('4ème')">4ème</button>
-      <button class="level-btn" onclick="selectLevel('2nde')">2nde</button>
-      <button class="level-btn" onclick="selectLevel('1ère')">1ère</button>
-      <button class="level-btn" onclick="selectLevel('Terminale')">Terminale</button>
-    </div>
+<section id="cours"><div class="container"><div class="section-title"><div><h2>Cours & matières</h2><p>Choisis ton niveau et retrouve rapidement tes matières.</p></div></div><div class="levels" id="levels"></div><div class="subjects" id="subjects"></div></div></section>
 
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('matieres')">Matières & Fiches</button>
-      <button class="tab-btn" onclick="switchTab('simulateur')">Simulateur de Notes</button>
-      <button class="tab-btn" onclick="switchTab('flashcards')">Quiz & Flashcards</button>
-      <button class="tab-btn" id="tab-orientation" onclick="switchTab('orientation')">Quiz Orientation Spécialités</button>
-    </div>
+<section id="examens"><div class="container"><div class="section-title"><div><h2>Brevet & Bac</h2><p>Des sujets <b>type examen</b> originaux pour t'entraîner. Les annales officielles peuvent être ajoutées sous forme de liens vers leurs sources.</p></div></div><div class="exam-grid" id="exams"></div></div></section>
 
-    <div id="view-matieres" class="view-content active">
-      <h2 style="margin-bottom: 20px;" id="level-title">Matières de 3ème</h2>
-      <div class="grid-subjects" id="subjects-container"></div>
-    </div>
+<section id="quiz"><div class="container"><div class="section-title"><div><h2>Quiz & Flashcards</h2><p>Travaille rapidement une notion puis vérifie ta réponse.</p></div></div><div class="flash"><div class="flash-card glass"><span class="tag">Flashcard</span><h3 id="fq">Quelle est la formule de la vitesse moyenne ?</h3><div id="fa" class="answer hidden">v = distance ÷ durée</div><button class="btn btn-primary" onclick="revealFlash()">Révéler</button></div><div class="glass" style="padding:20px"><div class="quiz-list"><div class="quiz-q"><b>Maths — calcul mental</b><div>Quel est 15 % de 200 ?</div><button class="btn btn-ghost" onclick="check(this,'30')">20</button><button class="btn btn-ghost" onclick="check(this,'30')">30</button><button class="btn btn-ghost" onclick="check(this,'40')">40</button></div><div class="quiz-q"><b>Français</b><div>Quelle figure de style rapproche deux éléments avec un outil comme « comme » ?</div><button class="btn btn-ghost" onclick="check(this,'comparaison')">Métaphore</button><button class="btn btn-ghost" onclick="check(this,'comparaison')">Comparaison</button><button class="btn btn-ghost" onclick="check(this,'comparaison')">Hyperbole</button></div></div></div></div></div></section>
 
-    <div id="view-simulateur" class="view-content">
-      <h2 style="margin-bottom: 20px;">Simulateur de Moyenne</h2>
-      <div class="glass-card calc-box">
-        <p style="margin-bottom: 15px; color: var(--text-muted);">Calcule ta moyenne prévisionnelle :</p>
-        <div id="calc-rows">
-          <div class="calc-row">
-            <input type="text" placeholder="Matière (ex : Maths)" value="Mathématiques">
-            <input type="number" placeholder="Note /20" class="note-input" value="15">
-            <input type="number" placeholder="Coeff" class="coeff-input" value="2">
-          </div>
-          <div class="calc-row">
-            <input type="text" placeholder="Matière (ex : Français)" value="Français">
-            <input type="number" placeholder="Note /20" class="note-input" value="14">
-            <input type="number" placeholder="Coeff" class="coeff-input" value="2">
-          </div>
-        </div>
-        <button class="btn-futuristic" onclick="calculateAverage()" style="margin-top: 15px; width: 100%;">Calculer la Moyenne</button>
-        <h3 id="result-average" style="margin-top: 20px; color: var(--primary);">Moyenne : -- / 20</h3>
-      </div>
-    </div>
+<section id="outils"><div class="container"><div class="section-title"><div><h2>Outils utiles</h2><p>Simule ta moyenne, prépare ton orientation et organise tes révisions.</p></div></div><div class="calc"><div class="glass calc-box"><h3>Simulateur de moyenne</h3><div class="rows" id="rows"><div class="row"><input class="input" value="Mathématiques"><input class="input note" type="number" value="15" min="0" max="20"><input class="input coeff" type="number" value="2" min="0.1" step="0.1"></div><div class="row"><input class="input" value="Français"><input class="input note" type="number" value="14" min="0" max="20"><input class="input coeff" type="number" value="2" min="0.1" step="0.1"></div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-ghost" onclick="addRow()">+ Ajouter</button><button class="btn btn-primary" onclick="calcAvg()">Calculer</button></div><div class="result" id="avg">— / 20</div></div><div class="glass calc-box"><h3>🎯 Objectif de la semaine</h3><p class="small">Exemple de parcours : 3 fiches + 2 quiz + 1 sujet type Brevet.</p><div class="bar" style="margin:14px 0"><span style="width:60%"></span></div><div class="stats"><div class="stat"><b>12</b><span>quiz terminés</span></div><div class="stat"><b>7</b><span>fiches vues</span></div><div class="stat"><b>60%</b><span>objectif</span></div></div><button class="btn btn-primary" style="margin-top:14px" onclick="openAuth('signup')">Enregistrer ma progression</button></div></div></div></section>
+</main>
 
-    <div id="view-flashcards" class="view-content">
-      <h2 style="margin-bottom: 20px;">Flashcards & Quiz Rapides</h2>
-      <div class="glass-card" style="max-width: 600px; text-align: center;">
-        <span class="badge">Quiz Flash</span>
-        <h3 id="flashcard-question" style="margin: 15px 0;">Quelle est la formule de l'énergie cinétique en Physique ?</h3>
-        <button class="btn-futuristic" onclick="revealAnswer()" id="reveal-btn">Révéler la réponse</button>
-        <p id="flashcard-answer" style="display: none; margin-top: 15px; color: var(--primary); font-size: 1.2rem; font-weight: bold;">E_c = 1/2 × m × v²</p>
-      </div>
-    </div>
+<div class="ai-panel"><div class="ai-window glass" id="ai-window"><div class="ai-head"><strong>🤖 Assistant IA Astra</strong><button class="btn btn-ghost" onclick="toggleAI()">✕</button></div><div class="msgs" id="msgs"><div class="msg bot">Salut ! Je peux t'aider à comprendre un cours, construire un plan de révision, expliquer une notion ou te faire réviser avec des questions.</div></div><form class="ai-form" onsubmit="sendAI(event)"><input id="ai-input" placeholder="Ex. explique-moi le théorème de Thalès"><button class="btn btn-primary">Envoyer</button></form></div><button class="ai-toggle" onclick="toggleAI()">IA</button></div>
 
-    <div id="view-orientation" class="view-content">
-      <h2 style="margin-bottom: 20px;">Quiz d'Orientation & Spécialités</h2>
-      <div class="glass-card" style="max-width: 600px;">
-        <p style="margin-bottom: 15px;">Réponds à cette question pour découvrir tes spécialités recommandées :</p>
-        <label style="display: block; margin-bottom: 10px;">Qu'aimes-tu analyser en priorité ?</label>
-        <select id="orientation-choice" style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--border); margin-bottom: 20px;">
-          <option value="tech">Résoudre des équations, le code informatique et la logique</option>
-          <option value="science">Comprendre la nature, le corps humain et la matière</option>
-          <option value="humanities">Analyser la société, l'économie et la littérature</option>
-        </select>
-        <button class="btn-futuristic" onclick="recommendSpecialties()">Obtenir mon profil</button>
-        <div id="orientation-result" style="margin-top: 20px; display: none; color: var(--primary); font-weight: bold;"></div>
-      </div>
-    </div>
-  </div>
+<div class="modal-wrap hidden" id="modal"><div class="modal glass"><div style="display:flex;justify-content:space-between;align-items:center"><h2 id="auth-title">Créer un compte</h2><button class="btn btn-ghost" onclick="closeAuth()">✕</button></div><p class="small">Tu peux choisir une connexion avec Google ou Microsoft. Pour l'instant, les boutons sont l'interface prête à brancher à un fournisseur d'authentification sécurisé ; aucun mot de passe n'est stocké dans cette page.</p><div class="auth-buttons"><button class="auth-btn" onclick="authProvider('Google')">🌐 Continuer avec Google</button><button class="auth-btn" onclick="authProvider('Microsoft')">🪟 Continuer avec Microsoft</button></div><div class="divider">ou avec ton e-mail</div><form id="signupForm" onsubmit="fakeSignup(event)" style="margin-top:14px"><div class="form-grid"><div><label>Prénom</label><input class="input" required placeholder="Prénom"></div><div><label>Nom</label><input class="input" required placeholder="Nom"></div><div class="full"><label>Adresse e-mail</label><input class="input" type="email" required placeholder="eleve@email.fr"></div><div class="full"><label>Mot de passe</label><input class="input" type="password" required minlength="8" placeholder="8 caractères minimum"></div><div class="full"><label>Niveau</label><select class="select"><option>3ème</option><option>4ème</option><option>2nde</option><option>1ère</option><option>Terminale</option></select></div></div><button class="btn btn-primary" style="width:100%;margin-top:12px">Créer mon espace</button></form></div></div>
 
-  <div class="ai-widget">
-    <div class="ai-window" id="ai-window">
-      <div class="ai-header">
-        <span>Assistant IA Astra</span>
-        <span style="cursor: pointer;" onclick="toggleAI()">✕</span>
-      </div>
-      <div class="ai-messages" id="ai-messages">
-        <div class="msg bot">Pose-moi une question sur tes cours ou tes annales !</div>
-      </div>
-      <div class="ai-input">
-        <input type="text" id="ai-user-input" placeholder="Poser une question..." onkeypress="if(event.key==='Enter') sendAIMessage()">
-        <button onclick="sendAIMessage()">Envoyer</button>
-      </div>
-    </div>
-    <button class="ai-toggle" onclick="toggleAI()">IA</button>
-  </div>
+<footer><div class="container">AstraLearn est un projet indépendant. Les contenus intégrés ici sont originaux ; les sujets d'examen officiels doivent être utilisés via leurs sources officielles ou avec les droits nécessaires.</div></footer>
 
-  <script>
-    let currentLevel = '3ème';
-
-    const subjectsData = {
-      '3ème': [
-        { name: 'Mathématiques', badge: 'Annales Brevet', exam: true },
-        { name: 'Français', badge: 'Annales Brevet', exam: true },
-        { name: 'Histoire-Géo & EMC', badge: 'Annales Brevet', exam: true },
-        { name: 'SVT & Physique-Chimie', badge: 'Annales Brevet', exam: true },
-        { name: 'Préparation Oral Brevet', badge: 'Épreuve Orale', exam: true },
-        { name: 'Anglais (LV1)', badge: 'Socle commun', exam: false }
-      ],
-      '4ème': [
-        { name: 'Mathématiques', badge: 'Fiches & Exercices', exam: false },
-        { name: 'Français', badge: 'Fiches & Exercices', exam: false },
-        { name: 'Histoire-Géo', badge: 'Fiches & Exercices', exam: false },
-        { name: 'Physique-Chimie', badge: 'Fiches & Exercices', exam: false },
-        { name: 'SVT', badge: 'Fiches & Exercices', exam: false },
-        { name: 'Espagnol / Allemand', badge: 'LV2', exam: false }
-      ],
-      '2nde': [
-        { name: 'Mathématiques', badge: 'Tronc Commun', exam: false },
-        { name: 'Français', badge: 'Tronc Commun', exam: false },
-        { name: 'Physique-Chimie', badge: 'Tronc Commun', exam: false },
-        { name: 'SVT', badge: 'Tronc Commun', exam: false },
-        { name: 'SES', badge: 'Initation Spécialité', exam: false },
-        { name: 'SNT (Numérique)', badge: 'Tronc Commun', exam: false }
-      ],
-      '1ère': [
-        { name: 'EAF Français (Écrit & Oral)', badge: 'Annales Bac 1ère', exam: true },
-        { name: 'Mathématiques (Spécialité)', badge: 'Annales Bac', exam: true },
-        { name: 'Physique-Chimie (Spé)', badge: 'Annales Bac', exam: true },
-        { name: 'SVT (Spé)', badge: 'Annales Bac', exam: true },
-        { name: 'NSI (Informatique)', badge: 'Annales Bac', exam: true },
-        { name: 'Préparation Oral de Français', badge: 'Épreuve Orale', exam: true }
-      ],
-      'Terminale': [
-        { name: 'Grand Oral du Bac', badge: 'Épreuve Finale', exam: true },
-        { name: 'Mathématiques (Spé)', badge: 'Annales Grand Bac', exam: true },
-        { name: 'Physique-Chimie (Spé)', badge: 'Annales Grand Bac', exam: true },
-        { name: 'Philosophy', badge: 'Tronc Commun', exam: true },
-        { name: 'SES (Spé)', badge: 'Annales Grand Bac', exam: true },
-        { name: 'Histoire-Géo / HGGSP', badge: 'Annales Grand Bac', exam: true }
-      ]
-    };
-
-    function handleAuth(event) {
-      event.preventDefault();
-      document.getElementById('auth-screen').style.display = 'none';
-      document.getElementById('app-workspace').style.display = 'block';
-      loadSubjects();
-    }
-
-    function selectLevel(level) {
-      currentLevel = level;
-      document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById('level-title').innerText = `Matières de ${level}`;
-      
-      const orientationTab = document.getElementById('tab-orientation');
-      if (level === 'Terminale' || level === '4ème') {
-        orientationTab.style.display = 'none';
-      } else {
-        orientationTab.style.display = 'block';
-      }
-      loadSubjects();
-    }
-
-    function loadSubjects() {
-      const container = document.getElementById('subjects-container');
-      container.innerHTML = '';
-      const list = subjectsData[currentLevel] || [];
-
-      list.forEach(sub => {
-        const card = document.createElement('div');
-        card.className = 'glass-card subject-card';
-        card.innerHTML = `
-          <span class="badge ${sub.exam ? 'exam-tag' : ''}">${sub.badge}</span>
-          <h3>${sub.name}</h3>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Accède aux fiches de révision, exercices corrigés et quiz adaptés.</p>
-          <button class="btn-futuristic" style="padding: 8px 16px; font-size: 0.8rem;">Ouvrir</button>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.view-content').forEach(view => view.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById(`view-${tabId}`).classList.add('active');
-    }
-
-    function calculateAverage() {
-      const notes = document.querySelectorAll('.note-input');
-      const coeffs = document.querySelectorAll('.coeff-input');
-      let totalNotes = 0;
-      let totalCoeffs = 0;
-
-      notes.forEach((noteInput, index) => {
-        const note = parseFloat(noteInput.value) || 0;
-        const coeff = parseFloat(coeffs[index].value) || 1;
-        totalNotes += note * coeff;
-        totalCoeffs += coeff;
-      });
-
-      const avg = totalCoeffs > 0 ? (totalNotes / totalCoeffs).toFixed(2) : 0;
-      document.getElementById('result-average').innerText = `Moyenne : ${avg} / 20`;
-    }
-
-    function revealAnswer() {
-      const ans = document.getElementById('flashcard-answer');
-      ans.style.display = ans.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function recommendSpecialties() {
-      const choice = document.getElementById('orientation-choice').value;
-      const res = document.getElementById('orientation-result');
-      res.style.display = 'block';
-      
-      if (choice === 'tech') {
-        res.innerText = 'Spécialités suggérées : Mathématiques + NSI (Numérique) + Physique-Chimie';
-      } else if (choice === 'science') {
-        res.innerText = 'Spécialités suggérées : SVT + Physique-Chimie + Mathématiques';
-      } else {
-        res.innerText = 'Spécialités suggérées : HGGSP + SES + HLPHI (Humanités)';
-      }
-    }
-
-    function toggleAI() {
-      const win = document.getElementById('ai-window');
-      win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
-    }
-
-    function sendAIMessage() {
-      const input = document.getElementById('ai-user-input');
-      const text = input.value.trim();
-      if (!text) return;
-
-      const chat = document.getElementById('ai-messages');
-      
-      const userMsg = document.createElement('div');
-      userMsg.className = 'msg user';
-      userMsg.innerText = text;
-      chat.appendChild(userMsg);
-
-      input.value = '';
-      chat.scrollTop = chat.scrollHeight;
-
-      setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'msg bot';
-        botMsg.innerText = `[IA Astra] Voici une aide pour ta question sur "${text}" dans le niveau ${currentLevel}. N'hésite pas à me demander une fiche résumé !`;
-        chat.appendChild(botMsg);
-        chat.scrollTop = chat.scrollHeight;
-      }, 600);
-    }
-  </script>
+<script>
+const data={
+'3ème':['Mathématiques','Français','Histoire-Géographie & EMC','Physique-Chimie','SVT','Anglais'],
+'4ème':['Mathématiques','Français','Histoire-Géographie','Physique-Chimie','SVT','LV2'],
+'2nde':['Mathématiques','Français','Physique-Chimie','SVT','SES','SNT','Histoire-Géographie','Anglais'],
+'1ère':['Français','Mathématiques','Physique-Chimie','SVT','HGGSP','SES','NSI'],
+'Terminale':['Philosophie','Mathématiques','Physique-Chimie','SVT','HGGSP','SES','NSI']
+};
+const exams=[
+{level:'3ème',title:'Sujet type Brevet — Mathématiques',desc:'Problèmes, calculs, géométrie et lecture de données.',tag:'Type Brevet'},
+{level:'3ème',title:'Sujet type Brevet — Français',desc:'Compréhension, langue et rédaction guidée.',tag:'Type Brevet'},
+{level:'2nde',title:'Sujet d’entraînement — Maths',desc:'Fonctions, calcul littéral et statistiques.',tag:'Entraînement'},
+{level:'1ère',title:'Sujet type Bac — Français',desc:'Méthode pour l’écrit et préparation à l’oral.',tag:'Type Bac'},
+{level:'Terminale',title:'Sujet type Bac — Philosophie',desc:'Notions, problématique et méthode de dissertation.',tag:'Type Bac'},
+{level:'Terminale',title:'Sujet type Bac — Spécialité',desc:'Exercices progressifs et correction expliquée.',tag:'Type Bac'}
+];
+let level='3ème';
+function renderLevels(){const el=document.getElementById('levels');el.innerHTML='';Object.keys(data).forEach(l=>{const b=document.createElement('button');b.className='level'+(l===level?' active':'');b.textContent=l;b.onclick=()=>{level=l;renderAll()};el.appendChild(b)})}
+function renderSubjects(){const el=document.getElementById('subjects');el.innerHTML='';data[level].forEach((s,i)=>{const d=document.createElement('div');d.className='glass subject';d.innerHTML='<div class="tags"><span class="tag">'+(i<4?'Cours & fiches':'Quiz & exercices')+'</span></div><h3>'+s+'</h3><p>Révise les notions essentielles, fais des exercices et entraîne-toi avec des questions rapides adaptées au niveau '+level+'.</p><button class="btn btn-ghost" onclick="alert(\'Module '+s+' : fiches, quiz et exercices — contenu en cours de création.\')">Ouvrir</button>';el.appendChild(d)})}
+function renderExams(){const el=document.getElementById('exams');el.innerHTML='';exams.filter(x=>x.level===level || level==='3ème').slice(0,6).forEach(x=>{const d=document.createElement('div');d.className='glass exam';d.innerHTML='<div class="meta">'+x.level+' · '+x.tag+'</div><h3>'+x.title+'</h3><p class="small">'+x.desc+'</p><button class="btn btn-primary" onclick="alert(\'Ouverture du sujet type : '+x.title+'\')">Commencer</button>';el.appendChild(d)})}
+function renderAll(){renderLevels();renderSubjects();renderExams()}
+function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function revealFlash(){document.getElementById('fa').classList.toggle('hidden')}
+function check(btn,answer){const wrap=btn.parentElement;const text=btn.textContent.trim();[...wrap.querySelectorAll('button')].forEach(b=>b.disabled=true);const out=document.createElement('div');out.className='small';out.style.marginTop='10px';out.style.color=text.toLowerCase()===answer.toLowerCase()?'var(--ok)':'var(--pink)';out.textContent=text.toLowerCase()===answer.toLowerCase()?'✅ Bonne réponse !':'❌ Pas tout à fait. Réponse attendue : '+answer+'.';wrap.appendChild(out)}
+function addRow(){const r=document.createElement('div');r.className='row';r.innerHTML='<input class="input" placeholder="Matière"><input class="input note" type="number" min="0" max="20" step="0.1"><input class="input coeff" type="number" min="0.1" step="0.1" value="1">';document.getElementById('rows').appendChild(r)}
+function calcAvg(){let s=0,c=0;document.querySelectorAll('.row').forEach(r=>{const n=parseFloat(r.querySelector('.note').value);const k=parseFloat(r.querySelector('.coeff').value);if(Number.isFinite(n)&&Number.isFinite(k)){s+=n*k;c+=k}});document.getElementById('avg').textContent=c?(s/c).toFixed(2)+' / 20':'— / 20'}
+function toggleAI(){const w=document.getElementById('ai-window');w.style.display=w.style.display==='flex'?'none':'flex'}
+function sendAI(e){e.preventDefault();const input=document.getElementById('ai-input');const q=input.value.trim();if(!q)return;addMsg(q,'user');input.value='';setTimeout(()=>{let a='Je peux t’aider à décomposer cette question étape par étape. Donne-moi aussi ton niveau et la matière si tu veux une explication adaptée.';if(q.toLowerCase().includes('thalès'))a='Pour Thalès, commence par repérer deux triangles avec des côtés parallèles, puis écris les rapports de longueurs correspondants avant de faire le produit en croix.';if(q.toLowerCase().includes('moyenne'))a='Pour une moyenne avec coefficients, multiplie chaque note par son coefficient, additionne les résultats puis divise par la somme des coefficients.';addMsg(a,'bot')},450)}
+function addMsg(t,k){const d=document.createElement('div');d.className='msg '+k;d.textContent=t;document.getElementById('msgs').appendChild(d);const m=document.getElementById('msgs');m.scrollTop=m.scrollHeight}
+function openAuth(mode){document.getElementById('modal').classList.remove('hidden');document.getElementById('auth-title').textContent=mode==='login'?'Se connecter':'Créer un compte';document.getElementById('signupForm').style.display=mode==='login'?'block':'block'}
+function closeAuth(){document.getElementById('modal').classList.add('hidden')}
+function authProvider(p){alert('Connexion '+p+' : cette interface est prête. Pour une vraie connexion sécurisée, AstraLearn doit être relié à un fournisseur OAuth (par exemple Supabase) et à ses clés de configuration.')}
+function fakeSignup(e){e.preventDefault();closeAuth();alert('Interface de création de compte prête. Pour enregistrer réellement les comptes et sécuriser les mots de passe, la prochaine étape est de connecter une base/authentification côté serveur.')}
+renderAll();
+</script>
 </body>
 </html>
