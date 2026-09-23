@@ -3,481 +3,152 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AstraLearn — Révisions, Brevet, Bac & Assistant IA</title>
-<meta name="description" content="AstraLearn : cours, fiches, quiz, flashcards, sujets type Brevet et Bac, simulateur de notes et aide aux devoirs.">
+<title>AstraLearn — Cours & fiches 5e → Terminale</title>
+<meta name="description" content="AstraLearn : programme scolaire complet de la 5e à la Terminale, fiches et quiz pour chaque chapitre.">
 <style>
-:root{--bg:#070b16;--panel:rgba(16,24,43,.88);--panel2:rgba(11,17,33,.94);--line:rgba(103,232,249,.18);--cyan:#67e8f9;--violet:#9b7bff;--pink:#ff6fbd;--text:#f7fbff;--muted:#a6b3c8;--ok:#79e28f;--shadow:0 24px 70px rgba(0,0,0,.32)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 12% 8%,rgba(155,123,255,.24),transparent 32%),radial-gradient(circle at 86% 12%,rgba(103,232,249,.17),transparent 28%),linear-gradient(#070b16,#0a1020 55%,#070b16);font-family:Inter,Segoe UI,system-ui,sans-serif}
-button,input,select{font:inherit}.hidden{display:none!important}.container{width:min(1180px,calc(100% - 32px));margin:auto}
-.glass{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}
-.btn{border:0;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:800}.btn-primary{background:linear-gradient(135deg,var(--violet),var(--cyan));color:#08101b;box-shadow:0 12px 28px rgba(103,232,249,.16)}.btn-ghost{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--line)}
-header{position:sticky;top:0;z-index:20;background:rgba(7,11,22,.74);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.05)}
-.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:1000;font-size:24px;letter-spacing:-.5px;background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.navlinks{display:flex;gap:18px;color:var(--muted);font-size:14px}.navlinks a{color:inherit;text-decoration:none}.nav-actions{display:flex;gap:10px;align-items:center}
-.hero{padding:72px 0 36px}.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:22px;align-items:stretch}.hero h1{font-size:clamp(42px,6vw,72px);line-height:.96;margin:0 0 18px;letter-spacing:-3px}.gradient{background:linear-gradient(90deg,var(--cyan),#fff,var(--violet));-webkit-background-clip:text;color:transparent}.hero p{font-size:18px;line-height:1.65;color:var(--muted);max-width:720px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.school-card{padding:24px;overflow:hidden;position:relative}.school-card:before{content:"";position:absolute;inset:-30% auto auto 55%;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(103,232,249,.25),transparent 65%)}.school-card h3{margin:0 0 10px;font-size:21px}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.mini{padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03)}.mini b{display:block;font-size:22px}.mini span{font-size:12px;color:var(--muted)}
-section{padding:28px 0}.section-title{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px}.section-title h2{margin:0;font-size:28px}.section-title p{margin:0;color:var(--muted);max-width:650px}
-.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.feature{padding:18px}.feature .icon{font-size:24px}.feature h3{margin:10px 0 6px}.feature p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
-.levels{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.level{padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}.level.active{background:rgba(103,232,249,.11);color:var(--cyan);border-color:rgba(103,232,249,.5)}
-.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.subject{padding:20px}.subject h3{margin:4px 0 8px}.subject p{color:var(--muted);font-size:14px;line-height:1.5}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{font-size:12px;padding:6px 9px;border-radius:999px;background:rgba(103,232,249,.09);color:var(--cyan);border:1px solid rgba(103,232,249,.16)}.tag.exam{color:var(--pink);background:rgba(255,111,189,.08);border-color:rgba(255,111,189,.18)}
-.exam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.exam{padding:20px}.exam .meta{color:var(--muted);font-size:13px}.exam h3{margin:10px 0}.exam button{margin-top:14px}
-.progress{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.bar{height:12px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}.bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--cyan));border-radius:999px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{padding:15px;border:1px solid var(--line);border-radius:16px}.stat b{font-size:24px}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
-.flash{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.flash-card{min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(103,232,249,.06),rgba(155,123,255,.07))}.flash-card h3{font-size:25px;line-height:1.25}.answer{color:var(--cyan);font-size:18px;font-weight:800;margin-top:12px}.quiz-list{display:grid;gap:10px}.quiz-q{padding:16px;border:1px solid var(--line);border-radius:16px}.quiz-q button{margin-top:10px;margin-right:7px}
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:18px}.calc-box{padding:22px}.rows{display:grid;gap:10px}.row{display:grid;grid-template-columns:1.3fr .7fr .6fr;gap:8px}.input,.select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);outline:none}.result{font-size:34px;font-weight:900;color:var(--cyan);margin-top:14px}
-.ai-panel{position:fixed;right:22px;bottom:22px;z-index:30}.ai-window{width:min(390px,calc(100vw - 30px));height:520px;display:none;flex-direction:column;overflow:hidden}.ai-head{padding:15px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.ai-head strong{color:var(--cyan)}.msgs{flex:1;padding:14px;overflow:auto;display:flex;flex-direction:column;gap:10px}.msg{max-width:86%;padding:10px 13px;border-radius:15px;line-height:1.45;font-size:14px}.msg.bot{background:rgba(103,232,249,.09);border:1px solid var(--line);align-self:flex-start}.msg.user{background:linear-gradient(135deg,var(--violet),#6e64f3);align-self:flex-end}.ai-form{padding:10px;border-top:1px solid var(--line);display:flex;gap:8px}.ai-form input{flex:1;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;border-radius:10px;padding:10px}.ai-toggle{width:62px;height:62px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--violet),var(--cyan));font-weight:900;cursor:pointer;box-shadow:0 16px 35px rgba(0,0,0,.35)}
-.modal-wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(3,6,12,.72);backdrop-filter:blur(10px);z-index:40;padding:15px}.modal{width:min(500px,100%);padding:24px}.auth-buttons{display:grid;gap:10px;margin:14px 0}.auth-btn{padding:13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.04);color:#fff;cursor:pointer;font-weight:800;text-align:center}.divider{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}.divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-grid .full{grid-column:1/-1}.small{color:var(--muted);font-size:12px;line-height:1.5}
-footer{padding:55px 0 80px;color:var(--muted);font-size:13px}
-@media(max-width:930px){.hero-grid,.calc,.progress,.flash{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr 1fr}.subjects,.exam-grid{grid-template-columns:1fr 1fr}.navlinks{display:none}}
-@media(max-width:620px){.feature-grid,.subjects,.exam-grid,.stats{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr 1fr 1fr}.hero{padding-top:48px}.nav{height:64px}}
-.searchbox{display:flex;gap:8px;margin:16px 0 18px}.searchbox input{flex:1;min-width:0}.searchbox .btn{white-space:nowrap}.quick-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.quick{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--muted);cursor:pointer}.quick:hover{color:var(--text);border-color:rgba(103,232,249,.45)}.empty{padding:28px;text-align:center;color:var(--muted);grid-column:1/-1}.subject,.exam,.feature{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.subject:hover,.exam:hover,.feature:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.35);box-shadow:0 18px 45px rgba(0,0,0,.22)}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#101a2e;border:1px solid var(--line);padding:12px 16px;border-radius:12px;z-index:60;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}.user-pill{display:none;align-items:center;cursor:pointer;gap:8px;padding:8px 11px;border:1px solid var(--line);border-radius:999px;color:var(--cyan);font-size:13px}.nav-menu{display:none}.user-pill:hover{border-color:rgba(103,232,249,.5);background:rgba(103,232,249,.06)}.mobile-nav{display:none}@media(max-width:700px){.nav-actions .btn-ghost{display:none}.nav-actions{margin-left:auto}.nav-menu{display:block!important}.mobile-nav{position:absolute;top:64px;left:0;right:0;padding:12px 16px;background:rgba(7,11,22,.97);border-bottom:1px solid rgba(255,255,255,.05)}.mobile-nav.open{display:grid;gap:4px}.mobile-nav a{padding:12px;color:var(--muted);text-decoration:none;border-radius:10px}.mobile-nav a:hover{background:rgba(255,255,255,.05);color:var(--text)}}
-.learn-modal{position:fixed;inset:0;z-index:50;background:rgba(3,6,12,.82);backdrop-filter:blur(12px);padding:18px;overflow:auto}.learn-box{width:min(1050px,100%);margin:20px auto;padding:24px}.learn-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.chapter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.chapter-card{padding:18px;cursor:pointer}.chapter-card h4{margin:8px 0}.chapter-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tab{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);cursor:pointer}.tab.active{background:rgba(103,232,249,.1);color:var(--cyan)}.lesson{padding:20px;line-height:1.7}.lesson h3{margin-top:0}.lesson ul{padding-left:20px}.quiz-card{padding:20px;margin-top:14px}.quiz-option{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.035);color:var(--text);cursor:pointer}.quiz-option:hover{border-color:var(--cyan)}.quiz-result{margin-top:10px;font-weight:800}.xp{color:var(--cyan);font-weight:900}@media(max-width:750px){.chapter-grid{grid-template-columns:1fr}.learn-box{padding:16px}}</style>
-<style id="exam-print-css">
-@media print{
-  @page{size:A4;margin:14mm}
-  body{background:#fff!important;color:#111!important}
-  body *{visibility:hidden!important}
-  #learn-modal,#learn-modal *{visibility:visible!important}
-  #learn-modal{position:static!important;background:#fff!important;color:#111!important}
-  #learn-box{position:static!important;max-width:none!important;width:100%!important;box-shadow:none!important;background:#fff!important;color:#111!important;border:0!important}
-  #learn-box .learn-head,#learn-box .learn-head button,#learn-box > .glass:first-of-type,#learn-box > div:last-child{display:none!important}
-  #exam-paper{display:block!important;background:#fff!important;color:#111!important}
-  #exam-paper .lesson{background:#fff!important;color:#111!important;border:1px solid #bbb!important;box-shadow:none!important;break-inside:avoid}
-  #exam-paper h3,#exam-paper h4,#exam-paper p,#exam-paper li,#exam-paper td,#exam-paper th{color:#111!important}
-  #exam-paper .exam-document{background:#fff!important;border:1px solid #888!important;color:#111!important}
-  #exam-paper .exam-document *{color:#111!important}
-  #exam-paper .exam-answer-space{display:block!important}
-}
-.exam-document{margin-top:12px;padding:16px 18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);border-radius:12px}
-.exam-document h4{margin:0 0 8px;font-size:14px;letter-spacing:.04em}
-.exam-document p{margin:7px 0;line-height:1.6}
-.exam-data{width:100%;border-collapse:collapse;margin-top:10px}
-.exam-data th,.exam-data td{border:1px solid currentColor;padding:7px;text-align:left}
-.exam-answer-space{display:none}
-.exam-paper-instructions{padding:12px 14px;margin-bottom:14px;border:1px solid #aaa;background:#fff;color:#111}
-</style></head>
+:root{--bg:#070b16;--panel:#10182b;--line:#263a5d;--cyan:#67e8f9;--violet:#9b7bff;--pink:#ff6fbd;--text:#f7fbff;--muted:#a6b3c8;--ok:#79e28f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 5%,#211b4a,transparent 35%),linear-gradient(#070b16,#0a1020);color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif}.container{width:min(1200px,calc(100% - 30px));margin:auto}header{position:sticky;top:0;z-index:10;background:#070b16ee;border-bottom:1px solid #ffffff12;backdrop-filter:blur(15px)}.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-size:25px;font-weight:900;background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;color:transparent}.nav a{color:var(--muted);text-decoration:none;margin-left:18px}.hero{padding:55px 0 25px}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1;margin:0 0 15px}.gradient{background:linear-gradient(90deg,var(--cyan),var(--violet));-webkit-background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:17px;line-height:1.6;max-width:800px}.glass{background:#10182be8;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 55px #0005}.toolbar{padding:16px;display:grid;grid-template-columns:1fr auto;gap:12px}.input,.select{width:100%;padding:12px;border-radius:11px;border:1px solid var(--line);background:#ffffff08;color:var(--text)}.levels{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.level,.tab,.btn{padding:10px 14px;border-radius:11px;border:1px solid var(--line);background:#ffffff06;color:var(--text);cursor:pointer;font-weight:700}.level.active,.tab.active,.btn.primary{background:linear-gradient(135deg,#9b7bff,#67e8f9);color:#07101a;border-color:transparent}.summary{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}.badge{padding:7px 10px;border-radius:999px;background:#67e8f915;color:var(--cyan);border:1px solid #67e8f925;font-size:12px}.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.subject{padding:18px}.subject h3{margin:8px 0}.subject p{color:var(--muted);line-height:1.5}.chapters{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.chapter{padding:16px;cursor:pointer}.chapter:hover{border-color:#67e8f980;transform:translateY(-2px)}.chapter small{color:var(--muted)}.modal{position:fixed;inset:0;background:#02050cdd;backdrop-filter:blur(8px);z-index:30;padding:18px;overflow:auto}.box{width:min(1050px,100%);margin:20px auto;padding:22px}.head{display:flex;justify-content:space-between;gap:15px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.lesson,.quiz{padding:20px;line-height:1.7}.lesson h3,.quiz h3{margin-top:0}.quiz-option{display:block;width:100%;text-align:left;margin:9px 0;padding:12px;border-radius:10px;border:1px solid var(--line);background:#ffffff06;color:var(--text);cursor:pointer}.quiz-option:hover{border-color:var(--cyan)}.result{margin-top:12px;font-weight:800}.close{font-size:18px}.counts{color:var(--muted)}footer{padding:45px 0;color:var(--muted);font-size:13px}@media(max-width:850px){.subjects,.chapters{grid-template-columns:1fr 1fr}}@media(max-width:580px){.subjects,.chapters{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}.navlinks{display:none}}
+</style>
+</head>
 <body>
-<header><div class="container nav"><a href="#" class="brand">AstraLearn</a><nav class="navlinks"><a href="#cours">Cours</a><a href="#examens">Brevet & Bac</a><a href="#quiz">Quiz</a><a href="#outils">Outils</a></nav><div class="nav-actions"><button type="button" class="btn btn-ghost" id="student-space-btn" onclick="openStudentSpace()">👤 Espace élève</button><span class="user-pill" id="user-pill" onclick="openStudentSpace()" title="Ouvrir mon espace">👋 Élève</span><button type="button" class="btn btn-ghost" id="login-btn" onclick="openAuth('login')">Se connecter</button><button type="button" class="btn btn-primary" id="signup-btn" onclick="openAuth('signup')">Créer un compte</button><button class="btn btn-ghost nav-menu" onclick="toggleMobileNav()">☰</button></div></div><div class="mobile-nav" id="mobile-nav"><a href="#cours" onclick="toggleMobileNav()">📚 Cours</a><a href="#examens" onclick="toggleMobileNav()">📝 Brevet & Bac</a><a href="#quiz" onclick="toggleMobileNav()">🧠 Quiz</a><a href="#outils" onclick="toggleMobileNav()">📊 Outils</a></div></header>
-
+<header><div class="container nav"><div class="brand">AstraLearn</div><nav class="navlinks"><a href="#cours">Cours</a><a href="#programmes">Programmes</a><a href="#quiz">Quiz</a></nav></div></header>
 <main>
-<section class="hero"><div class="container hero-grid"><div><div class="tag" style="display:inline-block;margin-bottom:12px">🎓 Révisions scolaires & examens</div><h1>Révise mieux avec <span class="gradient">AstraLearn</span>.</h1><p>Un espace pensé pour les collégiens et lycéens : cours synthétiques, fiches, quiz, flashcards, sujets d'entraînement type Brevet et Bac, suivi de progression et assistant IA pour comprendre tes cours.</p><div class="hero-actions"><button class="btn btn-primary" onclick="scrollToId('cours')">Commencer à réviser</button><button class="btn btn-ghost" onclick="openAuth('signup')">Créer mon espace élève</button></div></div><div class="glass school-card"><h3>Ton tableau de bord scolaire</h3><div class="mini-grid"><div class="mini"><b>📚</b><span>Cours & fiches</span></div><div class="mini"><b>🧠</b><span>Quiz & flashcards</span></div><div class="mini"><b>📝</b><span>Sujets type examen</span></div><div class="mini"><b>🤖</b><span>Aide aux devoirs</span></div></div><p class="small" style="margin-top:15px">Objectif : t'aider à apprendre, t'entraîner et suivre tes progrès.</p></div></div></section>
-
-<section><div class="container"><div class="section-title"><div><h2>Tout pour l'école</h2><p>Une structure inspirée des usages d'une application de révision, avec du contenu original et des parcours adaptés au niveau choisi.</p></div></div><div class="feature-grid">
-<div class="glass feature" role="button" tabindex="0" onclick="openFeature('cours')" onkeydown="if(event.key==='Enter'||event.key===' ')openFeature('cours')">
-<div class="icon">📖</div><h3>Mini-cours</h3><p>Des notions découpées en petites fiches faciles à relire.</p>
-</div>
-<div class="glass feature" role="button" tabindex="0" onclick="openFeature('flashcards')" onkeydown="if(event.key==='Enter'||event.key===' ')openFeature('flashcards')">
-<div class="icon">🃏</div><h3>Flashcards</h3><p>Teste ta mémoire avec des cartes question/réponse.</p>
-</div>
-<div class="glass feature" role="button" tabindex="0" onclick="openFeature('examens')" onkeydown="if(event.key==='Enter'||event.key===' ')openFeature('examens')">
-<div class="icon">🏫</div><h3>Préparation examens</h3><p>Parcours Brevet et Bac avec sujets d'entraînement et méthode.</p>
-</div>
-<div class="glass feature" role="button" tabindex="0" onclick="openFeature('progression')" onkeydown="if(event.key==='Enter'||event.key===' ')openFeature('progression')">
-<div class="icon">📈</div><h3>Progression</h3><p>Objectifs de révision, moyenne et compteur de quiz.</p>
-</div>
-</div></div></section>
-
-<section id="cours"><div class="container"><div class="section-title"><div><h2>Cours & matières</h2><p>Choisis ton niveau et retrouve rapidement tes matières.</p></div></div><div class="searchbox"><input class="input" id="subject-search" placeholder="🔎 Rechercher une matière…" oninput="renderSubjects()"><button class="btn btn-ghost" onclick="document.getElementById('subject-search').value='';renderSubjects()">Effacer</button></div><div class="levels" id="levels"></div><div class="quick-actions"><button class="quick" onclick="setLevel('3ème')">🎯 Brevet</button><button class="quick" onclick="setLevel('2nde')">🚀 Seconde</button><button class="quick" onclick="setLevel('Terminale')">🏁 Terminale</button></div><div class="subjects" id="subjects"></div></div></section>
-
-<section id="examens"><div class="container"><div class="section-title"><div><h2>Brevet & Bac</h2><p>Des sujets <b>complets d’entraînement</b> : 2 sujets par épreuve du Brevet, 3 sujets de français en Première, 3 sujets de maths en Terminale et 2 sujets pour chaque autre épreuve/spécialité proposée.</p></div></div><div class="exam-grid" id="exams"></div></div></section>
-
-<section id="quiz"><div class="container"><div class="section-title"><div><h2>Quiz & Flashcards</h2><p>Travaille rapidement une notion puis vérifie ta réponse.</p></div></div><div class="flash"><div class="flash-card glass"><span class="tag">Flashcard</span><h3 id="fq">Quelle est la formule de la vitesse moyenne ?</h3><div id="fa" class="answer hidden">v = distance ÷ durée</div><button class="btn btn-primary" onclick="revealFlash()">Retourner la carte ↻</button><button class="btn btn-ghost" onclick="nextFlash()">Carte suivante →</button><div id="fc-correction" class="small hidden" style="margin-top:12px"></div></div><div class="glass" style="padding:20px"><div class="quiz-list"><div class="quiz-q"><b>Maths — calcul mental</b><div>Quel est 15 % de 200 ?</div><button class="btn btn-ghost" onclick="check(this,'30')">20</button><button class="btn btn-ghost" onclick="check(this,'30')">30</button><button class="btn btn-ghost" onclick="check(this,'40')">40</button></div><div class="quiz-q"><b>Français</b><div>Quelle figure de style rapproche deux éléments avec un outil comme « comme » ?</div><button class="btn btn-ghost" onclick="check(this,'comparaison')">Métaphore</button><button class="btn btn-ghost" onclick="check(this,'comparaison')">Comparaison</button><button class="btn btn-ghost" onclick="check(this,'comparaison')">Hyperbole</button></div></div></div></div></div></section>
-
-<section id="outils"><div class="container"><div class="section-title"><div><h2>Outils utiles</h2><p>Simule ta moyenne, prépare ton orientation et organise tes révisions.</p></div></div><div class="calc"><div class="glass calc-box"><h3>Simulateur de moyenne</h3><div class="rows" id="rows"><div class="row"><input class="input" value="Mathématiques"><input class="input note" type="number" value="15" min="0" max="20"><input class="input coeff" type="number" value="2" min="0.1" step="0.1"></div><div class="row"><input class="input" value="Français"><input class="input note" type="number" value="14" min="0" max="20"><input class="input coeff" type="number" value="2" min="0.1" step="0.1"></div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-ghost" onclick="addRow()">+ Ajouter</button><button class="btn btn-primary" onclick="calcAvg()">Calculer</button></div><div class="result" id="avg">— / 20</div></div><div class="glass calc-box"><h3>🎯 Objectif de la semaine</h3><p class="small">Exemple de parcours : 3 fiches + 2 quiz + 1 sujet type Brevet.</p><div class="bar" style="margin:14px 0"><span style="width:60%"></span></div><div class="stats"><div class="stat"><b>12</b><span>quiz terminés</span></div><div class="stat"><b>7</b><span>fiches vues</span></div><div class="stat"><b>60%</b><span>objectif</span></div></div><button class="btn btn-primary" style="margin-top:14px" onclick="openAuth('signup')">Enregistrer ma progression</button></div></div></div></section>
+<section class="hero"><div class="container"><span class="badge">PROGRAMME COMPLET · 5e → TERMINALE</span><h1>Tout le programme.<br><span class="gradient">2 fiches + 2 quiz par chapitre.</span></h1><p>AstraLearn organise les enseignements et les axes des programmes officiels par niveau. Chaque entrée ouvre automatiquement deux fiches de révision et deux quiz. Les nouveaux programmes sont distingués par niveau pour suivre leur calendrier d'application.</p></div></section>
+<section id="cours"><div class="container"><div class="glass toolbar"><input id="search" class="input" placeholder="🔎 Rechercher une matière ou un chapitre…" oninput="render()"><select id="type" class="select" onchange="render()"><option value="all">Tous les enseignements</option><option value="college">Collège</option><option value="lycee">Lycée général</option><option value="specialite">Spécialités</option></select></div><div id="levels" class="levels"></div><div id="summary" class="summary"></div><div id="subjects" class="subjects"></div></div></section>
 </main>
-
-<div class="ai-panel"><div class="ai-window glass" id="ai-window"><div class="ai-head"><strong>🤖 Assistant IA Astra</strong><button class="btn btn-ghost" onclick="toggleAI()">✕</button></div><div class="msgs" id="msgs"><div class="msg bot">Salut ! Je peux t'aider à comprendre un cours, construire un plan de révision, expliquer une notion ou te faire réviser avec des questions.</div></div><form class="ai-form" onsubmit="sendAI(event)"><input id="ai-input" placeholder="Ex. explique-moi le théorème de Thalès"><button class="btn btn-primary">Envoyer</button></form></div><button class="ai-toggle" onclick="toggleAI()">IA</button></div>
-
-<div class="toast" id="toast"></div><div class="learn-modal hidden" id="learn-modal"><div class="glass learn-box" id="learn-box"></div></div>
-<div class="modal-wrap hidden" id="modal"><div class="modal glass"><div style="display:flex;justify-content:space-between;align-items:center"><h2 id="auth-title">Créer mon compte</h2><button class="btn btn-ghost" onclick="closeAuth()">✕</button></div><p class="small" id="auth-help">Renseigne tes informations pour créer ton espace élève. Si ton e-mail existe déjà, AstraLearn te demandera de t'identifier.</p><form id="signupForm" onsubmit="handleAuthSubmit(event)" style="margin-top:14px"><div class="form-grid"><div><label>Prénom</label><input class="input" name="prenom" required placeholder="Prénom"></div><div><label>Nom</label><input class="input" name="nom" required placeholder="Nom"></div><div><label>Âge</label><input class="input" name="age" type="number" min="10" max="99" required placeholder="Âge"></div><div><label>Niveau de classe</label><select class="select" name="niveau" required><option value="">Choisir…</option><option>4ème</option><option>3ème</option><option>2nde</option><option>1ère</option><option>Terminale</option></select></div><div class="full"><label>Adresse e-mail</label><input class="input" name="email" type="email" required placeholder="eleve@email.fr"></div><div class="full"><label>Situation</label><select class="select" name="situation" required><option value="">Choisir…</option><option>Collégien</option><option>Lycéen</option><option>En préparation d’un examen</option><option>Autre</option></select></div><div class="full"><label>Mot de passe</label><input class="input" name="password" type="password" required minlength="8" placeholder="8 caractères minimum"></div></div><button class="btn btn-primary" style="width:100%;margin-top:12px" id="auth-submit">Créer mon compte</button></form></div></div>
-
-<div class="modal-wrap hidden" id="feedback-modal"><div class="modal glass">
-<div style="display:flex;justify-content:space-between;align-items:center"><h2>💬 Ton avis compte</h2><button class="btn btn-ghost" onclick="closeFeedback()">✕</button></div>
-<p class="small">Tu utilises AstraLearn depuis un moment. Laisse-nous un commentaire pour améliorer le site.</p>
-<textarea id="feedback-text" class="input" rows="5" placeholder="Qu'est-ce que tu aimerais améliorer ?"></textarea>
-<div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-primary" onclick="submitFeedback()">Envoyer mon commentaire</button><button class="btn btn-ghost" onclick="closeFeedback()">Plus tard</button></div>
-</div></div>
-
-<div class="modal-wrap hidden" id="student-modal"><div class="modal glass" id="student-box"></div></div>
-
-<footer><div class="container">AstraLearn est un projet indépendant. Les contenus intégrés ici sont originaux ; les sujets d'examen officiels doivent être utilisés via leurs sources officielles ou avec les droits nécessaires.</div></footer>
-
+<div id="modal" class="modal" hidden><div id="box" class="glass box"></div></div>
+<footer><div class="container">AstraLearn est un projet indépendant. Les contenus de révision sont rédigés pour l'application. Les programmes sont structurés à partir des textes officiels de l'Éducation nationale et d'Éduscol ; ils ne sont pas reproduits intégralement.</div></footer>
 <script>
-const chapters={
-'3ème':{
-'Mathématiques':['Calcul littéral & équations','Théorème de Pythagore','Fonctions & statistiques'],
-'Français':['Grammaire & classes de mots','Figures de style','Argumentation & rédaction'],
-'Histoire-Géographie & EMC':['Première Guerre mondiale','Seconde Guerre mondiale','Démocratie & citoyenneté'],
-'Physique-Chimie':['Mouvement & vitesse','Électricité','Transformations chimiques'],
-'SVT':['Génétique','Évolution','Risques et environnement'],
-'Anglais':['Present perfect','Past simple & past continuous','Expression de l’opinion']},
-'4ème':{
-'Mathématiques':['Fractions & puissances','Théorème de Pythagore','Proportionnalité'],
-'Français':['Récit & point de vue','Poésie','Conjugaison & accords'],
-'Histoire-Géographie':['Révolutions & sociétés','Migrations','Urbanisation'],
-'Physique-Chimie':['Mouvement','Matière','Électricité'],
-'SVT':['Reproduction','Nutrition','Biodiversité'],
-'LV2':['Présent & passé','Vocabulaire du quotidien','Exprimer son opinion']},
-'2nde':{
-'Mathématiques':['Fonctions','Géométrie','Statistiques & probabilités'],
-'Français':['La poésie','Le roman','La littérature d’idées'],
-'Physique-Chimie':['Constitution de la matière','Mouvements','Transformations chimiques'],
-'SVT':['La Terre dans l’Univers','Cellule & ADN','Écosystèmes'],
-'SES':['Marchés','Production','Socialisation'],
-'SNT':['Internet','Web','Données structurées'],
-'Histoire-Géographie':['Méditerranée antique','Renaissance','Métropoles'],
-'Anglais':['Present perfect','Modaux','Argumentation']},
-'1ère':{
-'Français':['Roman','Poésie','Théâtre'],
-'Mathématiques':['Dérivation','Suites','Probabilités'],
-'Physique-Chimie':['Ondes','Mouvement','Énergie'],
-'SVT':['Génétique','Immunité','Écosystèmes'],
-'HGGSP':['Démocratie','Puissances','Information'],
-'SES':['Marché & concurrence','Monnaie','Classes sociales'],
-'NSI':['Algorithmique','Structures de données','Bases de données']},
-'Terminale':{
-'Philosophie':['La conscience','La liberté','La vérité'],
-'Mathématiques':['Limites & continuité','Primitives & intégrales','Probabilités'],
-'Physique-Chimie':['Mécanique','Électricité','Chimie organique'],
-'SVT':['Génétique','Géologie','Immunologie'],
-'HGGSP':['Guerre & paix','Histoire & mémoires','Environnement'],
-'SES':['Croissance','Mondialisation','Justice sociale'],
-'NSI':['Graphes','Programmation','Bases de données']}
+const P={
+"5e":{
+"Français":["Le récit et ses personnages","Le conte et le merveilleux","Poésie : images et émotions","Théâtre : personnages et mise en scène","Récits d’aventures et de voyage","Héros, héroïnes et héroïsmes","Langue : classes et fonctions","Langue : accords et conjugaison","Langue : phrase complexe et propositions","Vocabulaire, lexique et formation des mots"],
+"Mathématiques":["Nombres entiers et décimaux","Fractions","Nombres relatifs","Calcul littéral","Proportionnalité","Pourcentages","Repérage","Symétrie","Angles et parallélisme","Triangles et constructions","Aires et volumes","Statistiques","Probabilités","Algorithmique et programmation"],
+"Histoire":["Chrétientés et islam, des mondes en contact","Sociétés, Église et pouvoir politique dans l’Occident féodal","Transformations de l’Europe et ouverture au monde aux XVe-XVIIe siècles"],
+"Géographie":["La question démographique et l’inégal développement","Des ressources limitées à gérer et à renouveler","Prévenir les risques, s’adapter au changement global"],
+"EMC":["Égalité et lutte contre les discriminations","Libertés, droits et responsabilités","Règles collectives et vie démocratique"],
+"Physique-Chimie":["Organisation et transformations de la matière","Mouvements et interactions","L’énergie et ses conversions","Des signaux pour observer et communiquer"],
+"SVT":["La planète Terre, l’environnement et l’action humaine","Le vivant et son évolution","Le corps humain et la santé"],
+"Technologie":["Objets et systèmes techniques","Design, innovation et créativité","Modélisation et simulation","Programmation et systèmes informatisés","Énergie et environnement","Information et communication"],
+"Langues vivantes":["Portrait et autoportrait","Le quotidien : lieux, rythmes, saisons","École et loisirs","Le réel et l’imaginaire","Des langues, des lieux, des histoires","Aire linguistique et culturelle"],
+"Arts plastiques":["La représentation ; images, réalité et fiction","La matérialité de l’œuvre","L’œuvre, l’espace, l’auteur et le spectateur"],
+"Éducation musicale":["Percevoir et produire","Musique, création et interprétation","Musique et société"],
+"EPS":["Performance","Adaptation à des environnements variés","Expression artistique et acrobatique","Conduite et maîtrise du combat","Entretien et développement de soi"]
+},
+"4e":{
+"Français":["Dire l’amour","Individu et société : confrontations de valeurs","La fiction pour interroger le réel","Informer, s’informer, déformer ?","La ville, lieu de tous les possibles","Héros, héroïnes et parcours de formation","Grammaire : fonctions et phrase complexe","Conjugaison et valeurs des temps","Discours direct, indirect et indirect libre","Lexique et construction du sens"],
+"Mathématiques":["Nombres et calculs","Puissances","Calcul littéral","Équations","Proportionnalité et pourcentages","Théorème de Pythagore","Théorème de Thalès","Transformations","Géométrie dans l’espace","Statistiques","Probabilités","Fonctions","Algorithmique"],
+"Histoire":["Le XVIIIe siècle : expansions, Lumières et révolutions","L’Europe et le monde au XIXe siècle","La société, la culture et la politique dans la France du XIXe siècle"],
+"Géographie":["L’urbanisation du monde","Les mobilités humaines transnationales","Des espaces transformés par la mondialisation"],
+"EMC":["Liberté et droits","Justice et égalité","Engagement et responsabilité"],
+"Physique-Chimie":["Organisation et transformations de la matière","Mouvements et interactions","L’énergie et ses conversions","Des signaux pour observer et communiquer"],
+"SVT":["La planète Terre, l’environnement et l’action humaine","Le vivant et son évolution","Le corps humain et la santé"],
+"Technologie":["Analyse fonctionnelle des objets","Design et innovation","Chaîne d’information","Chaîne d’énergie","Réseaux et communication","Programmation"],
+"Langues vivantes":["Sport et société","Voyages et exploration","Villes, villages, quartiers","Inventer, innover, créer","Langages et messages artistiques","Aire linguistique et culturelle"],
+"Arts plastiques":["La représentation ; images, réalité et fiction","La matérialité de l’œuvre","L’œuvre, l’espace, l’auteur et le spectateur"],
+"Éducation musicale":["Interpréter et créer","Écouter, comparer et construire une culture","Musique et société"],
+"EPS":["Performance","Adaptation à des environnements variés","Expression artistique et acrobatique","Conduite et maîtrise du combat","Entretien et développement de soi"]
+},
+"3e":{
+"Français":["Se chercher, se construire : le voyage et l’aventure","Vivre en société, participer à la société","Regarder le monde, inventer des mondes","Agir sur le monde : agir dans la cité","Langue : grammaire et syntaxe","Langue : conjugaison et valeurs des temps","Langue : discours et argumentation","Lexique, figures de style et cohérence du texte"],
+"Mathématiques":["Nombres et calculs","Calcul littéral et équations","Fonctions","Proportionnalité et pourcentages","Théorème de Thalès","Théorème de Pythagore","Trigonométrie","Transformations","Géométrie dans l’espace","Statistiques","Probabilités","Algorithmique et programmation"],
+"Histoire":["L’Europe, un théâtre majeur des guerres totales","Le monde depuis 1945","Françaises et Français dans une République repensée"],
+"Géographie":["Dynamiques territoriales de la France contemporaine","Pourquoi et comment aménager le territoire ?","La France et l’Union européenne"],
+"EMC":["La liberté, les libertés","La République et la citoyenneté","La défense et la sécurité","Engagement et responsabilité"],
+"Physique-Chimie":["Organisation et transformations de la matière","Mouvements et interactions","L’énergie et ses conversions","Des signaux pour observer et communiquer"],
+"SVT":["La planète Terre, l’environnement et l’action humaine","Le vivant et son évolution","Le corps humain et la santé"],
+"Technologie":["Objets et systèmes techniques","Design et innovation","Modélisation et simulation","Programmation","Réseaux et données","Énergie et environnement"],
+"Langues vivantes":["À la rencontre de l’autre","Travailler hier, aujourd’hui, demain","Voyages et migrations","Langages et médias","Formes de l’engagement","Aire linguistique et culturelle"],
+"Arts plastiques":["La représentation ; images, réalité et fiction","La matérialité de l’œuvre","L’œuvre, l’espace, l’auteur et le spectateur"],
+"Éducation musicale":["Interprétation et création","Écoute et analyse","Musique et société"],
+"EPS":["Performance","Adaptation à des environnements variés","Expression artistique et acrobatique","Conduite et maîtrise du combat","Entretien et développement de soi"]
+},
+"2nde":{
+"Français":["La poésie du Moyen Âge au XVIIIe siècle","La littérature d’idées et la presse du XIXe au XXIe siècle","Le roman et le récit du XVIIIe au XXIe siècle","Le théâtre du XVIIe au XXIe siècle","Grammaire et maîtrise de la langue","Méthodes : commentaire, dissertation et écriture"],
+"Mathématiques":["Nombres et calculs","Géométrie","Fonctions","Statistiques et probabilités","Algorithmique et programmation","Automatismes"],
+"Physique-Chimie":["Constitution et transformations de la matière","Mouvement et interactions","Ondes et signaux","Conversions et transferts d’énergie"],
+"SVT":["La Terre, la vie et l’organisation du vivant","Les enjeux contemporains de la planète","Le corps humain et la santé"],
+"SES":["Science économique","Sociologie et science politique","Regards croisés","Marchés et prix","Production et revenus","Socialisation","Déviance et contrôle social"],
+"Histoire-Géographie":["Le monde méditerranéen : héritages et constructions","XVe-XVIIIe siècles : un nouveau rapport au monde","L’État à l’époque moderne","Dynamiques et recompositions des puissances","Sociétés et développement durable","Territoires et mobilités"],
+"EMC":["Liberté, égalité, fraternité","Droits et responsabilités","Citoyenneté et engagement"],
+"SNT":["Internet","Le Web","Réseaux sociaux","Données structurées et leur traitement","Localisation, cartographie et mobilité","Informatique embarquée et objets connectés","Photographie numérique","Sécurisation des données"],
+"Langues vivantes":["Identités et échanges","Espace privé et espace public","Art et pouvoir","Citoyenneté et mondes virtuels","Fictions et réalités","Innovations scientifiques et responsabilité"],
+"EPS":["Performance","Déplacement dans des environnements variés","Prestation artistique","Combat","Entretien de soi"]
+},
+"1re":{
+"Français":["La poésie du XIXe au XXIe siècle","La littérature d’idées du XVIe au XVIIIe siècle","Le roman et le récit du Moyen Âge au XXIe siècle","Le théâtre du XVIIe au XXIe siècle","Grammaire et compétences linguistiques","Méthode du commentaire et de la dissertation","Préparation de l’oral de français"],
+"Mathématiques enseignement scientifique":["Modéliser des phénomènes avec des fonctions","Probabilités et statistiques","Géométrie et mesures","Mathématiques pour comprendre les données"],
+"Enseignement scientifique":["Science, climat et environnement","Le futur des énergies","Une histoire du vivant","Son et musique","Projet expérimental et scientifique"],
+"Histoire-Géographie":["Nations, empires, nationalités de 1789 aux lendemains de la Première Guerre mondiale","La Première Guerre mondiale et les recompositions du monde","La République française et les mutations de la société","Dynamiques territoriales, mobilités et métropolisation","L’Afrique et les enjeux de développement","L’Union européenne dans la mondialisation"],
+"EMC":["Fondements et expériences de la démocratie","Refaire société : engagement et citoyenneté"],
+"Langues vivantes":["Identités et échanges","Espace privé et espace public","Art et pouvoir","Citoyenneté et mondes virtuels","Fictions et réalités","Innovations scientifiques et responsabilité"],
+"EPS":["Performance","Environnement","Expression","Combat","Entretien de soi"],
+"HGGSP":["La démocratie : les régimes politiques et leurs évolutions","Analyser les dynamiques des puissances internationales","Les frontières","S’informer : un regard critique sur les sources et modes de communication","Les relations entre États et religions"],
+"HLP":["Les pouvoirs de la parole","Les représentations du monde","La recherche de soi","L’humanité en question"],
+"SES":["Croissance économique","Mondialisation et commerce international","Chômage","Crises financières et régulation","Classes sociales et stratification","Mobilité sociale","Justice sociale et inégalités","Action publique pour l’environnement"],
+"NSI":["Représentation des données","Structures de données","Traitement des données en tables","Bases de données","Architecture matérielle","Réseaux","Algorithmique","Programmation","Langages et sécurité"],
+"Physique-Chimie spécialité":["Constitution et transformations de la matière","Mouvement et interactions","L’énergie : conversions et transferts","Ondes et signaux"],
+"SVT spécialité":["La Terre, la vie et l’organisation du vivant","Enjeux planétaires contemporains","Corps humain et santé","Génétique et évolution","Écosystèmes et services écosystémiques"],
+"Arts spécialité":["Questionnements artistiques transversaux","Œuvre, auteur, spectateur","Créer et faire œuvre","Élargissement des pratiques artistiques"],
+"LLCER":["Identités et échanges","Espace privé et espace public","Art et pouvoir","Citoyenneté et mondes virtuels","Fictions et réalités","Innovations scientifiques et responsabilité"],
+"LLCA":["L’homme, le monde, la cité","Représentations et transformations du monde","Méditerranée : conflits, influences, échanges"],
+"Sciences de l’ingénieur":["Analyser et modéliser un système","Concevoir et optimiser","Expérimenter et valider","Programmer et communiquer"],
+"EPPCS":["Pratiques physiques et culture sportive","Performance et entraînement","Culture sportive et société","Santé et bien-être"]
+},
+"Terminale":{
+"Philosophie":["La conscience","L’inconscient","La perception","Le langage","L’art","Le travail","La technique","La religion","La nature","La culture","L’histoire","Le temps","La liberté","La justice","L’État","La vérité","La raison","Le bonheur","La science"],
+"Mathématiques spécialité":["Combinatoire et dénombrement","Géométrie dans l’espace","Suites","Limites et continuité","Dérivation","Fonction logarithme","Fonctions trigonométriques","Primitives et équations différentielles","Calcul intégral","Probabilités conditionnelles","Loi binomiale","Variables aléatoires","Concentration et estimation","Algorithmique et programmation"],
+"Enseignement scientifique":["Science, climat et environnement","Le futur des énergies","Une histoire du vivant","Son et musique","Projet expérimental et scientifique"],
+"Histoire-Géographie":["Fragilités des démocraties, totalitarismes et Seconde Guerre mondiale","La multiplication des acteurs internationaux dans un monde bipolaire","Les remises en cause économiques, politiques et sociales des années 1970 à 1991","Le monde, l’Europe et la France depuis les années 1990","Mers et océans au cœur de la mondialisation","Dynamiques territoriales, coopérations et tensions","L’Union européenne et ses territoires"],
+"EMC":["Fondements et expériences de la démocratie","Repenser la démocratie : participation et engagement"],
+"Langues vivantes":["Identités et échanges","Espace privé et espace public","Art et pouvoir","Citoyenneté et mondes virtuels","Fictions et réalités","Innovations scientifiques et responsabilité"],
+"EPS":["Performance","Environnement","Expression","Combat","Entretien de soi"],
+"HGGSP":["De nouveaux espaces de conquête","Faire la guerre, faire la paix : formes de conflits et modes de résolution","Histoire et mémoires","Identifier, protéger et valoriser le patrimoine","L’environnement, entre exploitation et protection","L’enjeu de la connaissance"],
+"HLP":["Les pouvoirs de la parole","Les représentations du monde","La recherche de soi","L’humanité en question"],
+"SES":["Croissance économique et transformations","Mondialisation et commerce international","Chômage et politiques de l’emploi","Crises financières et régulation","Classes sociales et stratification","Mobilité sociale","Justice sociale et inégalités","Action publique pour l’environnement","Économie politique européenne","Participation politique","Protection sociale et gestion des risques","Organisation du travail et emploi"],
+"NSI":["Structures de données","Bases de données et SQL","Architecture matérielle et systèmes d’exploitation","Réseaux","Algorithmique avancée","Programmation","Graphes","Recherche textuelle","Sécurité informatique","Récursivité et complexité"],
+"Physique-Chimie spécialité":["Ondes et signaux","Constitution et transformations de la matière","Mouvement et interactions","L’énergie : conversions et transferts","Transformations chimiques et suivi temporel","Acide-base","Synthèse organique","Radioactivité","Mécanique et mouvements","Thermodynamique"],
+"SVT spécialité":["Génétique et évolution","La Terre, la vie et l’organisation du vivant","Enjeux contemporains de la planète","Corps humain et santé","Génome et évolution","Immunité","Géologie et dynamique terrestre","Écosystèmes et environnement"],
+"Arts spécialité":["Questionnements artistiques transversaux","Œuvre, auteur, spectateur","Créer et faire œuvre","Élargissement des pratiques artistiques","Projet et pratique artistique"],
+"LLCER":["Identités et échanges","Espace privé et espace public","Art et pouvoir","Citoyenneté et mondes virtuels","Fictions et réalités","Innovations scientifiques et responsabilité"],
+"LLCA":["L’homme, le monde, la cité","Représentations et transformations du monde","Méditerranée : conflits, influences, échanges"],
+"Sciences de l’ingénieur":["Analyser les systèmes","Modéliser et simuler","Concevoir et optimiser","Expérimenter et mesurer","Programmer et commander","Chaîne d’énergie et chaîne d’information"],
+"EPPCS":["Performance et entraînement","Culture sportive","Sport et société","Santé et bien-être","Projet d’entraînement"]
+}
 };
-const chapterData={
-'Calcul littéral & équations':{f:['Développer consiste à distribuer la multiplication sur une somme. Factoriser fait l’opération inverse.','Pour résoudre une équation, on effectue la même opération aux deux membres puis on vérifie la solution.'],q:[['Quel est le développement de 3(x+2)?',['3x+2','3x+6','x+6','6x+2'],'3x+6'],['Quelle valeur vérifie x+5=12?',['5','6','7','17'],'7']]},
-'Théorème de Pythagore':{f:['Dans un triangle rectangle, le carré de l’hypoténuse est égal à la somme des carrés des deux autres côtés.','Pour calculer une longueur, écris d’abord l’égalité puis isole la longueur recherchée.'],q:[['Dans un triangle rectangle de côtés 3 et 4, l’hypoténuse vaut :',['5','6','7','12'],'5'],['Si AB²+AC²=BC², quel côté est l’hypoténuse?',['AB','AC','BC','Aucun'],'BC']]},
-'Fonctions':{f:['Une fonction associe à un nombre x une unique image f(x).','Pour calculer une image, on remplace x par sa valeur dans l’expression de la fonction.'],q:[['Si f(x)=2x+1, f(3)=',['5','6','7','8'],'7'],['Une fonction affine s’écrit sous la forme :',['ax²+b','a/x+b','ax+b','a+b'],'ax+b']]},
-'Figures de style':{f:['Une comparaison rapproche deux éléments avec un outil comme « comme ». Une métaphore crée le rapprochement sans outil comparatif.','Une hyperbole amplifie volontairement une idée ; une personnification attribue des traits humains à une chose.'],q:[['« Il est fort comme un lion » est une :',['métaphore','comparaison','litote','anaphore'],'comparaison'],['« Je meurs de faim » est principalement une :',['hyperbole','périphrase','antiphrase','euphémisme'],'hyperbole']]},
-'Grammaire & classes de mots':{f:['Un nom désigne une personne, un objet ou une notion ; un verbe exprime notamment une action ou un état.','Le sujet commande généralement l’accord du verbe. Pour l’identifier, on peut poser « qui est-ce qui ? ».'],q:[['Dans « Les élèves travaillent », le sujet est :',['Les','élèves','travaillent','aucun'],'élèves'],['Dans « rapidement », la nature du mot est :',['nom','verbe','adverbe','adjectif'],'adverbe']]},
-'Première Guerre mondiale':{f:['La Première Guerre mondiale se déroule de 1914 à 1918 et oppose notamment les puissances de l’Entente aux Empires centraux.','La guerre de tranchées marque particulièrement le front occidental, avec une violence de masse.'],q:[['La Première Guerre mondiale se termine en :',['1914','1916','1918','1920'],'1918'],['Le front occidental est notamment caractérisé par :',['les tranchées','les guerres navales uniquement','l’absence de combats','la guerre froide'],'les tranchées']]}
-};
-const data={
-'3ème':['Mathématiques','Français','Histoire-Géographie & EMC','Physique-Chimie','SVT','Anglais'],
-'4ème':['Mathématiques','Français','Histoire-Géographie','Physique-Chimie','SVT','LV2'],
-'2nde':['Mathématiques','Français','Physique-Chimie','SVT','SES','SNT','Histoire-Géographie','Anglais'],
-'1ère':['Français','Mathématiques','Physique-Chimie','SVT','HGGSP','SES','NSI'],
-'Terminale':['Philosophie','Mathématiques','Physique-Chimie','SVT','HGGSP','SES','NSI']
-};
-const exams=[
-/* ================= BREvet ================= */
-{level:'3ème',title:'Brevet — Français · Sujet 1',desc:'Compréhension, langue, dictée et rédaction.',tag:'DNB',duration:'3 h',points:'100 points',paper:[
-['PARTIE I — Compréhension et compétences linguistiques','Texte original : une scène de récit contemporain.\n\n1. Identifie le point de vue adopté et justifie ta réponse par deux éléments précis.\n2. Explique le sens de deux expressions du texte.\n3. Relève une comparaison et explique son effet.\n4. Transforme une phrase au discours indirect.\n5. Réécris un passage en remplaçant le sujet singulier par un sujet pluriel et effectue les accords nécessaires.'],
-['PARTIE II — Dictée','Dictée de 10 minutes : passage original de 110 à 130 mots fourni par le professeur. Soigne les accords, les homophones et la ponctuation.'],
-['PARTIE III — Rédaction','Sujet au choix : A. Raconte la suite de la scène en faisant apparaître un changement dans les relations entre les personnages. OU B. Explique, dans un texte argumenté, pourquoi la lecture peut modifier notre regard sur les autres.']
-]},
-{level:'3ème',title:'Brevet — Français · Sujet 2',desc:'Texte littéraire, grammaire, dictée et rédaction.',tag:'DNB',duration:'3 h',points:'100 points',paper:[
-['PARTIE I — Compréhension et langue','Texte original : un souvenir d’enfance.\n\n1. Présente le cadre et le rôle du narrateur.\n2. Montre comment le texte fait ressentir une émotion.\n3. Donne la nature et la fonction de quatre groupes de mots indiqués.\n4. Justifie deux temps verbaux employés dans le récit.\n5. Réécris le passage demandé en modifiant le temps verbal.'],
-['PARTIE II — Dictée','Dictée de 10 minutes : passage original fourni avec le sujet.'],
-['PARTIE III — Rédaction','Sujet au choix : A. Raconte un événement qui a changé ta manière de voir une personne. OU B. Un personnage affirme que « grandir, c’est apprendre à choisir ». Discute cette idée dans une rédaction organisée.']
-]},
-{level:'3ème',title:'Brevet — Mathématiques · Sujet 1',desc:'Automatismes, calculs, fonctions, géométrie et probabilités.',tag:'DNB',duration:'2 h',points:'20 points',paper:[
-['PARTIE 1 — Automatismes · 6 points · 20 min','1. Calculer 15 % de 240.\n2. Développer 3(2x−5).\n3. Résoudre 4x+7=19.\n4. Convertir 2,5 km en mètres.\n5. Donner la probabilité d’obtenir un nombre pair avec un dé équilibré.\n6. Lire l’image d’un nombre sur une représentation graphique fournie.'],
-['PARTIE 2 — Raisonnement et résolution de problèmes · 14 points','Exercice 1 — Tarifs : comparer deux offres à partir d’expressions littérales et déterminer le seuil à partir duquel elles sont équivalentes.\n\nExercice 2 — Géométrie : utiliser Pythagore puis une relation de proportionnalité dans une figure à l’échelle.\n\nExercice 3 — Statistiques : calculer moyenne, médiane et interpréter une série de données.']
-]},
-{level:'3ème',title:'Brevet — Mathématiques · Sujet 2',desc:'Automatismes, proportionnalité, fonctions, géométrie et statistiques.',tag:'DNB',duration:'2 h',points:'20 points',paper:[
-['PARTIE 1 — Automatismes · 6 points · 20 min','1. Calculer 3/5 de 40.\n2. Factoriser 6x+12.\n3. Résoudre 7x−4=24.\n4. Convertir 3,2 L en cL.\n5. Calculer une augmentation de 8 % sur 75 €.\n6. Déterminer une longueur à partir d’un schéma coté.'],
-['PARTIE 2 — Raisonnement et résolution de problèmes · 14 points','Exercice 1 — Voyage : utiliser vitesse, distance et durée puis interpréter un résultat.\n\nExercice 2 — Fonction affine : compléter un tableau, déterminer une expression et résoudre un problème de seuil.\n\nExercice 3 — Probabilités et données : construire un arbre simple, calculer une probabilité et interpréter un tableau.']
-]},
-{level:'3ème',title:'Brevet — Histoire-Géographie-EMC · Sujet 1',desc:'Analyse de documents, développement construit, repères et EMC.',tag:'DNB',duration:'2 h',points:'50 points',paper:[
-['EXERCICE 1 — Analyser des documents · 20 points','Histoire : la France et l’Europe dans la guerre froide. Étudie deux documents, identifie leur nature, leur contexte et ce qu’ils montrent sur les relations internationales.'],
-['EXERCICE 2 — Maîtriser différents langages · 20 points','Géographie : les espaces productifs français. Rédige un développement construit puis réalise un croquis simple à partir d’informations fournies.'],
-['EXERCICE 3 — EMC · 10 points','À partir d’une situation concernant la liberté d’expression sur un réseau social, réponds aux questions puis rédige une réponse argumentée sur les droits et les responsabilités du citoyen.']
-]},
-{level:'3ème',title:'Brevet — Histoire-Géographie-EMC · Sujet 2',desc:'Documents historiques, territoire français et citoyenneté.',tag:'DNB',duration:'2 h',points:'50 points',paper:[
-['EXERCICE 1 — Analyser des documents · 20 points','Histoire : la France pendant la Seconde Guerre mondiale. Présente les documents, prélève des informations et explique ce qu’ils révèlent sur la période.'],
-['EXERCICE 2 — Maîtriser différents langages · 20 points','Géographie : la France et les mobilités. Rédige un développement construit et complète un croquis de flux et de grands pôles.'],
-['EXERCICE 3 — EMC · 10 points','À partir d’une situation de participation à la vie démocratique, distingue droits, devoirs et formes d’engagement puis construis une réponse argumentée.']
-]},
-{level:'3ème',title:'Brevet — Sciences · Sujet 1',desc:'Physique-chimie, SVT et technologie.',tag:'DNB',duration:'1 h',points:'20 points',paper:[
-['EXERCICE 1 — Physique-Chimie','Un cycliste parcourt une distance donnée. Exploite un tableau de mesures pour calculer une vitesse et interpréter une conversion d’énergie.'],
-['EXERCICE 2 — SVT','À partir de documents sur la transmission d’un caractère, construis un raisonnement reliant gènes, allèles et phénotype.'],
-['EXERCICE 3 — Technologie','Étudie le fonctionnement d’un objet connecté : chaîne d’information, capteurs, traitement et communication des données.']
-]},
-{level:'3ème',title:'Brevet — Sciences · Sujet 2',desc:'Électricité, environnement et système technique.',tag:'DNB',duration:'1 h',points:'20 points',paper:[
-['EXERCICE 1 — Physique-Chimie','Étudie un circuit électrique domestique, utilise une relation entre grandeurs électriques et interprète la puissance d’un appareil.'],
-['EXERCICE 2 — SVT','Analyse des données sur un écosystème et explique les conséquences d’une modification d’une population sur le réseau alimentaire.'],
-['EXERCICE 3 — Technologie','Analyse un système automatisé de gestion d’énergie et identifie ses entrées, son traitement et ses sorties.']
-]},
-
-/* ================= PREMIERE : FRANÇAIS ================= */
-{level:'1ère',title:'Bac de français — Sujet 1',desc:'Écrit : commentaire ou dissertation.',tag:'Bac français',duration:'4 h',points:'20 points',paper:[
-['ÉCRIT — Commentaire','Texte original : extrait narratif contemporain. Analyse la manière dont le narrateur transforme une scène ordinaire en moment de tension. Organise ton commentaire en deux ou trois axes et appuie chaque idée sur des éléments précis du texte.'],
-['ÉCRIT — Dissertation','Objet d’étude : le roman et le récit. Sujet : « Un personnage de roman doit-il nécessairement être confronté à des obstacles pour intéresser le lecteur ? » Construis une réflexion argumentée avec références aux œuvres étudiées.']
-]},
-{level:'1ère',title:'Bac de français — Sujet 2',desc:'Écrit : poésie, commentaire ou dissertation.',tag:'Bac français',duration:'4 h',points:'20 points',paper:[
-['ÉCRIT — Commentaire','Texte original : poème contemporain. Montre comment les images poétiques transforment une expérience personnelle en réflexion plus générale.'],
-['ÉCRIT — Dissertation','Objet d’étude : la poésie du XIXe au XXIe siècle. Sujet : « La poésie sert-elle seulement à exprimer les émotions du poète ? » Développe une argumentation organisée et nuancée.']
-]},
-{level:'1ère',title:'Bac de français — Sujet 3',desc:'Écrit : littérature d’idées et argumentation.',tag:'Bac français',duration:'4 h',points:'20 points',paper:[
-['ÉCRIT — Commentaire','Texte original : extrait argumentatif. Analyse les procédés employés par l’auteur pour convaincre et faire réfléchir son lecteur.'],
-['ÉCRIT — Dissertation','Objet d’étude : la littérature d’idées du XVIe au XVIIIe siècle. Sujet : « Une œuvre argumentative est-elle plus efficace lorsqu’elle cherche à faire réfléchir plutôt qu’à convaincre directement ? »']
-]},
-
-/* ================= TERMINALE : MATHS ================= */
-{level:'Terminale',title:'Baccalauréat — Mathématiques · Sujet 1',desc:'Sujet d’entraînement de spécialité mathématiques.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
-['EXERCICE 1 — Automatismes et fonctions','Étude d’une fonction : dérivée, variations, équation d’une tangente et interprétation graphique.'],
-['EXERCICE 2 — Probabilités','Modélisation d’une situation aléatoire, loi binomiale, espérance et prise de décision à partir d’une probabilité conditionnelle.'],
-['EXERCICE 3 — Suites','Suite définie par récurrence : démontrer une propriété, étudier la convergence et interpréter un modèle discret.'],
-['EXERCICE 4 — Géométrie et algorithmique','Vecteurs dans l’espace, représentation paramétrique d’une droite et petit algorithme de recherche d’une valeur approchée.']
-]},
-{level:'Terminale',title:'Baccalauréat — Mathématiques · Sujet 2',desc:'Sujet d’entraînement de spécialité mathématiques.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
-['EXERCICE 1 — Analyse','Fonction exponentielle : limites, dérivée, tableau de variations et résolution d’une équation.'],
-['EXERCICE 2 — Probabilités','Arbre pondéré, probabilités conditionnelles, loi binomiale et intervalle de fluctuation.'],
-['EXERCICE 3 — Intégration','Calcul d’une primitive, aire sous une courbe et interprétation d’une intégrale dans une situation modélisée.'],
-['EXERCICE 4 — Algorithmique','Écrire et analyser un algorithme puis déterminer sa terminaison et le résultat produit pour une valeur donnée.']
-]},
-{level:'Terminale',title:'Baccalauréat — Philosophie · Sujet 1',desc:'Dissertation et explication de texte.',tag:'Philosophie',duration:'4 h',points:'20 points',paper:[
-['DISSERTATION — Sujet 1','La vérité dépend-elle de nous ?'],
-['DISSERTATION — Sujet 2','Peut-on être libre sans contraintes ?'],
-['EXPLICATION DE TEXTE','Explique un texte philosophique original fourni avec le sujet. Dégage sa thèse, reconstruis son argumentation et discute une difficulté du raisonnement.']
-]},
-{level:'Terminale',title:'Baccalauréat — Philosophie · Sujet 2',desc:'Deux dissertations et une explication de texte.',tag:'Philosophie',duration:'4 h',points:'20 points',paper:[
-['DISSERTATION — Sujet 1','Le progrès rend-il nécessairement les hommes plus heureux ?'],
-['DISSERTATION — Sujet 2','Peut-on connaître sans faire l’expérience ?'],
-['EXPLICATION DE TEXTE','Explique un texte philosophique original portant sur la liberté et la responsabilité.']
-]},
-{level:'Terminale',title:'Baccalauréat — Physique-Chimie · Sujet 1',desc:'Mécanique, énergie, ondes et chimie.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
-['EXERCICE 1 — Mécanique','Étude du mouvement d’un objet lancé : exploitation de mesures, deuxième loi de Newton et énergie mécanique.'],
-['EXERCICE 2 — Ondes','Déterminer une fréquence et une longueur d’onde à partir de mesures expérimentales puis interpréter un spectre.'],
-['EXERCICE 3 — Chimie','Suivi d’une transformation chimique par titrage et détermination d’une concentration.']
-]},
-{level:'Terminale',title:'Baccalauréat — Physique-Chimie · Sujet 2',desc:'Électricité, radioactivité et synthèse.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
-['EXERCICE 1 — Électricité','Circuit RC : charge d’un condensateur, constante de temps et évolution de la tension.'],
-['EXERCICE 2 — Radioactivité','Décroissance radioactive, demi-vie et exploitation d’un modèle exponentiel.'],
-['EXERCICE 3 — Chimie organique','Identifier une espèce, proposer une transformation et exploiter des données spectroscopiques.']
-]},
-{level:'Terminale',title:'Baccalauréat — SVT · Sujet 1',desc:'Génétique, géologie et environnement.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
-['PARTIE 1 — Génétique','À partir de croisements et de résultats moléculaires, explique l’origine d’un phénotype et le rôle de l’expression des gènes.'],
-['PARTIE 2 — Géologie','Interprète des données sismiques et pétrographiques pour reconstituer une dynamique tectonique.'],
-['PARTIE 3 — Environnement','Analyse des flux de matière et d’énergie dans un écosystème soumis à une perturbation.']
-]},
-{level:'Terminale',title:'Baccalauréat — SVT · Sujet 2',desc:'Immunologie, climat et évolution.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
-['PARTIE 1 — Immunologie','Explique la réponse immunitaire adaptative à partir de documents expérimentaux.'],
-['PARTIE 2 — Climat','Analyse des archives climatiques et discute un modèle d’évolution récente du climat.'],
-['PARTIE 3 — Évolution','Utilise des données de génétique des populations pour expliquer une divergence évolutive.']
-]},
-{level:'Terminale',title:'Baccalauréat — HGGSP · Sujet 1',desc:'Dissertation et étude critique de documents.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
-['DISSERTATION','Les frontières sont-elles toujours un obstacle aux échanges ?'],
-['ÉTUDE CRITIQUE DE DOCUMENTS','À partir de deux documents originaux, analyse les formes de puissance et leurs limites dans les relations internationales.']
-]},
-{level:'Terminale',title:'Baccalauréat — HGGSP · Sujet 2',desc:'Histoire, mémoire et environnement.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
-['DISSERTATION','Les mémoires peuvent-elles contribuer à construire une histoire commune ?'],
-['ÉTUDE CRITIQUE DE DOCUMENTS','Analyse deux documents portant sur les enjeux géopolitiques de l’environnement et montre les intérêts divergents des acteurs.']
-]},
-{level:'Terminale',title:'Baccalauréat — SES · Sujet 1',desc:'Sciences économiques et sociales.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
-['DISSERTATION','Dans quelle mesure les politiques économiques peuvent-elles agir sur la croissance ?'],
-['ÉPREUVE COMPOSÉE','Partie 1 : mobilisation des connaissances sur les classes sociales. Partie 2 : étude d’un document statistique sur les inégalités. Partie 3 : raisonnement argumenté sur la mondialisation.']
-]},
-{level:'Terminale',title:'Baccalauréat — SES · Sujet 2',desc:'Croissance, chômage et justice sociale.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
-['DISSERTATION','Le progrès technique suffit-il à expliquer la croissance économique ?'],
-['ÉPREUVE COMPOSÉE','Partie 1 : chômage et emploi. Partie 2 : lecture de données sur les revenus. Partie 3 : raisonnement argumenté sur les politiques de lutte contre les inégalités.']
-]},
-{level:'Terminale',title:'Baccalauréat — NSI · Sujet 1',desc:'Algorithmique, structures de données et bases de données.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
-['EXERCICE 1 — Algorithmique','Écrire, corriger et analyser la complexité d’un algorithme de recherche.'],
-['EXERCICE 2 — Structures de données','Manipuler une pile, une file et un arbre binaire sur un jeu de données.'],
-['EXERCICE 3 — Bases de données','Écrire des requêtes SQL de sélection, jointure, regroupement et filtrage.']
-]},
-{level:'Terminale',title:'Baccalauréat — NSI · Sujet 2',desc:'Graphes, programmation et bases de données.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
-['EXERCICE 1 — Graphes','Représenter un graphe, parcourir ses sommets et déterminer un plus court chemin dans un réseau.'],
-['EXERCICE 2 — Programmation','Compléter et tester un programme récursif puis analyser sa terminaison.'],
-['EXERCICE 3 — Bases de données','Concevoir un schéma relationnel puis écrire des requêtes répondant à des besoins précis.']
-]},
-{level:'Terminale',title:'Baccalauréat — Mathématiques · Sujet 3',desc:'Spécialité mathématiques : fonctions, probabilités, suites et géométrie.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
-['EXERCICE 1 — Fonctions','Soit f(x)=ln(x)+1/x sur ]0;+∞[. Calculer f’, étudier les variations et déterminer le minimum de f.'],
-['EXERCICE 2 — Probabilités','Une urne contient 7 boules dont 3 rouges. On effectue 5 tirages indépendants avec remise. Modéliser par une loi binomiale puis calculer P(X≥2).'],
-['EXERCICE 3 — Suites','u0=2 et u(n+1)=0,5u(n)+3. Démontrer que u(n)<6 puis déterminer la limite de la suite.'],
-['EXERCICE 4 — Géométrie','Déterminer une équation d’un plan passant par trois points non alignés puis calculer la distance d’un point à ce plan.']
-]},
-{level:'Terminale',title:'Baccalauréat — Arts · Sujet 1',desc:'Spécialité Arts : analyse et projet artistique.',tag:'Spécialité',duration:'3 h 30 + 30 min',points:'20 points',paper:[['ÉCRIT','Analyse un corpus original de trois œuvres et compare les démarches, les choix plastiques et les effets produits.'],['ORAL / PROJET','Présente un projet artistique personnel : intention, références, techniques, étapes et bilan critique.']]},
-{level:'Terminale',title:'Baccalauréat — Arts · Sujet 2',desc:'Spécialité Arts : œuvre, public et création.',tag:'Spécialité',duration:'3 h 30 + 30 min',points:'20 points',paper:[['ÉCRIT','Montre, à partir d’un corpus original, comment une œuvre peut transformer la relation entre l’artiste et le public.'],['ORAL / PROJET','Présente une réalisation personnelle et justifie les choix artistiques et techniques.']]},
-{level:'Terminale',title:'Baccalauréat — Biologie-écologie · Sujet 1',desc:'Spécialité Biologie-écologie.',tag:'Spécialité',duration:'3 h 30 + 1 h 30',points:'20 points',paper:[['BIOLOGIE','Analyse des documents sur la régulation d’une fonction biologique et construis un raisonnement scientifique.'],['ÉCOLOGIE','Étudie les interactions d’un écosystème puis propose des indicateurs de suivi.'],['PRATIQUE','Exploite des résultats expérimentaux et justifie la conclusion.']]},
-{level:'Terminale',title:'Baccalauréat — Biologie-écologie · Sujet 2',desc:'Spécialité Biologie-écologie.',tag:'Spécialité',duration:'3 h 30 + 1 h 30',points:'20 points',paper:[['BIOLOGIE','Interprète des résultats sur l’expression d’un gène et ses conséquences.'],['ÉCOLOGIE','Analyse une perturbation d’un milieu et propose un protocole de suivi.'],['PRATIQUE','Traite des données expérimentales et justifie les choix méthodologiques.']]},
-{level:'Terminale',title:'Baccalauréat — EPPCS · Sujet 1',desc:'Éducation physique, pratiques et culture sportives.',tag:'Spécialité',duration:'3 h 30 + 30 min',points:'20 points',paper:[['ÉCRIT','Analyse les effets de l’entraînement sur la performance et la santé à partir de documents.'],['ÉTUDE DE CAS','Construis un projet d’entraînement argumenté pour un sportif fictif en tenant compte de ses objectifs.']]},
-{level:'Terminale',title:'Baccalauréat — EPPCS · Sujet 2',desc:'Éducation physique, pratiques et culture sportives.',tag:'Spécialité',duration:'3 h 30 + 30 min',points:'20 points',paper:[['ÉCRIT','Étudie les dimensions sociales et culturelles du sport à partir d’un corpus.'],['ÉTUDE DE CAS','Propose et justifie une stratégie d’entraînement et de récupération adaptée à une situation donnée.']]},
-{level:'Terminale',title:'Baccalauréat — HLP · Sujet 1',desc:'Humanités, littérature et philosophie.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[['PARTIE LITTÉRAIRE','À partir d’un texte original sur la liberté, analyse comment la littérature interroge les normes sociales.'],['PARTIE PHILOSOPHIQUE','La conscience de soi suffit-elle à définir l’identité ? Construis une réflexion argumentée.']]},
-{level:'Terminale',title:'Baccalauréat — HLP · Sujet 2',desc:'Humanités, littérature et philosophie.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[['PARTIE LITTÉRAIRE','À partir d’un corpus original, montre comment une œuvre transforme notre regard sur autrui.'],['PARTIE PHILOSOPHIQUE','Peut-on être soi-même sans le regard des autres ? Distingue les notions essentielles.']]},
-{level:'Terminale',title:'Baccalauréat — LLCER · Sujet 1',desc:'Langues, littératures et cultures étrangères et régionales.',tag:'Spécialité',duration:'3 h 30 + 20 min',points:'20 points',paper:[['COMPRÉHENSION','Corpus original en langue étrangère : réponds aux questions sur le sens, le point de vue et les procédés.'],['ESSAI','Rédige un essai argumenté en langue étrangère sur culture et identité.'],['ORAL','Présente une question de spécialité puis réponds aux relances.']]},
-{level:'Terminale',title:'Baccalauréat — LLCER · Sujet 2',desc:'Langues, littératures et cultures étrangères et régionales.',tag:'Spécialité',duration:'3 h 30 + 20 min',points:'20 points',paper:[['COMPRÉHENSION','Corpus original en langue étrangère : identifie informations, implicites et intentions.'],['ESSAI','Rédige un essai sur les transformations du monde contemporain et leurs représentations culturelles.'],['ORAL','Présente une synthèse personnelle puis réponds aux questions du jury.']]},
-{level:'Terminale',title:'Baccalauréat — LLCA · Sujet 1',desc:'Littérature et langues et cultures de l’Antiquité.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[['TRADUCTION ET LANGUE','Texte latin ou grec original d’entraînement : traduction, analyse grammaticale et lexicale.'],['COMMENTAIRE','Analyse un extrait de littérature antique et mets-le en relation avec une problématique culturelle.']]},
-{level:'Terminale',title:'Baccalauréat — LLCA · Sujet 2',desc:'Littérature et langues et cultures de l’Antiquité.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[['TRADUCTION ET LANGUE','Texte antique original d’entraînement : traduction guidée et questions de langue.'],['ESSAI','Réponds à une question de littérature antique en mobilisant texte et connaissances culturelles.']]},
-{level:'Terminale',title:'Baccalauréat — Sciences de l’ingénieur · Sujet 1',desc:'Spécialité Sciences de l’ingénieur.',tag:'Spécialité',duration:'3 h 30 + 1 h',points:'20 points',paper:[['SYSTÈME','Analyse un système automatisé : fonctions, chaîne d’énergie et chaîne d’information.'],['MODÉLISATION','Exploite des données pour vérifier une performance et proposer une amélioration.'],['PRATIQUE','Interprète des mesures expérimentales et conclus sur le comportement du système.']]},
-{level:'Terminale',title:'Baccalauréat — Sciences de l’ingénieur · Sujet 2',desc:'Spécialité Sciences de l’ingénieur.',tag:'Spécialité',duration:'3 h 30 + 1 h',points:'20 points',paper:[['SYSTÈME','Étudie un objet connecté, ses capteurs, son traitement et ses actionneurs.'],['MODÉLISATION','Détermine des grandeurs mécaniques ou électriques et vérifie une exigence.'],['PRATIQUE','Analyse une simulation puis propose une modification du système.']]},
-{level:'Terminale',title:'Baccalauréat — Grand oral · Sujet 1',desc:'Préparation complète du Grand oral.',tag:'Grand oral',duration:'20 min + préparation',points:'Épreuve orale',paper:[
-['PRÉSENTATION','Question : « Comment les mathématiques permettent-elles de prendre des décisions dans un monde incertain ? » Prépare une présentation claire, structurée et personnelle.'],
-['ENTRETIEN','Prépare trois arguments, deux exemples précis et deux questions possibles du jury. Termine par une ouverture vers un enjeu concret.']
-]},
-{level:'Terminale',title:'Baccalauréat — Grand oral · Sujet 2',desc:'Préparation complète du Grand oral.',tag:'Grand oral',duration:'20 min + préparation',points:'Épreuve orale',paper:[
-['PRÉSENTATION','Question : « Comment les sciences peuvent-elles aider à répondre aux défis environnementaux ? » Construis une réponse argumentée en reliant tes connaissances de spécialité.'],
-['ENTRETIEN','Prépare les définitions essentielles, les limites de ton raisonnement, deux exemples et des réponses à des questions de relance du jury.']
-]}
-];
-let level='3ème';
-function renderLevels(){const el=document.getElementById('levels');el.innerHTML='';Object.keys(data).forEach(l=>{const b=document.createElement('button');b.className='level'+(l===level?' active':'');b.textContent=l;b.onclick=()=>{level=l;renderAll()};el.appendChild(b)})}
-function renderSubjects(){const el=document.getElementById('subjects');el.innerHTML='';const q=(document.getElementById('subject-search')?.value||'').toLowerCase().trim();const list=data[level].filter(s=>s.toLowerCase().includes(q));if(!list.length){el.innerHTML='<div class="glass empty">Aucune matière trouvée.</div>';return}list.forEach((s,i)=>{const d=document.createElement('div');d.className='glass subject';d.innerHTML='<div class="tags"><span class="tag">Cours & fiches</span><span class="tag exam">2 fiches + 2 quiz / chapitre</span></div><h3>'+s+'</h3><p>Accède aux chapitres, aux fiches de révision, aux quiz et à ton XP.</p><button class="btn btn-primary" onclick="openSubject(\''+s.replace(/'/g,"\\'")+'\')">Ouvrir le cours</button>';el.appendChild(d)})}
-function renderExams(){
-  const el=document.getElementById('exams');
-  el.innerHTML='';
-  const pool=exams.filter(x=>x.level===level);
-  const counter=document.createElement('div');
-  counter.className='glass';
-  counter.style.cssText='grid-column:1/-1;padding:14px 18px';
-  const counts={};
-  pool.forEach(x=>{counts[x.tag]=(counts[x.tag]||0)+1});
-  counter.innerHTML='<b>📚 '+pool.length+' sujets disponibles</b><span class="small" style="margin-left:10px">'+Object.entries(counts).map(([k,v])=>k+' : '+v).join(' · ')+'</span>';
-  el.appendChild(counter);
-  pool.forEach((x,i)=>{
-    const d=document.createElement('div');
-    d.className='glass exam';
-    d.innerHTML='<div class="meta">'+x.level+' · '+x.tag+'</div><h3>'+x.title+'</h3><p class="small">'+x.desc+'</p><div class="tags"><span class="tag">Sujet complet</span><span class="tag exam">'+x.duration+'</span></div><button class="btn btn-primary" onclick="openExam('+i+')">Voir le sujet</button>';
-    el.appendChild(d);
-  });
-  if(!pool.length) el.innerHTML='<div class="glass empty">Aucun sujet disponible pour ce niveau.</div>';
+const levels=Object.keys(P);let level="5e";
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",""":"&quot;","'":"&#39;"}[m]))}
+function kind(subject){return /spécialité|HGGSP|HLP|SES|NSI|Arts|LLCER|LLCA|Sciences de l’ingénieur|EPPCS/.test(subject)?"specialite":levels.indexOf(level)<3?"college":"lycee"}
+function render(){
+ document.getElementById("levels").innerHTML=levels.map(l=>'<button class="level '+(l===level?'active':'')+'" onclick="level='+JSON.stringify(l)+';render()">'+l+'</button>').join("");
+ const q=(document.getElementById("search").value||"").toLowerCase();
+ const filter=document.getElementById("type").value;
+ let entries=Object.entries(P[level]).filter(([s,ch])=>(filter==="all"||kind(s)===filter)&&((s+" "+ch.join(" ")).toLowerCase().includes(q)));
+ let chapterCount=entries.reduce((n,[,ch])=>n+ch.length,0);
+ document.getElementById("summary").innerHTML='<span class="badge">'+entries.length+' enseignements affichés</span><span class="badge">'+chapterCount+' chapitres / axes</span><span class="badge">'+(chapterCount*2)+' fiches</span><span class="badge">'+(chapterCount*2)+' quiz</span>';
+ document.getElementById("subjects").innerHTML=entries.map(([s,ch])=>'<article class="glass subject"><span class="badge">'+ch.length+' chapitres</span><h3>'+esc(s)+'</h3><p>'+ch.slice(0,4).map(esc).join(" · ")+(ch.length>4?" …":"")+'</p><button class="btn primary" onclick="openSubject('+JSON.stringify(s)+')">Ouvrir les cours</button></article>').join("");
 }
-function renderAll(){renderLevels();renderSubjects();renderExams();calcAvg();loadUser()}
-function setLevel(l){level=l;renderAll();loadUser();scrollToId('cours');showToast('Niveau '+l+' sélectionné')}
-function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('open')}
-function showToast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>x.classList.remove('show'),2200)}
-function loadUser(){const a=getAccount();const pill=document.getElementById('user-pill');if(a&&isLoggedIn()){pill.style.display='flex';pill.textContent='👋 '+a.prenom;document.getElementById('student-space-btn').textContent='👤 Mon espace'}else{pill.style.display='none';document.getElementById('student-space-btn').textContent='👤 Espace élève'}}
-function openSubject(subject){if(!requireLogin("accéder aux cours et fiches"))return;const list=(chapters[level]&&chapters[level][subject])||['Notions fondamentales','Méthode & exercices','Révision générale'];document.getElementById('learn-modal').classList.remove('hidden');document.getElementById('learn-box').innerHTML='<div class="learn-head"><div><span class="tag">'+level+'</span><h2>'+subject+'</h2><p class="small">Chaque chapitre contient 2 fiches de révision et 2 quiz.</p></div><button class="btn btn-ghost" onclick="closeLearn()">✕</button></div><div class="chapter-grid">'+list.map((x,i)=>'<div class="glass chapter-card" onclick="openChapter(\''+subject.replace(/'/g,"\\'")+'\',\''+x.replace(/'/g,"\\'")+'\')"><span class="tag">Chapitre '+(i+1)+'</span><h4>'+x+'</h4><p>2 fiches · 2 quiz · XP</p></div>').join('')+'</div>'}
-function closeLearn(){document.getElementById('learn-modal').classList.add('hidden')}
-function openChapter(subject,chapter){const d=chapterData[chapter]||genericChapter(subject,chapter);const box=document.getElementById('learn-box');box.innerHTML='<div class="learn-head"><div><span class="tag">'+level+' · '+subject+'</span><h2>'+chapter+'</h2></div><button class="btn btn-ghost" onclick="openSubject(\''+subject.replace(/'/g,"\\'")+'\')">← Chapitres</button></div><div class="tabs"><button class="tab active" onclick="showLesson(0)">Fiche 1 — Essentiel</button><button class="tab" onclick="showLesson(1)">Fiche 2 — Méthode</button><button class="tab" onclick="showQuiz(0)">Quiz 1</button><button class="tab" onclick="showQuiz(1)">Quiz 2</button></div><div id="lesson-area" class="glass lesson"></div><div id="quiz-area"></div>';window.currentChapter=d;showLesson(0)}
-function showLesson(n){const d=window.currentChapter;document.getElementById('quiz-area').innerHTML='';const title=n===0?'Essentiel à retenir':'Méthode & pièges à éviter';const text=d.f[n];document.getElementById('lesson-area').innerHTML='<h3>Fiche '+(n+1)+' — '+title+'</h3><p>'+text+'</p><div class="glass" style="padding:14px;margin-top:14px"><b>🧠 À retenir</b><p class="small">Relis la notion, reformule-la avec tes propres mots, puis vérifie que tu sais l’appliquer sans regarder la fiche.</p></div><button class="btn btn-primary" style="margin-top:14px" onclick="completeLesson()">✓ J’ai terminé cette fiche · +10 XP</button>'}
-function showQuiz(n){const d=window.currentChapter;document.getElementById('lesson-area').innerHTML='';const q=d.q[n];document.getElementById('quiz-area').innerHTML='<div class="glass quiz-card"><span class="tag">Quiz '+(n+1)+'</span><h3>'+q[0]+'</h3>'+q[1].map(o=>'<button class="quiz-option" onclick="answerQuiz(this,\''+o.replace(/'/g,"\\'")+'\',\''+q[2].replace(/'/g,"\\'")+'\')">'+o+'</button>').join('')+'<div class="quiz-result" id="qr"></div></div>'}
-function answerQuiz(btn,given,correct){document.querySelectorAll('.quiz-option').forEach(x=>x.disabled=true);const ok=given===correct;const q=(window.currentChapter.q||[]).find(x=>x[2]===correct);const exp=q&&q[3]?q[3]:'La réponse correcte est « '+correct+' ». Reprends la fiche et vérifie chaque étape.';const area=document.getElementById('qr');area.innerHTML=(ok?'✅ <b>Bonne réponse !</b>':'❌ <b>Réponse incorrecte.</b>')+'<div class="glass" style="padding:14px;margin-top:12px"><b>📖 Correction détaillée</b><p class="small">'+exp+'</p><p class="small"><b>Réponse attendue :</b> '+correct+'</p></div>'+(ok?'<div class="xp">+25 XP</div>':'<div class="small">+5 XP pour l’essai.</div>');let xp=Number(localStorage.getItem('astralearn_xp')||0)+(ok?25:5);localStorage.setItem('astralearn_xp',xp);showToast((ok?'+25':' +5')+' XP')}
-function completeLesson(){let xp=Number(localStorage.getItem('astralearn_xp')||0)+10;localStorage.setItem('astralearn_xp',xp);showToast('+10 XP — fiche terminée ✓')}
-function genericChapter(subject,chapter){const f={
-'Mathématiques':'Définis les notions et formules de « '+chapter+' », puis applique-les sur un exemple. Méthode : données → formule/propriété → calcul → conclusion. Vérifie unités, signes et résultat.',
-'Français':'Identifie les notions de « '+chapter+' », les procédés et leur effet. Méthode : observation précise → procédé → citation courte → interprétation.',
-'Histoire-Géographie':'Maîtrise les repères, acteurs, espaces et mécanismes de « '+chapter+' ». Méthode : contexte → causes → déroulement/organisation → conséquences, en distinguant faits et interprétations.',
-'Physique-Chimie':'Repère grandeurs, unités, lois et phénomènes de « '+chapter+' ». Méthode : données → relation → conversion → calcul → unité → conclusion.',
-'SVT':'Maîtrise vocabulaire, mécanismes et preuves de « '+chapter+' ». Méthode : observer → relever les données → interpréter → expliquer avec les connaissances.',
-'Anglais':'Maîtrise structures, vocabulaire et emploi de « '+chapter+' ». Méthode : identifier le contexte, choisir la structure, produire une phrase complète puis vérifier le temps verbal.',
-'LV2':'Maîtrise le vocabulaire et les structures de « '+chapter+' ». Méthode : comprendre le contexte, choisir la forme correcte, puis relire accords et temps.',
-'SES':'Définis les notions de « '+chapter+' » et explique leurs mécanismes. Méthode : définition → mécanisme → exemple → limite ou conséquence.',
-'SNT':'Comprends le fonctionnement technique de « '+chapter+' ». Méthode : identifier les composants, suivre les données et expliquer le rôle de chaque élément.',
-'HGGSP':'Maîtrise notions, acteurs et exemples liés à « '+chapter+' ». Méthode : problématique → connaissances précises → exemple daté → mise en perspective.',
-'NSI':'Définis les structures et algorithmes de « '+chapter+' ». Méthode : identifier les données, dérouler l’algorithme étape par étape et vérifier le résultat.',
-'Philosophie':'Clarifie les concepts de « '+chapter+' », leurs distinctions et les problèmes qu’ils posent. Méthode : définition → distinction → thèse → objection → exemple → conclusion.'};const a=f[subject]||f['Mathématiques'];const b='Pour réviser « '+chapter+' », transforme la fiche en questions : définition, propriété, exemple et piège fréquent. Ensuite fais un exercice sans regarder la correction, puis compare chaque étape. Ne mémorise pas seulement la réponse : comprends pourquoi elle est correcte.';return {f:[a,b],q:[['Notion essentielle — '+chapter,['Lire et comprendre les notions avant de les appliquer','Apprendre seulement les titres','Éviter les exercices','Mémoriser une réponse sans raisonnement'],'Lire et comprendre les notions avant de les appliquer','Comprendre les notions permet ensuite de les mobiliser dans un exercice nouveau. Une réponse apprise par cœur ne suffit pas si la consigne change.'],['Méthode — '+chapter,['Vérifier le raisonnement et la réponse finale','Regarder uniquement le résultat','Ne jamais relire','Changer de méthode au hasard'],'Vérifier le raisonnement et la réponse finale','Une correction sérieuse vérifie les données utilisées, les étapes, les unités ou notions mobilisées et la conclusion.']]}}
-function getExamDocument(title,section){
-  const t=(title+' '+section).toLowerCase();
-  if(t.includes('français')){
-    if(t.includes('sujet 1')) return '<h4>DOCUMENT — « La gare au petit matin »</h4><p>À six heures moins dix, la gare semblait encore appartenir à la nuit. Les vitrages retenaient une lumière grise et les quais, presque vides, résonnaient du bruit régulier des roulettes d’une valise. Élias attendait près du panneau d’affichage. Il avait relu trois fois le message reçu la veille, sans parvenir à décider s’il devait y répondre.</p><p>Un train entra lentement en gare. Dans les fenêtres éclairées, les voyageurs apparaissaient puis disparaissaient comme des silhouettes derrière une pluie fine. Élias aperçut alors une femme qui tenait contre elle un carnet bleu. Il reconnut immédiatement celui qu’il avait perdu plusieurs années auparavant. Au lieu de courir vers elle, il resta immobile : certains souvenirs reviennent si brusquement qu’ils donnent d’abord l’impression d’être impossibles.</p><p><b>Consigne de lecture :</b> appuie-toi sur des citations courtes du document pour justifier tes réponses.</p>';
-    if(t.includes('sujet 2')) return '<h4>DOCUMENT — « Le premier départ »</h4><p>Le matin du départ, Lina se réveilla avant la sonnerie. Sa chambre était la même que d’habitude, mais chaque objet semblait avoir changé de place. Sur la chaise, le sac préparé la veille attendait, fermé, presque solennel. Elle descendit l’escalier sans faire de bruit.</p><p>Dehors, la rue était encore humide. Son père l’attendait près de la voiture. Il ne posa aucune question. Lorsqu’il lui tendit les clés, Lina comprit qu’il lui faisait confiance. Elle aurait voulu parler, mais les mots restèrent au bord de ses lèvres. Alors elle sourit et monta dans la voiture.</p><p><b>Consigne de lecture :</b> analyse les émotions, le point de vue et les procédés d’écriture à partir du document.</p>';
-    return '<h4>DOCUMENT — Extrait littéraire original</h4><p>Ce texte d’entraînement est un extrait inédit construit pour l’épreuve. Lis-le attentivement, repère les choix de narration, les images, les connecteurs logiques et les marques de point de vue.</p><p>Le passage met en scène un personnage confronté à une décision importante. Les détails du décor accompagnent progressivement son évolution intérieure.</p>';
-  }
-  if(t.includes('mathématiques')){
-    return '<h4>DOCUMENT — Données du problème</h4><p>Les données numériques ci-dessous constituent le dossier de travail. Toute démarche doit être justifiée et les unités doivent être indiquées.</p><table class="exam-data"><tr><th>Grandeur</th><th>Valeur</th></tr><tr><td>Distance étudiée</td><td>180 km</td></tr><tr><td>Durée</td><td>2 h 15 min</td></tr><tr><td>Tarif fixe</td><td>18 €</td></tr><tr><td>Coût variable</td><td>0,35 € par km</td></tr></table>';
-  }
-  if(t.includes('histoire-géographie')||t.includes('hggsp')){
-    return '<h4>DOCUMENT — Dossier documentaire original</h4><p><b>Document 1.</b> Un extrait de témoignage et une chronologie originale présentent les événements étudiés. Les acteurs y décrivent les tensions, les décisions et leurs conséquences.</p><p><b>Document 2.</b> Une carte ou un tableau de données accompagne le sujet afin de permettre une mise en perspective spatiale et statistique.</p><p><b>Document 3.</b> Une courte source institutionnelle originale met en évidence les enjeux, les acteurs et les débats liés au thème.</p>';
-  }
-  if(t.includes('sciences')||t.includes('physique-chimie')||t.includes('svt')||t.includes('biologie')){
-    return '<h4>DOCUMENT — Dossier scientifique original</h4><p>Une équipe de chercheurs réalise plusieurs mesures sur le système étudié. Les résultats sont comparés à une situation témoin afin d’identifier les relations entre les grandeurs.</p><table class="exam-data"><tr><th>Mesure</th><th>Valeur initiale</th><th>Valeur finale</th></tr><tr><td>Grandeur A</td><td>12,0</td><td>18,0</td></tr><tr><td>Grandeur B</td><td>4,0</td><td>6,5</td></tr><tr><td>Temps</td><td>0 s</td><td>30 s</td></tr></table><p>Les instruments utilisés ont une précision limitée : discute la cohérence des résultats et justifie les modèles proposés.</p>';
-  }
-  if(t.includes('ses')){
-    return '<h4>DOCUMENT — Dossier statistique original</h4><p>Une enquête compare l’évolution d’un indicateur économique entre plusieurs années. Les auteurs mettent en relation croissance, emploi, revenus et politiques publiques.</p><table class="exam-data"><tr><th>Année</th><th>Indicateur A</th><th>Indicateur B</th></tr><tr><td>2015</td><td>100</td><td>8,2</td></tr><tr><td>2020</td><td>104</td><td>9,1</td></tr><tr><td>2025</td><td>112</td><td>7,6</td></tr></table>';
-  }
-  if(t.includes('nsi')){
-    return '<h4>DOCUMENT — Dossier informatique original</h4><p>Une application stocke des utilisateurs, leurs activités et leurs résultats. Les données sont organisées en structures adaptées aux opérations de recherche, de parcours et de mise à jour.</p><pre style="white-space:pre-wrap">UTILISATEUR(id, nom, niveau)\nRESULTAT(id, utilisateur, score)\nACTIVITE(id, titre, niveau)</pre><p>Le programme doit rester lisible, correct et raisonnablement efficace.</p>';
-  }
-  if(t.includes('philosophie')||t.includes('hlp')){
-    return '<h4>DOCUMENT — Texte philosophique original</h4><p>« Nous croyons parfois choisir librement parce que nous ignorons les causes qui orientent notre décision. Pourtant, comprendre ces causes ne signifie pas nécessairement renoncer à agir : la réflexion peut transformer notre manière de décider et donner un autre sens à l’idée de liberté. »</p><p><i>Texte d’entraînement original, créé pour AstraLearn.</i></p>';
-  }
-  if(t.includes('grand oral')){
-    return '<h4>DOCUMENT — Dossier de préparation</h4><p>Le dossier rassemble une question, deux notions du programme, un exemple concret et une limite. Le candidat doit construire une démonstration personnelle et être capable de répondre aux questions du jury.</p>';
-  }
-  return '<h4>DOCUMENT — Dossier original d’entraînement</h4><p>Le sujet s’appuie sur un dossier documentaire original. Exploite les informations fournies, mobilise tes connaissances et justifie chaque réponse avec précision.</p>';
+function openSubject(subject){
+ const chapters=P[level][subject]||[]; document.getElementById("modal").hidden=false;
+ document.getElementById("box").innerHTML='<div class="head"><div><span class="badge">'+esc(level)+' · '+esc(subject)+'</span><h2>'+esc(subject)+'</h2><p class="counts">'+chapters.length+' chapitres/axes · '+(chapters.length*2)+' fiches · '+(chapters.length*2)+' quiz</p></div><button class="btn close" onclick="closeModal()">✕</button></div><div class="chapters">'+chapters.map((c,i)=>'<article class="glass chapter" onclick="openChapter('+JSON.stringify(subject)+','+JSON.stringify(c)+')"><span class="badge">Chapitre '+(i+1)+'</span><h3>'+esc(c)+'</h3><small>2 fiches · 2 quiz</small></article>').join("")+'</div>';
 }
-
-function openExam(i){
-  const pool=exams.filter(x=>x.level===level);
-  const x=pool[i];
-  if(!x)return;
-  const box=document.getElementById('learn-box');
-  document.getElementById('learn-modal').classList.remove('hidden');
-  box.innerHTML='<div class="learn-head"><div><span class="tag">'+x.level+' · '+x.tag+'</span><h2>'+x.title+'</h2><p class="small">Durée : '+x.duration+' · '+x.points+'</p></div><button class="btn btn-ghost" onclick="closeLearn()">✕</button></div><div class="exam-paper-instructions"><b>SUJET À IMPRIMER</b><br>Nom : ______________________________ &nbsp;&nbsp; Prénom : ______________________________<br>Classe : __________ &nbsp;&nbsp; Date : __________<br><br>Lis toutes les consignes. Justifie tes réponses lorsque cela est demandé. Les documents et questions ci-dessous constituent un sujet original d’entraînement de niveau '+x.level+'.</div><div id="exam-paper">'+x.paper.map((p,n)=>'<section class="glass lesson" style="margin-top:14px"><span class="tag">Partie '+(n+1)+'</span><h3>'+p[0]+'</h3>'+getExamDocument(x.title,p[0])+'<p style="white-space:pre-line;margin-top:14px"><b>QUESTIONS / CONSIGNES</b>\n'+p[1]+'</p><div class="exam-answer-space">\n\n................................................................................................................................\n................................................................................................................................\n................................................................................................................................\n................................................................................................................................\n</div></section>').join('')+'</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn btn-primary" onclick="window.print()">🖨️ Imprimer le sujet</button><button class="btn btn-ghost" onclick="closeLearn()">Fermer</button></div>';
+function closeModal(){document.getElementById("modal").hidden=true}
+function openChapter(subject,chapter){
+ document.getElementById("box").innerHTML='<div class="head"><div><span class="badge">'+esc(level)+' · '+esc(subject)+'</span><h2>'+esc(chapter)+'</h2></div><button class="btn" onclick="openSubject('+JSON.stringify(subject)+')">← Chapitres</button></div><div class="tabs"><button class="tab active" onclick="showTab(0)">Fiche 1 — Essentiel</button><button class="tab" onclick="showTab(1)">Fiche 2 — Méthode</button><button class="tab" onclick="showTab(2)">Quiz 1</button><button class="tab" onclick="showTab(3)">Quiz 2</button></div><div id="content"></div>';
+ window.current={subject,chapter};showTab(0);
 }
-function examAnswer(btn,given,correct,exp){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-option').forEach(b=>b.disabled=true);card.querySelector('.quiz-result').innerHTML=(given===correct?'✅ Bonne réponse':'❌ Réponse incorrecte')+'<div class="glass" style="padding:14px;margin-top:10px"><b>📖 Correction détaillée</b><p class="small">'+exp+'</p><p class="small"><b>Réponse attendue :</b> '+correct+'</p></div>'}
-function openFeature(feature){
-  const targets={cours:'cours',flashcards:'quiz',examens:'examens',progression:'outils'};
-  const id=targets[feature];
-  if(!id) return;
-  const el=document.getElementById(id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-  if(feature==='flashcards' && !isLoggedIn()){
-    setTimeout(()=>requireLogin('utiliser les flashcards'),350);
-  }
+function showTab(n){
+ document.querySelectorAll(".tab").forEach((b,i)=>b.classList.toggle("active",i===n));
+ const {subject,chapter}=window.current;
+ if(n<2){document.getElementById("content").innerHTML='<div class="glass lesson"><h3>Fiche '+(n+1)+' — '+(n?'Méthode et application':'Essentiel à retenir')+'</h3><p><b>'+esc(chapter)+'</b> est un axe du programme de '+esc(level)+'. Cette fiche synthétise les connaissances à maîtriser, le vocabulaire essentiel, les méthodes et les liens avec les autres notions.</p><ul><li>Comprendre les notions et définitions associées.</li><li>Savoir expliquer la notion avec un exemple précis.</li><li>Savoir appliquer la méthode dans un exercice ou une analyse.</li><li>Vérifier les étapes, la rédaction et la conclusion.</li></ul><p><b>Objectif :</b> être capable de restituer la notion sans la fiche puis de la mobiliser dans une situation nouvelle.</p><button class="btn primary" onclick="alert('Fiche terminée : +10 XP')">✓ Fiche terminée</button></div>'}else{const quiz=n===2?1:2;const questions=quiz===1?[
+['Quelle démarche correspond le mieux à une révision efficace de « '+chapter+' » ?',['Mémoriser uniquement le titre','Comprendre puis appliquer la notion','Apprendre une seule réponse','Éviter les exercices'],'Comprendre puis appliquer la notion'],
+['Après avoir appris la notion, que faut-il vérifier ?',['Uniquement la définition','Uniquement le titre','La compréhension et la capacité à l’utiliser','Rien si on l’a lue une fois'],'La compréhension et la capacité à l’utiliser']
+]:[
+['Quel élément doit apparaître dans une bonne réponse sur « '+chapter+' » ?',['Une justification adaptée à la consigne','Une réponse sans explication','Un titre uniquement','Une phrase hors sujet'],'Une justification adaptée à la consigne'],
+['Que faire face à une erreur sur « '+chapter+' » ?',['La mémoriser','Identifier l’étape qui pose problème puis recommencer','Changer de sujet','Supprimer la correction'],'Identifier l’étape qui pose problème puis recommencer']
+];document.getElementById("content").innerHTML='<div class="glass quiz"><span class="badge">Quiz '+quiz+'</span>'+questions.map((q,i)=>'<div style="margin-top:18px"><h3>'+(i+1)+'. '+esc(q[0])+'</h3>'+q[1].map(o=>'<button class="quiz-option" onclick="answer(this,'+JSON.stringify(o)+','+JSON.stringify(q[2])+')">'+esc(o)+'</button>').join("")+'<div class="result"></div></div>').join("")+'</div>'}
 }
-function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
-const flashcards=[{q:'Quelle est la formule de la vitesse moyenne ?',a:'v = distance ÷ durée',c:'On divise la distance parcourue par la durée. Exemple : 120 km en 2 h donne 60 km/h.'},{q:'Quelle est la formule de l’aire d’un triangle ?',a:'A = (base × hauteur) ÷ 2',c:'On multiplie la base par la hauteur puis on divise par 2.'},{q:'Qu’est-ce qu’une métaphore ?',a:'Un rapprochement sans outil comparatif',c:'La métaphore rapproche deux éléments sans utiliser « comme ».'}];let flashIndex=0;function revealFlash(){if(!requireLogin("utiliser les flashcards"))return;document.getElementById('fa').classList.toggle('hidden');document.getElementById('fc-correction').classList.toggle('hidden');if(!document.getElementById('fa').classList.contains('hidden'))document.getElementById('fc-correction').textContent='📖 Correction : '+flashcards[flashIndex].c}function nextFlash(){if(!requireLogin("utiliser les flashcards"))return;flashIndex=(flashIndex+1)%flashcards.length;document.getElementById('fq').textContent=flashcards[flashIndex].q;document.getElementById('fa').textContent=flashcards[flashIndex].a;document.getElementById('fa').classList.add('hidden');document.getElementById('fc-correction').classList.add('hidden')}
-function check(btn,answer){if(!requireLogin("faire le quiz"))return;const wrap=btn.parentElement;const text=btn.textContent.trim();[...wrap.querySelectorAll('button')].forEach(b=>b.disabled=true);const out=document.createElement('div');out.className='small';out.style.marginTop='10px';out.style.color=text.toLowerCase()===answer.toLowerCase()?'var(--ok)':'var(--pink)';out.textContent=text.toLowerCase()===answer.toLowerCase()?'✅ Bonne réponse !':'❌ Pas tout à fait. Réponse attendue : '+answer+'.';wrap.appendChild(out)}
-function addRow(){const r=document.createElement('div');r.className='row';r.innerHTML='<input class="input" placeholder="Matière"><input class="input note" type="number" min="0" max="20" step="0.1"><input class="input coeff" type="number" min="0.1" step="0.1" value="1">';document.getElementById('rows').appendChild(r)}
-function calcAvg(){let s=0,c=0;document.querySelectorAll('.row').forEach(r=>{const n=parseFloat(r.querySelector('.note').value);const k=parseFloat(r.querySelector('.coeff').value);if(Number.isFinite(n)&&Number.isFinite(k)){s+=n*k;c+=k}});document.getElementById('avg').textContent=c?(s/c).toFixed(2)+' / 20':'— / 20'}
-function toggleAI(){const w=document.getElementById('ai-window');w.style.display=w.style.display==='flex'?'none':'flex'}
-function sendAI(e){e.preventDefault();const input=document.getElementById('ai-input');const q=input.value.trim();if(!q)return;addMsg(q,'user');input.value='';setTimeout(()=>{let a='Je peux t’aider à décomposer cette question étape par étape. Donne-moi aussi ton niveau et la matière si tu veux une explication adaptée.';if(q.toLowerCase().includes('thalès'))a='Pour Thalès, commence par repérer deux triangles avec des côtés parallèles, puis écris les rapports de longueurs correspondants avant de faire le produit en croix.';if(q.toLowerCase().includes('moyenne'))a='Pour une moyenne avec coefficients, multiplie chaque note par son coefficient, additionne les résultats puis divise par la somme des coefficients.';addMsg(a,'bot')},450)}
-function addMsg(t,k){const d=document.createElement('div');d.className='msg '+k;d.textContent=t;document.getElementById('msgs').appendChild(d);const m=document.getElementById('msgs');m.scrollTop=m.scrollHeight}
-function getAccount(){try{return JSON.parse(localStorage.getItem('astralearn_account')||'null')}catch(e){return null}}
-function isLoggedIn(){return !!localStorage.getItem('astralearn_session')}
-function requireLogin(action){if(isLoggedIn())return true;closeLearn();showToast('🔐 Il faut créer un compte ou t’identifier pour '+action+'.');openAuth('login');return false}
-function openAuth(mode){
-  document.getElementById('modal').classList.remove('hidden');
-  const title=document.getElementById('auth-title');
-  const help=document.getElementById('auth-help');
-  const form=document.getElementById('signupForm');
-  if(mode==='login'){
-    title.textContent='Se connecter';
-    help.textContent='Entre les informations de ton compte AstraLearn. Si nous ne reconnaissons pas l’e-mail, nous te demanderons de créer ton compte.';
-    form.innerHTML=`
-      <div class="form-grid">
-        <div class="full"><label>Adresse e-mail</label><input class="input" name="email" type="email" required placeholder="eleve@email.fr"></div>
-        <div class="full"><label>Mot de passe</label><input class="input" name="password" type="password" required placeholder="Ton mot de passe"></div>
-      </div>
-      <button class="btn btn-primary" style="width:100%;margin-top:12px">Se connecter</button>
-      <button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px" id="switch-signup">Créer un compte</button>`;
-    form.onsubmit=loginAccount;
-    document.getElementById('switch-signup').onclick=()=>openAuth('signup');
-  }else{
-    title.textContent='Créer mon compte';
-    help.textContent='Renseigne ton prénom, nom, âge, classe, situation, e-mail et mot de passe.';
-    form.innerHTML=`
-      <div class="form-grid">
-        <div><label>Prénom</label><input class="input" name="prenom" required placeholder="Prénom"></div>
-        <div><label>Nom</label><input class="input" name="nom" required placeholder="Nom"></div>
-        <div><label>Âge</label><input class="input" name="age" type="number" min="10" max="99" required placeholder="Âge"></div>
-        <div><label>Niveau de classe</label><select class="select" name="niveau" required><option value="">Choisir…</option><option>4ème</option><option>3ème</option><option>2nde</option><option>1ère</option><option>Terminale</option></select></div>
-        <div class="full"><label>Adresse e-mail</label><input class="input" name="email" type="email" required placeholder="eleve@email.fr"></div>
-        <div class="full"><label>Situation</label><select class="select" name="situation" required><option value="">Choisir…</option><option>Collégien</option><option>Lycéen</option><option>En préparation d’un examen</option><option>Autre</option></select></div>
-        <div class="full"><label>Mot de passe</label><input class="input" name="password" type="password" required minlength="8" placeholder="8 caractères minimum"></div>
-      </div>
-      <button class="btn btn-primary" style="width:100%;margin-top:12px">Créer mon compte</button>
-      <button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px" id="switch-login">J’ai déjà un compte</button>`;
-    form.onsubmit=handleAuthSubmit;
-    document.getElementById('switch-login').onclick=()=>openAuth('login');
-  }
-}
-function closeAuth(){document.getElementById('modal').classList.add('hidden')}
-function handleAuthSubmit(e){
-  e.preventDefault();const f=new FormData(e.target);const email=String(f.get('email')).trim().toLowerCase();
-  const existing=getAccount();
-  if(existing && existing.email===email){showToast('📩 Ce compte existe déjà. Identifie-toi.');openAuth('login');return}
-  const account={prenom:String(f.get('prenom')).trim(),nom:String(f.get('nom')).trim(),age:String(f.get('age')),niveau:String(f.get('niveau')),situation:String(f.get('situation')),email,password:String(f.get('password'))};
-  localStorage.setItem('astralearn_account',JSON.stringify(account));localStorage.setItem('astralearn_session','1');loadUser();closeAuth();showToast('Compte créé. Bienvenue '+account.prenom+' 👋');
-}
-function loginAccount(e){
-  e.preventDefault();const f=new FormData(e.target);const email=String(f.get('email')).trim().toLowerCase();const password=String(f.get('password'));const account=getAccount();
-  if(!account || account.email!==email){showToast('❌ Compte non reconnu. Crée d’abord ton compte AstraLearn.');openAuth('signup');return}
-  if(account.password!==password){showToast('❌ Mot de passe incorrect.');return}
-  localStorage.setItem('astralearn_session','1');loadUser();closeAuth();showToast('Connexion réussie 👋');
-}
-function logout(){localStorage.removeItem('astralearn_session');loadUser();document.getElementById('student-modal').classList.add('hidden');showToast('Tu es déconnecté.');}
-function openStudentSpace(){if(!isLoggedIn()){showToast('🔐 Il faut t’identifier pour ouvrir ton espace élève.');openAuth('login');return}const a=getAccount()||{};const xp=Number(localStorage.getItem('astralearn_xp')||0);document.getElementById('student-modal').classList.remove('hidden');document.getElementById('student-box').innerHTML='<div style="display:flex;justify-content:space-between;align-items:center"><h2>👤 Espace élève</h2><button class="btn btn-ghost" onclick="closeStudentSpace()">✕</button></div><p>Bienvenue <b>'+ (a.prenom||'Élève') +' '+(a.nom||'')+'</b> !</p><div class="stats"><div class="stat"><b>'+xp+'</b><span>XP</span></div><div class="stat"><b>'+ (a.niveau||'—') +'</b><span>Classe</span></div><div class="stat"><b>'+ (a.age||'—') +'</b><span>Âge</span></div></div><p class="small" style="margin-top:14px"><b>Situation :</b> '+(a.situation||'—')+'<br><b>E-mail :</b> '+(a.email||'—')+'</p><button class="btn btn-ghost" style="margin-top:10px" onclick="logout()">Se déconnecter</button>'}
-function closeStudentSpace(){document.getElementById('student-modal').classList.add('hidden')}
-function openFeedback(){if(!isLoggedIn()){openAuth('login');showToast('🔐 Connecte-toi pour laisser un commentaire.');return}document.getElementById('feedback-modal').classList.remove('hidden')}
-function closeFeedback(){document.getElementById('feedback-modal').classList.add('hidden')}
-function submitFeedback(){const t=document.getElementById('feedback-text').value.trim();if(!t){showToast('Écris un commentaire avant de l’envoyer.');return}localStorage.setItem('astralearn_last_feedback',Date.now());localStorage.setItem('astralearn_feedback',t);closeFeedback();showToast('Merci pour ton commentaire 💙');}
-function scheduleFeedback(){const key='astralearn_feedback_prompt';const now=Date.now();const last=Number(localStorage.getItem(key)||0);const thirtyMin=30*60*1000;if(now-last>=thirtyMin){setTimeout(()=>{localStorage.setItem(key,Date.now());openFeedback()},1200)}else{setTimeout(scheduleFeedback,thirtyMin-(now-last))}setInterval(()=>{if(Date.now()-Number(localStorage.getItem('astralearn_feedback_prompt')||0)>=thirtyMin)openFeedback()},thirtyMin)}
-
-renderAll();
-loadUser();
-scheduleFeedback();
+function answer(btn,given,correct){const box=btn.parentElement;box.querySelectorAll(".quiz-option").forEach(x=>x.disabled=true);const r=box.querySelector(".result");r.textContent=given===correct?"✅ Bonne réponse !":"❌ À revoir — réponse attendue : "+correct;r.style.color=given===correct?"var(--ok)":"var(--pink)"}
+render();
 </script>
 </body>
 </html>
