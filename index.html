@@ -134,17 +134,153 @@ const data={
 'Terminale':['Philosophie','Mathématiques','Physique-Chimie','SVT','HGGSP','SES','NSI']
 };
 const exams=[
-{level:'3ème',title:'Sujet type Brevet — Mathématiques',desc:'Problèmes, calculs, géométrie et lecture de données.',tag:'Type Brevet'},
-{level:'3ème',title:'Sujet type Brevet — Français',desc:'Compréhension, langue et rédaction guidée.',tag:'Type Brevet'},
-{level:'2nde',title:'Sujet d’entraînement — Maths',desc:'Fonctions, calcul littéral et statistiques.',tag:'Entraînement'},
-{level:'1ère',title:'Sujet type Bac — Français',desc:'Méthode pour l’écrit et préparation à l’oral.',tag:'Type Bac'},
-{level:'Terminale',title:'Sujet type Bac — Philosophie',desc:'Notions, problématique et méthode de dissertation.',tag:'Type Bac'},
-{level:'Terminale',title:'Sujet type Bac — Spécialité',desc:'Exercices progressifs et correction expliquée.',tag:'Type Bac'}
+/* ================= BREvet ================= */
+{level:'3ème',title:'Brevet — Français · Sujet 1',desc:'Compréhension, langue, dictée et rédaction.',tag:'DNB',duration:'3 h',points:'100 points',paper:[
+['PARTIE I — Compréhension et compétences linguistiques','Texte original : une scène de récit contemporain.\n\n1. Identifie le point de vue adopté et justifie ta réponse par deux éléments précis.\n2. Explique le sens de deux expressions du texte.\n3. Relève une comparaison et explique son effet.\n4. Transforme une phrase au discours indirect.\n5. Réécris un passage en remplaçant le sujet singulier par un sujet pluriel et effectue les accords nécessaires.'],
+['PARTIE II — Dictée','Dictée de 10 minutes : passage original de 110 à 130 mots fourni par le professeur. Soigne les accords, les homophones et la ponctuation.'],
+['PARTIE III — Rédaction','Sujet au choix : A. Raconte la suite de la scène en faisant apparaître un changement dans les relations entre les personnages. OU B. Explique, dans un texte argumenté, pourquoi la lecture peut modifier notre regard sur les autres.']
+]},
+{level:'3ème',title:'Brevet — Français · Sujet 2',desc:'Texte littéraire, grammaire, dictée et rédaction.',tag:'DNB',duration:'3 h',points:'100 points',paper:[
+['PARTIE I — Compréhension et langue','Texte original : un souvenir d’enfance.\n\n1. Présente le cadre et le rôle du narrateur.\n2. Montre comment le texte fait ressentir une émotion.\n3. Donne la nature et la fonction de quatre groupes de mots indiqués.\n4. Justifie deux temps verbaux employés dans le récit.\n5. Réécris le passage demandé en modifiant le temps verbal.'],
+['PARTIE II — Dictée','Dictée de 10 minutes : passage original fourni avec le sujet.'],
+['PARTIE III — Rédaction','Sujet au choix : A. Raconte un événement qui a changé ta manière de voir une personne. OU B. Un personnage affirme que « grandir, c’est apprendre à choisir ». Discute cette idée dans une rédaction organisée.']
+]},
+{level:'3ème',title:'Brevet — Mathématiques · Sujet 1',desc:'Automatismes, calculs, fonctions, géométrie et probabilités.',tag:'DNB',duration:'2 h',points:'20 points',paper:[
+['PARTIE 1 — Automatismes · 6 points · 20 min','1. Calculer 15 % de 240.\n2. Développer 3(2x−5).\n3. Résoudre 4x+7=19.\n4. Convertir 2,5 km en mètres.\n5. Donner la probabilité d’obtenir un nombre pair avec un dé équilibré.\n6. Lire l’image d’un nombre sur une représentation graphique fournie.'],
+['PARTIE 2 — Raisonnement et résolution de problèmes · 14 points','Exercice 1 — Tarifs : comparer deux offres à partir d’expressions littérales et déterminer le seuil à partir duquel elles sont équivalentes.\n\nExercice 2 — Géométrie : utiliser Pythagore puis une relation de proportionnalité dans une figure à l’échelle.\n\nExercice 3 — Statistiques : calculer moyenne, médiane et interpréter une série de données.']
+]},
+{level:'3ème',title:'Brevet — Mathématiques · Sujet 2',desc:'Automatismes, proportionnalité, fonctions, géométrie et statistiques.',tag:'DNB',duration:'2 h',points:'20 points',paper:[
+['PARTIE 1 — Automatismes · 6 points · 20 min','1. Calculer 3/5 de 40.\n2. Factoriser 6x+12.\n3. Résoudre 7x−4=24.\n4. Convertir 3,2 L en cL.\n5. Calculer une augmentation de 8 % sur 75 €.\n6. Déterminer une longueur à partir d’un schéma coté.'],
+['PARTIE 2 — Raisonnement et résolution de problèmes · 14 points','Exercice 1 — Voyage : utiliser vitesse, distance et durée puis interpréter un résultat.\n\nExercice 2 — Fonction affine : compléter un tableau, déterminer une expression et résoudre un problème de seuil.\n\nExercice 3 — Probabilités et données : construire un arbre simple, calculer une probabilité et interpréter un tableau.']
+]},
+{level:'3ème',title:'Brevet — Histoire-Géographie-EMC · Sujet 1',desc:'Analyse de documents, développement construit, repères et EMC.',tag:'DNB',duration:'2 h',points:'50 points',paper:[
+['EXERCICE 1 — Analyser des documents · 20 points','Histoire : la France et l’Europe dans la guerre froide. Étudie deux documents, identifie leur nature, leur contexte et ce qu’ils montrent sur les relations internationales.'],
+['EXERCICE 2 — Maîtriser différents langages · 20 points','Géographie : les espaces productifs français. Rédige un développement construit puis réalise un croquis simple à partir d’informations fournies.'],
+['EXERCICE 3 — EMC · 10 points','À partir d’une situation concernant la liberté d’expression sur un réseau social, réponds aux questions puis rédige une réponse argumentée sur les droits et les responsabilités du citoyen.']
+]},
+{level:'3ème',title:'Brevet — Histoire-Géographie-EMC · Sujet 2',desc:'Documents historiques, territoire français et citoyenneté.',tag:'DNB',duration:'2 h',points:'50 points',paper:[
+['EXERCICE 1 — Analyser des documents · 20 points','Histoire : la France pendant la Seconde Guerre mondiale. Présente les documents, prélève des informations et explique ce qu’ils révèlent sur la période.'],
+['EXERCICE 2 — Maîtriser différents langages · 20 points','Géographie : la France et les mobilités. Rédige un développement construit et complète un croquis de flux et de grands pôles.'],
+['EXERCICE 3 — EMC · 10 points','À partir d’une situation de participation à la vie démocratique, distingue droits, devoirs et formes d’engagement puis construis une réponse argumentée.']
+]},
+{level:'3ème',title:'Brevet — Sciences · Sujet 1',desc:'Physique-chimie, SVT et technologie.',tag:'DNB',duration:'1 h',points:'20 points',paper:[
+['EXERCICE 1 — Physique-Chimie','Un cycliste parcourt une distance donnée. Exploite un tableau de mesures pour calculer une vitesse et interpréter une conversion d’énergie.'],
+['EXERCICE 2 — SVT','À partir de documents sur la transmission d’un caractère, construis un raisonnement reliant gènes, allèles et phénotype.'],
+['EXERCICE 3 — Technologie','Étudie le fonctionnement d’un objet connecté : chaîne d’information, capteurs, traitement et communication des données.']
+]},
+{level:'3ème',title:'Brevet — Sciences · Sujet 2',desc:'Électricité, environnement et système technique.',tag:'DNB',duration:'1 h',points:'20 points',paper:[
+['EXERCICE 1 — Physique-Chimie','Étudie un circuit électrique domestique, utilise une relation entre grandeurs électriques et interprète la puissance d’un appareil.'],
+['EXERCICE 2 — SVT','Analyse des données sur un écosystème et explique les conséquences d’une modification d’une population sur le réseau alimentaire.'],
+['EXERCICE 3 — Technologie','Analyse un système automatisé de gestion d’énergie et identifie ses entrées, son traitement et ses sorties.']
+]},
+
+/* ================= PREMIERE : FRANÇAIS ================= */
+{level:'1ère',title:'Bac de français — Sujet 1',desc:'Écrit : commentaire ou dissertation.',tag:'Bac français',duration:'4 h',points:'20 points',paper:[
+['ÉCRIT — Commentaire','Texte original : extrait narratif contemporain. Analyse la manière dont le narrateur transforme une scène ordinaire en moment de tension. Organise ton commentaire en deux ou trois axes et appuie chaque idée sur des éléments précis du texte.'],
+['ÉCRIT — Dissertation','Objet d’étude : le roman et le récit. Sujet : « Un personnage de roman doit-il nécessairement être confronté à des obstacles pour intéresser le lecteur ? » Construis une réflexion argumentée avec références aux œuvres étudiées.']
+]},
+{level:'1ère',title:'Bac de français — Sujet 2',desc:'Écrit : poésie, commentaire ou dissertation.',tag:'Bac français',duration:'4 h',points:'20 points',paper:[
+['ÉCRIT — Commentaire','Texte original : poème contemporain. Montre comment les images poétiques transforment une expérience personnelle en réflexion plus générale.'],
+['ÉCRIT — Dissertation','Objet d’étude : la poésie du XIXe au XXIe siècle. Sujet : « La poésie sert-elle seulement à exprimer les émotions du poète ? » Développe une argumentation organisée et nuancée.']
+]},
+{level:'1ère',title:'Bac de français — Sujet 3',desc:'Écrit : littérature d’idées et argumentation.',tag:'Bac français',duration:'4 h',points:'20 points',paper:[
+['ÉCRIT — Commentaire','Texte original : extrait argumentatif. Analyse les procédés employés par l’auteur pour convaincre et faire réfléchir son lecteur.'],
+['ÉCRIT — Dissertation','Objet d’étude : la littérature d’idées du XVIe au XVIIIe siècle. Sujet : « Une œuvre argumentative est-elle plus efficace lorsqu’elle cherche à faire réfléchir plutôt qu’à convaincre directement ? »']
+]},
+
+/* ================= TERMINALE : MATHS ================= */
+{level:'Terminale',title:'Baccalauréat — Mathématiques · Sujet 1',desc:'Sujet d’entraînement de spécialité mathématiques.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
+['EXERCICE 1 — Automatismes et fonctions','Étude d’une fonction : dérivée, variations, équation d’une tangente et interprétation graphique.'],
+['EXERCICE 2 — Probabilités','Modélisation d’une situation aléatoire, loi binomiale, espérance et prise de décision à partir d’une probabilité conditionnelle.'],
+['EXERCICE 3 — Suites','Suite définie par récurrence : démontrer une propriété, étudier la convergence et interpréter un modèle discret.'],
+['EXERCICE 4 — Géométrie et algorithmique','Vecteurs dans l’espace, représentation paramétrique d’une droite et petit algorithme de recherche d’une valeur approchée.']
+]},
+{level:'Terminale',title:'Baccalauréat — Mathématiques · Sujet 2',desc:'Sujet d’entraînement de spécialité mathématiques.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
+['EXERCICE 1 — Analyse','Fonction exponentielle : limites, dérivée, tableau de variations et résolution d’une équation.'],
+['EXERCICE 2 — Probabilités','Arbre pondéré, probabilités conditionnelles, loi binomiale et intervalle de fluctuation.'],
+['EXERCICE 3 — Intégration','Calcul d’une primitive, aire sous une courbe et interprétation d’une intégrale dans une situation modélisée.'],
+['EXERCICE 4 — Algorithmique','Écrire et analyser un algorithme puis déterminer sa terminaison et le résultat produit pour une valeur donnée.']
+]},
+{level:'Terminale',title:'Baccalauréat — Philosophie · Sujet 1',desc:'Dissertation et explication de texte.',tag:'Philosophie',duration:'4 h',points:'20 points',paper:[
+['DISSERTATION — Sujet 1','La vérité dépend-elle de nous ?'],
+['DISSERTATION — Sujet 2','Peut-on être libre sans contraintes ?'],
+['EXPLICATION DE TEXTE','Explique un texte philosophique original fourni avec le sujet. Dégage sa thèse, reconstruis son argumentation et discute une difficulté du raisonnement.']
+]},
+{level:'Terminale',title:'Baccalauréat — Philosophie · Sujet 2',desc:'Deux dissertations et une explication de texte.',tag:'Philosophie',duration:'4 h',points:'20 points',paper:[
+['DISSERTATION — Sujet 1','Le progrès rend-il nécessairement les hommes plus heureux ?'],
+['DISSERTATION — Sujet 2','Peut-on connaître sans faire l’expérience ?'],
+['EXPLICATION DE TEXTE','Explique un texte philosophique original portant sur la liberté et la responsabilité.']
+]},
+{level:'Terminale',title:'Baccalauréat — Physique-Chimie · Sujet 1',desc:'Mécanique, énergie, ondes et chimie.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
+['EXERCICE 1 — Mécanique','Étude du mouvement d’un objet lancé : exploitation de mesures, deuxième loi de Newton et énergie mécanique.'],
+['EXERCICE 2 — Ondes','Déterminer une fréquence et une longueur d’onde à partir de mesures expérimentales puis interpréter un spectre.'],
+['EXERCICE 3 — Chimie','Suivi d’une transformation chimique par titrage et détermination d’une concentration.']
+]},
+{level:'Terminale',title:'Baccalauréat — Physique-Chimie · Sujet 2',desc:'Électricité, radioactivité et synthèse.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
+['EXERCICE 1 — Électricité','Circuit RC : charge d’un condensateur, constante de temps et évolution de la tension.'],
+['EXERCICE 2 — Radioactivité','Décroissance radioactive, demi-vie et exploitation d’un modèle exponentiel.'],
+['EXERCICE 3 — Chimie organique','Identifier une espèce, proposer une transformation et exploiter des données spectroscopiques.']
+]},
+{level:'Terminale',title:'Baccalauréat — SVT · Sujet 1',desc:'Génétique, géologie et environnement.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
+['PARTIE 1 — Génétique','À partir de croisements et de résultats moléculaires, explique l’origine d’un phénotype et le rôle de l’expression des gènes.'],
+['PARTIE 2 — Géologie','Interprète des données sismiques et pétrographiques pour reconstituer une dynamique tectonique.'],
+['PARTIE 3 — Environnement','Analyse des flux de matière et d’énergie dans un écosystème soumis à une perturbation.']
+]},
+{level:'Terminale',title:'Baccalauréat — SVT · Sujet 2',desc:'Immunologie, climat et évolution.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
+['PARTIE 1 — Immunologie','Explique la réponse immunitaire adaptative à partir de documents expérimentaux.'],
+['PARTIE 2 — Climat','Analyse des archives climatiques et discute un modèle d’évolution récente du climat.'],
+['PARTIE 3 — Évolution','Utilise des données de génétique des populations pour expliquer une divergence évolutive.']
+]},
+{level:'Terminale',title:'Baccalauréat — HGGSP · Sujet 1',desc:'Dissertation et étude critique de documents.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
+['DISSERTATION','Les frontières sont-elles toujours un obstacle aux échanges ?'],
+['ÉTUDE CRITIQUE DE DOCUMENTS','À partir de deux documents originaux, analyse les formes de puissance et leurs limites dans les relations internationales.']
+]},
+{level:'Terminale',title:'Baccalauréat — HGGSP · Sujet 2',desc:'Histoire, mémoire et environnement.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
+['DISSERTATION','Les mémoires peuvent-elles contribuer à construire une histoire commune ?'],
+['ÉTUDE CRITIQUE DE DOCUMENTS','Analyse deux documents portant sur les enjeux géopolitiques de l’environnement et montre les intérêts divergents des acteurs.']
+]},
+{level:'Terminale',title:'Baccalauréat — SES · Sujet 1',desc:'Sciences économiques et sociales.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
+['DISSERTATION','Dans quelle mesure les politiques économiques peuvent-elles agir sur la croissance ?'],
+['ÉPREUVE COMPOSÉE','Partie 1 : mobilisation des connaissances sur les classes sociales. Partie 2 : étude d’un document statistique sur les inégalités. Partie 3 : raisonnement argumenté sur la mondialisation.']
+]},
+{level:'Terminale',title:'Baccalauréat — SES · Sujet 2',desc:'Croissance, chômage et justice sociale.',tag:'Spécialité',duration:'4 h',points:'20 points',paper:[
+['DISSERTATION','Le progrès technique suffit-il à expliquer la croissance économique ?'],
+['ÉPREUVE COMPOSÉE','Partie 1 : chômage et emploi. Partie 2 : lecture de données sur les revenus. Partie 3 : raisonnement argumenté sur les politiques de lutte contre les inégalités.']
+]},
+{level:'Terminale',title:'Baccalauréat — NSI · Sujet 1',desc:'Algorithmique, structures de données et bases de données.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
+['EXERCICE 1 — Algorithmique','Écrire, corriger et analyser la complexité d’un algorithme de recherche.'],
+['EXERCICE 2 — Structures de données','Manipuler une pile, une file et un arbre binaire sur un jeu de données.'],
+['EXERCICE 3 — Bases de données','Écrire des requêtes SQL de sélection, jointure, regroupement et filtrage.']
+]},
+{level:'Terminale',title:'Baccalauréat — NSI · Sujet 2',desc:'Graphes, programmation et bases de données.',tag:'Spécialité',duration:'3 h 30',points:'20 points',paper:[
+['EXERCICE 1 — Graphes','Représenter un graphe, parcourir ses sommets et déterminer un plus court chemin dans un réseau.'],
+['EXERCICE 2 — Programmation','Compléter et tester un programme récursif puis analyser sa terminaison.'],
+['EXERCICE 3 — Bases de données','Concevoir un schéma relationnel puis écrire des requêtes répondant à des besoins précis.']
+]},
+{level:'Terminale',title:'Baccalauréat — Grand oral · Sujet 1',desc:'Préparation complète du Grand oral.',tag:'Grand oral',duration:'20 min + préparation',points:'Épreuve orale',paper:[
+['PRÉSENTATION','Question : « Comment les mathématiques permettent-elles de prendre des décisions dans un monde incertain ? » Prépare une présentation claire, structurée et personnelle.'],
+['ENTRETIEN','Prépare trois arguments, deux exemples précis et deux questions possibles du jury. Termine par une ouverture vers un enjeu concret.']
+]},
+{level:'Terminale',title:'Baccalauréat — Grand oral · Sujet 2',desc:'Préparation complète du Grand oral.',tag:'Grand oral',duration:'20 min + préparation',points:'Épreuve orale',paper:[
+['PRÉSENTATION','Question : « Comment les sciences peuvent-elles aider à répondre aux défis environnementaux ? » Construis une réponse argumentée en reliant tes connaissances de spécialité.'],
+['ENTRETIEN','Prépare les définitions essentielles, les limites de ton raisonnement, deux exemples et des réponses à des questions de relance du jury.']
+]}
 ];
 let level='3ème';
 function renderLevels(){const el=document.getElementById('levels');el.innerHTML='';Object.keys(data).forEach(l=>{const b=document.createElement('button');b.className='level'+(l===level?' active':'');b.textContent=l;b.onclick=()=>{level=l;renderAll()};el.appendChild(b)})}
 function renderSubjects(){const el=document.getElementById('subjects');el.innerHTML='';const q=(document.getElementById('subject-search')?.value||'').toLowerCase().trim();const list=data[level].filter(s=>s.toLowerCase().includes(q));if(!list.length){el.innerHTML='<div class="glass empty">Aucune matière trouvée.</div>';return}list.forEach((s,i)=>{const d=document.createElement('div');d.className='glass subject';d.innerHTML='<div class="tags"><span class="tag">Cours & fiches</span><span class="tag exam">2 fiches + 2 quiz / chapitre</span></div><h3>'+s+'</h3><p>Accède aux chapitres, aux fiches de révision, aux quiz et à ton XP.</p><button class="btn btn-primary" onclick="openSubject(\''+s.replace(/'/g,"\\'")+'\')">Ouvrir le cours</button>';el.appendChild(d)})}
-function renderExams(){const el=document.getElementById('exams');el.innerHTML='';exams.filter(x=>x.level===level || (level==='3ème'&&x.level==='3ème')).slice(0,6).forEach((x,i)=>{const d=document.createElement('div');d.className='glass exam';d.innerHTML='<div class="meta">'+x.level+' · '+x.tag+'</div><h3>'+x.title+'</h3><p class="small">'+x.desc+'</p><div class="tags"><span class="tag">Sujet complet</span><span class="tag exam">Correction détaillée</span></div><button class="btn btn-primary" onclick="openExam('+i+')">Commencer le sujet</button>';el.appendChild(d)})}
+function renderExams(){
+  const el=document.getElementById('exams');
+  el.innerHTML='';
+  const pool=exams.filter(x=>x.level===level);
+  pool.forEach((x,i)=>{
+    const d=document.createElement('div');
+    d.className='glass exam';
+    d.innerHTML='<div class="meta">'+x.level+' · '+x.tag+'</div><h3>'+x.title+'</h3><p class="small">'+x.desc+'</p><div class="tags"><span class="tag">Sujet complet</span><span class="tag exam">'+x.duration+'</span></div><button class="btn btn-primary" onclick="openExam('+i+')">Voir le sujet</button>';
+    el.appendChild(d);
+  });
+  if(!pool.length) el.innerHTML='<div class="glass empty">Aucun sujet disponible pour ce niveau.</div>';
+}
 function renderAll(){renderLevels();renderSubjects();renderExams();calcAvg();loadUser()}
 function setLevel(l){level=l;renderAll();loadUser();scrollToId('cours');showToast('Niveau '+l+' sélectionné')}
 function toggleMobileNav(){document.getElementById('mobile-nav').classList.toggle('open')}
@@ -170,7 +306,16 @@ function genericChapter(subject,chapter){const f={
 'HGGSP':'Maîtrise notions, acteurs et exemples liés à « '+chapter+' ». Méthode : problématique → connaissances précises → exemple daté → mise en perspective.',
 'NSI':'Définis les structures et algorithmes de « '+chapter+' ». Méthode : identifier les données, dérouler l’algorithme étape par étape et vérifier le résultat.',
 'Philosophie':'Clarifie les concepts de « '+chapter+' », leurs distinctions et les problèmes qu’ils posent. Méthode : définition → distinction → thèse → objection → exemple → conclusion.'};const a=f[subject]||f['Mathématiques'];const b='Pour réviser « '+chapter+' », transforme la fiche en questions : définition, propriété, exemple et piège fréquent. Ensuite fais un exercice sans regarder la correction, puis compare chaque étape. Ne mémorise pas seulement la réponse : comprends pourquoi elle est correcte.';return {f:[a,b],q:[['Notion essentielle — '+chapter,['Lire et comprendre les notions avant de les appliquer','Apprendre seulement les titres','Éviter les exercices','Mémoriser une réponse sans raisonnement'],'Lire et comprendre les notions avant de les appliquer','Comprendre les notions permet ensuite de les mobiliser dans un exercice nouveau. Une réponse apprise par cœur ne suffit pas si la consigne change.'],['Méthode — '+chapter,['Vérifier le raisonnement et la réponse finale','Regarder uniquement le résultat','Ne jamais relire','Changer de méthode au hasard'],'Vérifier le raisonnement et la réponse finale','Une correction sérieuse vérifie les données utilisées, les étapes, les unités ou notions mobilisées et la conclusion.']]}}
-function openExam(i){if(!requireLogin("commencer un sujet"))return;const pool=exams.filter(x=>x.level===level || (level==='3ème'&&x.level==='3ème'));const x=pool[i]||pool[0]||exams[0];const qs=[['Analyse de consigne','Quel est le premier réflexe ?', ['Lire précisément la consigne et relever ce qui est demandé','Répondre sans lire','Ignorer les documents'],'Lire précisément la consigne et relever ce qui est demandé','La consigne indique l’action attendue. Il faut repérer les verbes, les données utiles et le format de réponse avant de commencer.'],['Justification','Une réponse scolaire complète doit :',['Donner seulement un résultat','Présenter un raisonnement justifié','Copier l’énoncé'],'Présenter un raisonnement justifié','Le raisonnement permet de montrer comment on arrive au résultat et de vérifier sa cohérence.'],['Relecture','Avant de rendre la copie, il faut :',['Relire calculs, unités et réponses','Ne rien vérifier','Tout effacer'],'Relire calculs, unités et réponses','La relecture permet de corriger les erreurs de calcul, les unités oubliées et les réponses incomplètes.']];document.getElementById('learn-modal').classList.remove('hidden');document.getElementById('learn-box').innerHTML='<div class="learn-head"><div><span class="tag">'+x.level+' · '+x.tag+'</span><h2>'+x.title+'</h2><p class="small">'+x.desc+'</p></div><button class="btn btn-ghost" onclick="closeLearn()">✕</button></div><div class="glass lesson"><h3>📝 Sujet d’entraînement</h3><p>Entraîne-toi comme en examen : réponds à chaque question puis consulte immédiatement la correction détaillée.</p></div><div id="exam-q"></div>';qs.forEach(q=>document.getElementById('exam-q').insertAdjacentHTML('beforeend','<div class="glass quiz-card"><span class="tag">Question</span><h3>'+q[0]+'</h3><p>'+q[1]+'</p>'+q[2].map(o=>'<button class="quiz-option" onclick="examAnswer(this,\''+o.replace(/'/g,"\\'")+'\',\''+q[3].replace(/'/g,"\\'")+'\',\''+q[4].replace(/'/g,"\\'")+'\')">'+o+'</button>').join('')+'<div class="quiz-result"></div></div>'))}function examAnswer(btn,given,correct,exp){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-option').forEach(b=>b.disabled=true);card.querySelector('.quiz-result').innerHTML=(given===correct?'✅ Bonne réponse':'❌ Réponse incorrecte')+'<div class="glass" style="padding:14px;margin-top:10px"><b>📖 Correction détaillée</b><p class="small">'+exp+'</p><p class="small"><b>Réponse attendue :</b> '+correct+'</p></div>'}
+function openExam(i){
+  if(!requireLogin("consulter les sujets d’examen"))return;
+  const pool=exams.filter(x=>x.level===level);
+  const x=pool[i];
+  if(!x)return;
+  const box=document.getElementById('learn-box');
+  document.getElementById('learn-modal').classList.remove('hidden');
+  box.innerHTML='<div class="learn-head"><div><span class="tag">'+x.level+' · '+x.tag+'</span><h2>'+x.title+'</h2><p class="small">Durée : '+x.duration+' · '+x.points+'</p></div><button class="btn btn-ghost" onclick="closeLearn()">✕</button></div><div class="glass lesson"><h3>📄 Polycopié du sujet</h3><p class="small">Sujet original d’entraînement, construit dans le format de l’épreuve et inspiré des annales officielles. Il ne reproduit pas un sujet officiel.</p></div><div id="exam-paper">'+x.paper.map((p,n)=>'<section class="glass lesson" style="margin-top:14px"><span class="tag">Partie '+(n+1)+'</span><h3>'+p[0]+'</h3><p style="white-space:pre-line">'+p[1]+'</p></section>').join('')+'</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn btn-primary" onclick="window.print()">🖨️ Imprimer le sujet</button><button class="btn btn-ghost" onclick="closeLearn()">Fermer</button></div>';
+}
+function examAnswer(btn,given,correct,exp){const card=btn.closest('.quiz-card');card.querySelectorAll('.quiz-option').forEach(b=>b.disabled=true);card.querySelector('.quiz-result').innerHTML=(given===correct?'✅ Bonne réponse':'❌ Réponse incorrecte')+'<div class="glass" style="padding:14px;margin-top:10px"><b>📖 Correction détaillée</b><p class="small">'+exp+'</p><p class="small"><b>Réponse attendue :</b> '+correct+'</p></div>'}
 function openFeature(feature){
   const targets={cours:'cours',flashcards:'quiz',examens:'examens',progression:'outils'};
   const id=targets[feature];
