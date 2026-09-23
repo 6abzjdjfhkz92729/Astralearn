@@ -171,17 +171,38 @@ function isLoggedIn(){return !!localStorage.getItem('astralearn_session')}
 function requireLogin(action){if(isLoggedIn())return true;closeLearn();showToast('🔐 Il faut créer un compte ou t’identifier pour '+action+'.');openAuth('login');return false}
 function openAuth(mode){
   document.getElementById('modal').classList.remove('hidden');
-  const title=document.getElementById('auth-title'), help=document.getElementById('auth-help'), submit=document.getElementById('auth-submit'), form=document.getElementById('signupForm');
+  const title=document.getElementById('auth-title');
+  const help=document.getElementById('auth-help');
+  const form=document.getElementById('signupForm');
   if(mode==='login'){
     title.textContent='S’identifier';
     help.textContent='Entre les informations de ton compte AstraLearn. Si nous ne reconnaissons pas l’e-mail, nous te demanderons de créer ton compte.';
-    form.innerHTML='<div class="form-grid"><div class="full"><label>Adresse e-mail</label><input class="input" name="email" type="email" required placeholder="eleve@email.fr"></div><div class="full"><label>Mot de passe</label><input class="input" name="password" type="password" required placeholder="Ton mot de passe"></div></div><button class="btn btn-primary" style="width:100%;margin-top:12px">S’identifier</button><button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="openAuth('signup')">Créer un compte</button>';
+    form.innerHTML=`
+      <div class="form-grid">
+        <div class="full"><label>Adresse e-mail</label><input class="input" name="email" type="email" required placeholder="eleve@email.fr"></div>
+        <div class="full"><label>Mot de passe</label><input class="input" name="password" type="password" required placeholder="Ton mot de passe"></div>
+      </div>
+      <button class="btn btn-primary" style="width:100%;margin-top:12px">S’identifier</button>
+      <button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px" id="switch-signup">Créer un compte</button>`;
     form.onsubmit=loginAccount;
+    document.getElementById('switch-signup').onclick=()=>openAuth('signup');
   }else{
     title.textContent='Créer mon compte';
     help.textContent='Renseigne ton prénom, nom, âge, classe, situation, e-mail et mot de passe.';
-    form.innerHTML='<div class="form-grid"><div><label>Prénom</label><input class="input" name="prenom" required placeholder="Prénom"></div><div><label>Nom</label><input class="input" name="nom" required placeholder="Nom"></div><div><label>Âge</label><input class="input" name="age" type="number" min="10" max="99" required placeholder="Âge"></div><div><label>Niveau de classe</label><select class="select" name="niveau" required><option value="">Choisir…</option><option>4ème</option><option>3ème</option><option>2nde</option><option>1ère</option><option>Terminale</option></select></div><div class="full"><label>Adresse e-mail</label><input class="input" name="email" type="email" required placeholder="eleve@email.fr"></div><div class="full"><label>Situation</label><select class="select" name="situation" required><option value="">Choisir…</option><option>Collégien</option><option>Lycéen</option><option>En préparation d'un examen</option><option>Autre</option></select></div><div class="full"><label>Mot de passe</label><input class="input" name="password" type="password" required minlength="8" placeholder="8 caractères minimum"></div></div><button class="btn btn-primary" style="width:100%;margin-top:12px">Créer mon compte</button><button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px" onclick="openAuth('login')">J’ai déjà un compte</button>';
+    form.innerHTML=`
+      <div class="form-grid">
+        <div><label>Prénom</label><input class="input" name="prenom" required placeholder="Prénom"></div>
+        <div><label>Nom</label><input class="input" name="nom" required placeholder="Nom"></div>
+        <div><label>Âge</label><input class="input" name="age" type="number" min="10" max="99" required placeholder="Âge"></div>
+        <div><label>Niveau de classe</label><select class="select" name="niveau" required><option value="">Choisir…</option><option>4ème</option><option>3ème</option><option>2nde</option><option>1ère</option><option>Terminale</option></select></div>
+        <div class="full"><label>Adresse e-mail</label><input class="input" name="email" type="email" required placeholder="eleve@email.fr"></div>
+        <div class="full"><label>Situation</label><select class="select" name="situation" required><option value="">Choisir…</option><option>Collégien</option><option>Lycéen</option><option>En préparation d’un examen</option><option>Autre</option></select></div>
+        <div class="full"><label>Mot de passe</label><input class="input" name="password" type="password" required minlength="8" placeholder="8 caractères minimum"></div>
+      </div>
+      <button class="btn btn-primary" style="width:100%;margin-top:12px">Créer mon compte</button>
+      <button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px" id="switch-login">J’ai déjà un compte</button>`;
     form.onsubmit=handleAuthSubmit;
+    document.getElementById('switch-login').onclick=()=>openAuth('login');
   }
 }
 function closeAuth(){document.getElementById('modal').classList.add('hidden')}
