@@ -175,14 +175,14 @@ function openAuth(mode){
   const help=document.getElementById('auth-help');
   const form=document.getElementById('signupForm');
   if(mode==='login'){
-    title.textContent='S’identifier';
+    title.textContent='Se connecter';
     help.textContent='Entre les informations de ton compte AstraLearn. Si nous ne reconnaissons pas l’e-mail, nous te demanderons de créer ton compte.';
     form.innerHTML=`
       <div class="form-grid">
         <div class="full"><label>Adresse e-mail</label><input class="input" name="email" type="email" required placeholder="eleve@email.fr"></div>
         <div class="full"><label>Mot de passe</label><input class="input" name="password" type="password" required placeholder="Ton mot de passe"></div>
       </div>
-      <button class="btn btn-primary" style="width:100%;margin-top:12px">S’identifier</button>
+      <button class="btn btn-primary" style="width:100%;margin-top:12px">Se connecter</button>
       <button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px" id="switch-signup">Créer un compte</button>`;
     form.onsubmit=loginAccount;
     document.getElementById('switch-signup').onclick=()=>openAuth('signup');
