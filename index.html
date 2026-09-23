@@ -3,151 +3,152 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AstraLearn — Révise mieux, comprends vraiment</title>
+<title>AstraLearn — Révisions scolaires 5e à Terminale</title>
 <meta name="description" content="AstraLearn : une plateforme de révision scolaire de la 5e à la Terminale avec cours, fiches, quiz et EVA.">
 <style>
 :root{
-  --bg:#060914;--panel:#0d1426;--panel2:#111b31;--line:#26365a;
-  --cyan:#67e8f9;--violet:#9b7bff;--pink:#ff78c8;--text:#f7fbff;--muted:#aab7cc;
-  --ok:#79e28f;--shadow:0 24px 80px rgba(0,0,0,.36)
+ --bg:#050b16;--bg2:#071225;--panel:#0b172b;--panel2:#0d1d36;--line:#1c3556;
+ --blue:#2f76c9;--cyan:#63d8ff;--text:#f4f8ff;--muted:#91a4bd;--ok:#62d98f;--danger:#ff7895;
+ --shadow:0 22px 70px rgba(0,0,0,.36)
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif;
-  background:
-    radial-gradient(circle at 12% 0%,rgba(103,232,249,.12),transparent 28%),
-    radial-gradient(circle at 88% 6%,rgba(155,123,255,.17),transparent 32%),
-    linear-gradient(180deg,#060914 0%,#091022 45%,#070b16 100%);
-  min-height:100vh;overflow-x:hidden
+ margin:0;color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif;
+ background:
+   radial-gradient(circle at 12% -5%,rgba(45,118,201,.18),transparent 30%),
+   radial-gradient(circle at 90% 10%,rgba(29,68,114,.18),transparent 34%),
+   linear-gradient(180deg,#040913 0%,#061126 52%,#040a14 100%);
+ min-height:100vh;overflow-x:hidden
 }
 body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;
-  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:36px 36px;mask-image:linear-gradient(to bottom,black,transparent 75%)
+ content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;
+ background-image:linear-gradient(rgba(130,180,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(130,180,230,.045) 1px,transparent 1px);
+ background-size:38px 38px;mask-image:linear-gradient(to bottom,black,transparent 78%)
 }
-button,input,select{font:inherit}
-button{transition:.18s ease}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
+button,input,select{font:inherit}button{transition:.18s ease}
+.container{width:min(1180px,calc(100% - 30px));margin:auto}
 header{
-  position:sticky;top:0;z-index:80;background:rgba(6,9,20,.76);
-  border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px)
+ position:sticky;top:0;z-index:80;background:rgba(4,9,19,.88);
+ border-bottom:1px solid rgba(129,170,210,.10);backdrop-filter:blur(18px)
 }
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand-wrap{display:flex;align-items:center;gap:11px}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand-wrap{display:flex;align-items:center;gap:10px}
 .brand-icon{
-  width:38px;height:38px;border-radius:13px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--cyan),var(--violet));color:#07101a;font-size:20px;
-  box-shadow:0 10px 35px rgba(103,232,249,.18)
+ width:36px;height:36px;border-radius:12px;display:grid;place-items:center;
+ background:linear-gradient(145deg,#133259,#0b213b);border:1px solid rgba(99,216,255,.28);
+ color:var(--cyan);font-size:18px;box-shadow:0 8px 24px rgba(0,0,0,.22)
 }
-.brand{font-size:24px;font-weight:900;letter-spacing:-.04em;background:linear-gradient(90deg,#fff,var(--cyan),var(--violet));-webkit-background-clip:text;color:transparent}
-.brand-sub{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-left:3px}
-.navright{display:flex;align-items:center;gap:10px}
-.nav a{color:var(--muted);text-decoration:none;margin:0 8px;font-size:14px;font-weight:650}
-.nav a:hover{color:#fff}
+.brand{font-size:24px;font-weight:900;letter-spacing:-.04em;color:#eef8ff}
+.brand-sub{font-size:10px;color:#7288a3;letter-spacing:.10em;text-transform:uppercase;margin-left:2px}
+.navright{display:flex;align-items:center;gap:9px}
+.nav a{color:#8ea2bc;text-decoration:none;margin:0 8px;font-size:13px;font-weight:700}
+.nav a:hover{color:#eaf7ff}
 #accountBtn{position:static!important}
-.hero{padding:74px 0 42px}
-.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:26px;align-items:stretch}
+.hero{padding:62px 0 34px}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:22px;align-items:stretch}
 .hero-copy{display:flex;flex-direction:column;justify-content:center}
-.hero h1{font-size:clamp(42px,6vw,74px);line-height:.98;letter-spacing:-.055em;margin:16px 0}
-.gradient{background:linear-gradient(100deg,var(--cyan),var(--violet) 55%,var(--pink));-webkit-background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:760px;margin:0}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-.hero-note{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero h1{font-size:clamp(42px,6vw,72px);line-height:.98;letter-spacing:-.055em;margin:15px 0}
+.gradient{color:var(--cyan)}
+.hero p{color:#99aac0;font-size:16px;line-height:1.7;max-width:735px;margin:0}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.hero-note{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
 .glass{
-  background:linear-gradient(145deg,rgba(17,27,49,.9),rgba(10,16,31,.86));
-  border:1px solid rgba(148,163,184,.18);border-radius:24px;
-  box-shadow:var(--shadow);position:relative;overflow:hidden
+ background:linear-gradient(145deg,rgba(11,23,43,.96),rgba(6,15,28,.94));
+ border:1px solid rgba(111,157,202,.16);border-radius:22px;box-shadow:var(--shadow);
+ position:relative;overflow:hidden
 }
 .glass:after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(120deg,rgba(255,255,255,.06),transparent 30%,transparent 70%,rgba(103,232,249,.03))
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(120deg,rgba(99,216,255,.045),transparent 32%,transparent 72%,rgba(61,123,193,.03))
 }
-.hero-card{padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:315px}
+.hero-card{padding:21px;display:flex;flex-direction:column;justify-content:space-between;min-height:300px}
 .hero-card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
-.hero-kicker{color:var(--muted);font-size:13px}
-.eva-preview{display:flex;align-items:center;gap:13px;margin:22px 0}
+.eyebrow{font-size:10px;font-weight:850;letter-spacing:.13em;text-transform:uppercase;color:#70c9ed}
+.hero-kicker{color:#6f859d;font-size:12px}
+.eva-preview{display:flex;align-items:center;gap:13px;margin:24px 0}
 .eva-avatar{
-  width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:35px;
-  background:linear-gradient(135deg,#182744,#19203a);border:1px solid #ffffff12
+ width:62px;height:62px;border-radius:19px;display:grid;place-items:center;font-size:33px;
+ background:linear-gradient(145deg,#102744,#0c1a30);border:1px solid rgba(99,216,255,.14)
 }
-.eva-preview strong{display:block;font-size:17px}.eva-preview span{color:var(--muted);font-size:13px}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.stat{padding:13px;border-radius:16px;background:#ffffff05;border:1px solid #ffffff0e}
-.stat b{font-size:22px;display:block}.stat span{font-size:11px;color:var(--muted)}
+.eva-preview strong{display:block;font-size:16px}.eva-preview span{color:#8398b2;font-size:12px;line-height:1.5}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{padding:12px;border-radius:15px;background:#ffffff03;border:1px solid #ffffff0b}
+.stat b{font-size:20px;display:block}.stat span{font-size:10px;color:#748ba4}
 .hero-badge,.badge{
-  display:inline-flex;align-items:center;gap:7px;width:max-content;padding:7px 11px;border-radius:999px;
-  background:rgba(103,232,249,.08);color:var(--cyan);border:1px solid rgba(103,232,249,.18);
-  font-size:11px;font-weight:800;letter-spacing:.04em
+ display:inline-flex;align-items:center;gap:6px;width:max-content;padding:7px 10px;border-radius:999px;
+ background:rgba(60,137,194,.08);color:#79d8fa;border:1px solid rgba(99,216,255,.15);
+ font-size:10px;font-weight:800;letter-spacing:.04em
 }
-.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin:20px 0 14px}
-.section-head h2{font-size:30px;margin:0;letter-spacing:-.03em}.section-head p{margin:5px 0 0;color:var(--muted);font-size:14px}
-.course-shell{padding-bottom:10px}
-.toolbar{padding:13px;display:grid;grid-template-columns:1fr 230px;gap:10px}
+.home-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:5px 0 40px}
+.home-card{
+ padding:16px;border-radius:17px;background:rgba(9,22,41,.82);border:1px solid rgba(111,157,202,.13);
+ color:var(--text);text-decoration:none;cursor:pointer;min-height:100px
+}
+.home-card:hover{transform:translateY(-2px);border-color:rgba(99,216,255,.35);background:#0d213b}
+.home-card-icon{font-size:20px;margin-bottom:10px}.home-card strong{display:block;font-size:14px}.home-card span{display:block;color:#7f94ad;font-size:11px;margin-top:4px;line-height:1.45}
+.section{padding:5px 0 38px}.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin:0 0 14px}
+.section-head h2{font-size:28px;margin:0;letter-spacing:-.035em}.section-head p{margin:5px 0 0;color:#7f94ad;font-size:13px}
+.toolbar{padding:12px;display:grid;grid-template-columns:1fr 220px;gap:9px}
 .input,.select{
-  width:100%;padding:13px 14px;border-radius:14px;border:1px solid rgba(148,163,184,.18);
-  background:#060b18;color:var(--text);outline:none
+ width:100%;padding:13px 14px;border-radius:13px;border:1px solid rgba(111,157,202,.16);
+ background:#040b16;color:var(--text);outline:none
 }
-.input:focus,.select:focus{border-color:rgba(103,232,249,.7);box-shadow:0 0 0 4px rgba(103,232,249,.08)}
+.input::placeholder{color:#627790}.input:focus,.select:focus{border-color:rgba(99,216,255,.55);box-shadow:0 0 0 4px rgba(99,216,255,.06)}
 .levels{
-  display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px;padding:6px;
-  background:#081022;border:1px solid rgba(148,163,184,.13);border-radius:16px;width:max-content;max-width:100%
+ display:flex;gap:7px;flex-wrap:wrap;margin:13px 0 10px;padding:5px;background:#071426;
+ border:1px solid rgba(111,157,202,.13);border-radius:14px;width:max-content;max-width:100%
 }
 .level,.tab,.btn{
-  padding:10px 14px;border-radius:11px;border:1px solid rgba(148,163,184,.18);background:#ffffff06;
-  color:var(--text);cursor:pointer;font-weight:750
+ padding:10px 13px;border-radius:10px;border:1px solid rgba(111,157,202,.17);background:#ffffff03;
+ color:var(--text);cursor:pointer;font-weight:750
 }
-.level{min-width:72px}.level:hover,.btn:hover,.tab:hover,.eva-card:hover{transform:translateY(-1px);border-color:rgba(103,232,249,.46);background:#ffffff0a}
+.level{min-width:68px}.level:hover,.btn:hover,.tab:hover{transform:translateY(-1px);border-color:rgba(99,216,255,.40);background:#ffffff06}
 .level.active,.tab.active,.btn.primary{
-  background:linear-gradient(135deg,var(--violet),var(--cyan));color:#07101a;border-color:transparent;
-  box-shadow:0 10px 28px rgba(103,232,249,.12)
+ background:linear-gradient(135deg,#255f9e,#3f9fd0);color:#effbff;border-color:transparent;box-shadow:0 9px 24px rgba(25,91,145,.20)
 }
-.summary{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
-.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.subject{
-  padding:19px;border-radius:21px;background:rgba(13,20,38,.78);border:1px solid rgba(148,163,184,.14);
-  transition:.2s ease
-}
-.subject:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.28);box-shadow:0 18px 45px rgba(0,0,0,.2)}
-.subject h3{margin:8px 0 5px;font-size:19px}.subject p{color:var(--muted);line-height:1.55;font-size:13px}
-.subject .counts{display:inline-flex;margin-top:9px}
-.chapters{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:17px}
-.chapter{padding:15px;border-radius:17px;background:#ffffff03;border:1px solid #ffffff0e;cursor:pointer;transition:.18s}
-.chapter:hover{border-color:#67e8f980;transform:translateY(-2px);background:#ffffff06}
-.chapter small{color:var(--muted)}
-.modal{position:fixed;inset:0;background:#02050cdd;backdrop-filter:blur(8px);z-index:120;padding:18px;overflow:auto}
+.summary{display:flex;gap:7px;flex-wrap:wrap;margin:11px 0 17px}
+.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.subject{padding:18px;border-radius:19px;background:rgba(9,21,39,.82);border:1px solid rgba(111,157,202,.13);transition:.2s ease}
+.subject:hover{transform:translateY(-3px);border-color:rgba(99,216,255,.28);box-shadow:0 16px 42px rgba(0,0,0,.20)}
+.subject h3{margin:8px 0 4px;font-size:18px}.subject p{color:#7f94ad;line-height:1.55;font-size:12px}
+.subject .counts{display:inline-flex;margin-top:8px}
+.chapters{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+.chapter{padding:14px;border-radius:16px;background:#ffffff02;border:1px solid #ffffff0b;cursor:pointer;transition:.18s}
+.chapter:hover{border-color:#63d8ff70;transform:translateY(-2px);background:#ffffff05}
+.chapter small{color:#7189a3}
+.exam-grid,.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.feature,.exam-card{padding:18px;border-radius:19px;background:rgba(9,21,39,.82);border:1px solid rgba(111,157,202,.13)}
+.feature h3,.exam-card h3{margin:7px 0 6px;font-size:17px}.feature p,.exam-card p{color:#7f94ad;font-size:12px;line-height:1.55}
+.progress-panel{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
+.progress-main,.tomorrow{padding:19px;border-radius:19px;background:rgba(9,21,39,.82);border:1px solid rgba(111,157,202,.13)}
+.progress-stat{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #ffffff08;font-size:13px}
+.progress-stat:last-child{border-bottom:0}.progress-stat span{color:#7f94ad}
+.progress-bar{height:8px;border-radius:99px;background:#061020;overflow:hidden;margin-top:9px}.progress-fill{height:100%;background:linear-gradient(90deg,#255f9e,#63d8ff);width:38%}
+.modal{position:fixed;inset:0;background:#02060ddd;backdrop-filter:blur(9px);z-index:120;padding:18px;overflow:auto}
 .box{width:min(1050px,100%);margin:20px auto;padding:22px}.head{display:flex;justify-content:space-between;gap:15px}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.lesson,.quiz{padding:20px;line-height:1.7}.lesson h3,.quiz h3{margin-top:0}
-.quiz-option{display:block;width:100%;text-align:left;margin:9px 0;padding:12px;border-radius:10px;border:1px solid var(--line);background:#ffffff06;color:var(--text);cursor:pointer}
-.quiz-option:hover{border-color:var(--cyan)}.result{margin-top:12px;font-weight:800}
-.close{font-size:18px}.counts{color:var(--muted)}
-#fallback{display:none!important}
-footer{padding:54px 0 70px;color:var(--muted);font-size:12px;line-height:1.7}
-.account-name{font-weight:700}
-.progressline{font-size:13px;opacity:.8;margin-top:8px}
-@media(max-width:900px){
- .hero-grid{grid-template-columns:1fr}.subjects{grid-template-columns:1fr 1fr}
-}
+.quiz-option{display:block;width:100%;text-align:left;margin:9px 0;padding:12px;border-radius:10px;border:1px solid var(--line);background:#ffffff03;color:var(--text);cursor:pointer}
+.quiz-option:hover{border-color:var(--cyan)}.result{margin-top:12px;font-weight:800}.close{font-size:18px}.counts{color:#7f94ad}
+footer{padding:46px 0 65px;color:#6f859d;font-size:11px;line-height:1.7;border-top:1px solid #ffffff07;margin-top:14px}
+@media(max-width:950px){.hero-grid{grid-template-columns:1fr}.subjects{grid-template-columns:1fr 1fr}.home-grid{grid-template-columns:1fr 1fr}.feature-grid,.exam-grid{grid-template-columns:1fr 1fr}.progress-panel{grid-template-columns:1fr}}
 @media(max-width:650px){
  .container{width:min(100% - 20px,1180px)}.navlinks{display:none}.brand-sub{display:none}
- .hero{padding:48px 0 30px}.hero h1{font-size:47px}.toolbar{grid-template-columns:1fr}
- .subjects,.chapters{grid-template-columns:1fr}.levels{width:100%}.level{flex:1;min-width:0}
- .stat-grid{grid-template-columns:1fr 1fr 1fr}.stat{padding:10px}.stat b{font-size:18px}
+ .hero{padding:46px 0 28px}.hero h1{font-size:46px}.toolbar{grid-template-columns:1fr}
+ .subjects,.chapters,.home-grid,.feature-grid,.exam-grid{grid-template-columns:1fr}.levels{width:100%}.level{flex:1;min-width:0}
+ .stat-grid{grid-template-columns:1fr 1fr 1fr}.stat{padding:9px}.stat b{font-size:18px}
 }
 </style>
 <style>
-.auth{position:fixed;inset:0;background:rgba(4,8,20,.78);display:grid;place-items:center;z-index:150;backdrop-filter:blur(12px)}
-.auth[hidden]{display:none}.authbox{width:min(440px,92vw);padding:28px;border-radius:26px;background:#10182b;border:1px solid #ffffff16;color:#fff;box-shadow:0 30px 90px #0009}
-.authbox input{width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #34405e;background:#0b1020;color:#fff}
-.authrow{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}.mascot{
- position:fixed;right:22px;bottom:22px;width:68px;height:68px;border:1px solid #ffffff1b;border-radius:22px;font-size:34px;cursor:pointer;z-index:140;
- background:linear-gradient(145deg,#192744,#10182b);box-shadow:0 14px 40px #0007
-}
-.mascot:hover{transform:translateY(-3px) rotate(-2deg)}
-.eva{position:fixed;right:22px;bottom:102px;width:min(410px,calc(100vw - 32px));max-height:72vh;overflow:auto;padding:20px;border-radius:24px;background:#10182b;border:1px solid #ffffff14;color:#fff;z-index:139;box-shadow:0 24px 80px #0009}
-.eva[hidden]{display:none}.eva-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
-.eva-card{padding:13px;border:1px solid #34405e;border-radius:15px;background:#18213a;cursor:pointer;color:#fff;text-align:left}.eva-card:hover{background:#1c2946}
+.auth{position:fixed;inset:0;background:rgba(2,7,15,.82);display:grid;place-items:center;z-index:150;backdrop-filter:blur(12px)}
+.auth[hidden]{display:none}.authbox{width:min(440px,92vw);padding:27px;border-radius:24px;background:#0b172b;border:1px solid #ffffff12;color:#fff;box-shadow:0 28px 80px #0009}
+.authbox input{width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:11px;border:1px solid #25405f;background:#050d19;color:#fff}
+.authrow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.mascot{position:fixed;right:20px;bottom:20px;width:66px;height:66px;border:1px solid rgba(99,216,255,.20);border-radius:21px;font-size:33px;cursor:pointer;z-index:140;background:linear-gradient(145deg,#102744,#0a1729);box-shadow:0 15px 42px #0008}
+.mascot:hover{transform:translateY(-3px)}
+.eva{position:fixed;right:20px;bottom:100px;width:min(410px,calc(100vw - 30px));max-height:72vh;overflow:auto;padding:20px;border-radius:23px;background:#0b172b;border:1px solid #ffffff12;color:#fff;z-index:139;box-shadow:0 25px 80px #0009}
+.eva[hidden]{display:none}.eva-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.eva-card{padding:13px;border:1px solid #26415f;border-radius:14px;background:#10213a;cursor:pointer;color:#fff;text-align:left}.eva-card:hover{background:#142946;border-color:#63d8ff55}
 </style></head>
 <body>
 <button id="mascot" class="mascot" title="EVA, ton assistant">🦫</button>
@@ -166,602 +167,94 @@ footer{padding:54px 0 70px;color:var(--muted);font-size:12px;line-height:1.7}
 <header><div class="container nav">
   <div class="brand-wrap">
     <div class="brand-icon">✦</div>
-    <div><div class="brand">AstraLearn</div><div class="brand-sub">Réviser mieux · progresser vraiment</div></div>
+    <div><div class="brand">AstraLearn</div><div class="brand-sub">révisions · méthodes · examens</div></div>
   </div>
   <div class="navright">
-    <nav class="navlinks"><a href="#cours">Cours</a><a href="#programmes">Programmes</a><a href="#quiz">Quiz</a></nav>
+    <nav class="navlinks"><a href="#cours">Cours</a><a href="#revision">Réviser avec EVA</a><a href="#examens">Examens</a><a href="#progression">Progression</a></nav>
     <button id="accountBtn" class="btn">👤 Se connecter</button>
   </div>
 </div></header>
-<main><span id="programmes" style="position:relative;top:-80px;display:block"></span>
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <span class="hero-badge">✦ PROGRAMME SCOLAIRE · 5e → TERMINALE</span>
-      <h1>Révise plus vite.<br><span class="gradient">Comprends vraiment.</span></h1>
-      <p>Les cours, fiches et quiz d’AstraLearn sont organisés par niveau et par matière pour retrouver rapidement ce que tu dois apprendre, sans te perdre dans des menus compliqués.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="#cours" style="text-decoration:none">🚀 Commencer à réviser</a>
-        <button class="btn" onclick="document.getElementById('mascot').click()">🦫 Parler à EVA</button>
-      </div>
-      <div class="hero-note">
-        <span class="badge">✓ 5e → Terminale</span>
-        <span class="badge">✓ 2 fiches / chapitre</span>
-        <span class="badge">✓ 2 quiz / chapitre</span>
-      </div>
-    </div>
-    <div class="glass hero-card">
-      <div class="hero-card-top"><span class="eyebrow">TON ESPACE DE RÉVISION</span><span class="hero-kicker">AstraLearn 2.0</span></div>
-      <div class="eva-preview"><div class="eva-avatar">🦫</div><div><strong>EVA est là pour t’aider</strong><span>Quiz express · fiches · brevet · progression</span></div></div>
-      <div class="stat-grid"><div class="stat"><b>6</b><span>niveaux</span></div><div class="stat"><b>2×2</b><span>par chapitre</span></div><div class="stat"><b>∞</b><span>révisions</span></div></div>
-    </div>
-  </div>
-</section> html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AstraLearn — Cours & fiches 5e → Terminale</title>
-<meta name="description" content="AstraLearn : programme scolaire complet de la 5e à la Terminale, fiches et quiz pour chaque chapitre.">
-<style>
-:root{
-  --bg:#060914;--panel:#0d1426;--panel2:#111b31;--line:#26365a;
-  --cyan:#67e8f9;--violet:#9b7bff;--pink:#ff78c8;--text:#f7fbff;--muted:#aab7cc;
-  --ok:#79e28f;--shadow:0 24px 80px rgba(0,0,0,.36)
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif;
-  background:
-    radial-gradient(circle at 12% 0%,rgba(103,232,249,.12),transparent 28%),
-    radial-gradient(circle at 88% 6%,rgba(155,123,255,.17),transparent 32%),
-    linear-gradient(180deg,#060914 0%,#091022 45%,#070b16 100%);
-  min-height:100vh;overflow-x:hidden
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;
-  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:36px 36px;mask-image:linear-gradient(to bottom,black,transparent 75%)
-}
-button,input,select{font:inherit}
-button{transition:.18s ease}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
-header{
-  position:sticky;top:0;z-index:80;background:rgba(6,9,20,.76);
-  border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px)
-}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand-wrap{display:flex;align-items:center;gap:11px}
-.brand-icon{
-  width:38px;height:38px;border-radius:13px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--cyan),var(--violet));color:#07101a;font-size:20px;
-  box-shadow:0 10px 35px rgba(103,232,249,.18)
-}
-.brand{font-size:24px;font-weight:900;letter-spacing:-.04em;background:linear-gradient(90deg,#fff,var(--cyan),var(--violet));-webkit-background-clip:text;color:transparent}
-.brand-sub{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-left:3px}
-.navright{display:flex;align-items:center;gap:10px}
-.nav a{color:var(--muted);text-decoration:none;margin:0 8px;font-size:14px;font-weight:650}
-.nav a:hover{color:#fff}
-#accountBtn{position:static!important}
-.hero{padding:74px 0 42px}
-.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:26px;align-items:stretch}
-.hero-copy{display:flex;flex-direction:column;justify-content:center}
-.hero h1{font-size:clamp(42px,6vw,74px);line-height:.98;letter-spacing:-.055em;margin:16px 0}
-.gradient{background:linear-gradient(100deg,var(--cyan),var(--violet) 55%,var(--pink));-webkit-background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:760px;margin:0}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-.hero-note{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.glass{
-  background:linear-gradient(145deg,rgba(17,27,49,.9),rgba(10,16,31,.86));
-  border:1px solid rgba(148,163,184,.18);border-radius:24px;
-  box-shadow:var(--shadow);position:relative;overflow:hidden
-}
-.glass:after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(120deg,rgba(255,255,255,.06),transparent 30%,transparent 70%,rgba(103,232,249,.03))
-}
-.hero-card{padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:315px}
-.hero-card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
-.hero-kicker{color:var(--muted);font-size:13px}
-.eva-preview{display:flex;align-items:center;gap:13px;margin:22px 0}
-.eva-avatar{
-  width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:35px;
-  background:linear-gradient(135deg,#182744,#19203a);border:1px solid #ffffff12
-}
-.eva-preview strong{display:block;font-size:17px}.eva-preview span{color:var(--muted);font-size:13px}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.stat{padding:13px;border-radius:16px;background:#ffffff05;border:1px solid #ffffff0e}
-.stat b{font-size:22px;display:block}.stat span{font-size:11px;color:var(--muted)}
-.hero-badge,.badge{
-  display:inline-flex;align-items:center;gap:7px;width:max-content;padding:7px 11px;border-radius:999px;
-  background:rgba(103,232,249,.08);color:var(--cyan);border:1px solid rgba(103,232,249,.18);
-  font-size:11px;font-weight:800;letter-spacing:.04em
-}
-.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin:20px 0 14px}
-.section-head h2{font-size:30px;margin:0;letter-spacing:-.03em}.section-head p{margin:5px 0 0;color:var(--muted);font-size:14px}
-.course-shell{padding-bottom:10px}
-.toolbar{padding:13px;display:grid;grid-template-columns:1fr 230px;gap:10px}
-.input,.select{
-  width:100%;padding:13px 14px;border-radius:14px;border:1px solid rgba(148,163,184,.18);
-  background:#060b18;color:var(--text);outline:none
-}
-.input:focus,.select:focus{border-color:rgba(103,232,249,.7);box-shadow:0 0 0 4px rgba(103,232,249,.08)}
-.levels{
-  display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px;padding:6px;
-  background:#081022;border:1px solid rgba(148,163,184,.13);border-radius:16px;width:max-content;max-width:100%
-}
-.level,.tab,.btn{
-  padding:10px 14px;border-radius:11px;border:1px solid rgba(148,163,184,.18);background:#ffffff06;
-  color:var(--text);cursor:pointer;font-weight:750
-}
-.level{min-width:72px}.level:hover,.btn:hover,.tab:hover,.eva-card:hover{transform:translateY(-1px);border-color:rgba(103,232,249,.46);background:#ffffff0a}
-.level.active,.tab.active,.btn.primary{
-  background:linear-gradient(135deg,var(--violet),var(--cyan));color:#07101a;border-color:transparent;
-  box-shadow:0 10px 28px rgba(103,232,249,.12)
-}
-.summary{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
-.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.subject{
-  padding:19px;border-radius:21px;background:rgba(13,20,38,.78);border:1px solid rgba(148,163,184,.14);
-  transition:.2s ease
-}
-.subject:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.28);box-shadow:0 18px 45px rgba(0,0,0,.2)}
-.subject h3{margin:8px 0 5px;font-size:19px}.subject p{color:var(--muted);line-height:1.55;font-size:13px}
-.subject .counts{display:inline-flex;margin-top:9px}
-.chapters{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:17px}
-.chapter{padding:15px;border-radius:17px;background:#ffffff03;border:1px solid #ffffff0e;cursor:pointer;transition:.18s}
-.chapter:hover{border-color:#67e8f980;transform:translateY(-2px);background:#ffffff06}
-.chapter small{color:var(--muted)}
-.modal{position:fixed;inset:0;background:#02050cdd;backdrop-filter:blur(8px);z-index:120;padding:18px;overflow:auto}
-.box{width:min(1050px,100%);margin:20px auto;padding:22px}.head{display:flex;justify-content:space-between;gap:15px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.lesson,.quiz{padding:20px;line-height:1.7}.lesson h3,.quiz h3{margin-top:0}
-.quiz-option{display:block;width:100%;text-align:left;margin:9px 0;padding:12px;border-radius:10px;border:1px solid var(--line);background:#ffffff06;color:var(--text);cursor:pointer}
-.quiz-option:hover{border-color:var(--cyan)}.result{margin-top:12px;font-weight:800}
-.close{font-size:18px}.counts{color:var(--muted)}
-#fallback{display:none!important}
-footer{padding:54px 0 70px;color:var(--muted);font-size:12px;line-height:1.7}
-.account-name{font-weight:700}
-.progressline{font-size:13px;opacity:.8;margin-top:8px}
-@media(max-width:900px){
- .hero-grid{grid-template-columns:1fr}.subjects{grid-template-columns:1fr 1fr}
-}
-@media(max-width:650px){
- .container{width:min(100% - 20px,1180px)}.navlinks{display:none}.brand-sub{display:none}
- .hero{padding:48px 0 30px}.hero h1{font-size:47px}.toolbar{grid-template-columns:1fr}
- .subjects,.chapters{grid-template-columns:1fr}.levels{width:100%}.level{flex:1;min-width:0}
- .stat-grid{grid-template-columns:1fr 1fr 1fr}.stat{padding:10px}.stat b{font-size:18px}
-}
-</style>
-<style>
-.auth{position:fixed;inset:0;background:rgba(4,8,20,.78);display:grid;place-items:center;z-index:150;backdrop-filter:blur(12px)}
-.auth[hidden]{display:none}.authbox{width:min(440px,92vw);padding:28px;border-radius:26px;background:#10182b;border:1px solid #ffffff16;color:#fff;box-shadow:0 30px 90px #0009}
-.authbox input{width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #34405e;background:#0b1020;color:#fff}
-.authrow{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}.mascot{
- position:fixed;right:22px;bottom:22px;width:68px;height:68px;border:1px solid #ffffff1b;border-radius:22px;font-size:34px;cursor:pointer;z-index:140;
- background:linear-gradient(145deg,#192744,#10182b);box-shadow:0 14px 40px #0007
-}
-.mascot:hover{transform:translateY(-3px) rotate(-2deg)}
-.eva{position:fixed;right:22px;bottom:102px;width:min(410px,calc(100vw - 32px));max-height:72vh;overflow:auto;padding:20px;border-radius:24px;background:#10182b;border:1px solid #ffffff14;color:#fff;z-index:139;box-shadow:0 24px 80px #0009}
-.eva[hidden]{display:none}.eva-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
-.eva-card{padding:13px;border:1px solid #34405e;border-radius:15px;background:#18213a;cursor:pointer;color:#fff;text-align:left}.eva-card:hover{background:#1c2946}
-</style></head>
-<body>
-<button id="mascot" class="mascot" title="EVA, ton assistant">🦫</button>
-<div id="auth" class="auth" hidden><div class="authbox">
-<h2>Bienvenue sur AstraLearn 👋</h2><p id="authIntro">Crée ton compte pour retrouver ta progression sur cet appareil.</p>
-<input id="authName" placeholder="Prénom / pseudo"><input id="authEmail" type="email" placeholder="E-mail">
-<div class="authrow"><button class="btn primary" id="signupBtn">Créer mon compte</button><button class="btn" id="loginBtn">Se connecter</button><button class="btn close" id="authClose">✕</button></div>
-<p class="progressline">La version GitHub Pages peut mémoriser le compte localement dans ton navigateur. Pour un vrai compte utilisable sur plusieurs appareils, il faudra connecter une base d'authentification.</p>
-</div></div>
-<div id="eva" class="eva" hidden><div style="display:flex;justify-content:space-between;align-items:center"><div><h2 style="margin:0">🦫 EVA</h2><small>Ton coach AstraLearn</small></div><button class="btn" id="evaClose">✕</button></div>
-<p id="evaHello">Je peux t'aider à réviser.</p><div class="eva-grid">
-<button class="eva-card" data-ai="flash">🃏 Flashcards</button><button class="eva-card" data-ai="quiz">🧠 Quiz express</button>
-<button class="eva-card" data-ai="fiche">📚 Fiche express</button><button class="eva-card" data-ai="brevet">🏆 Mode brevet</button>
-<button class="eva-card" data-ai="terminale">🎓 Mode Terminale</button><button class="eva-card" data-ai="progress">📈 Ma progression</button>
-</div><div id="evaOut" style="margin-top:14px"></div></div>
-<header><div class="container nav">
-  <div class="brand-wrap">
-    <div class="brand-icon">✦</div>
-    <div><div class="brand">AstraLearn</div><div class="brand-sub">Réviser mieux · progresser vraiment</div></div>
-  </div>
-  <div class="navright">
-    <nav class="navlinks"><a href="#cours">Cours</a><a href="#programmes">Programmes</a><a href="#quiz">Quiz</a></nav>
-    <button id="accountBtn" class="btn">👤 Se connecter</button>
-  </div>
-</div></header>
-<main>
-<section class="hero"><div class="container"><span class="badge">PROGRAMME COMPLET · 5e → TERMINALE</span><h1>Tout le programme.<br><span class="gradient">2 fiches + 2 quiz par chapitre.</span></h1><p>AstraLearn organise les enseignements et les axes des programmes officiels par niveau. Chaque entrée ouvre automatiquement deux fiches de révision et deux quiz. Les nouveaux programmes sont distingués par niveau pour suivre leur calendrier d'application.</p></div></section>
-<section id="cours" class="course-shell"><div class="container">
-  <div class="section-head">
-    <div><span class="eyebrow">BIBLIOTHÈQUE SCOLAIRE</span><h2>Choisis ton niveau</h2><p>Accède ensuite à tes matières et à leurs chapitres.</p></div>
-  </div>
-  <div class="glass" style="padding:14px">
-    <div class="toolbar"><input id="search" class="input" placeholder="🔎  Rechercher une matière ou un chapitre…" oninput="render()"><select id="type" class="select" onchange="render()"><option value="all">Tous les enseignements</option><option value="college">Collège</option><option value="lycee">Lycée général</option><option value="specialite">Spécialités</option></select></div>
-    <div id="fallback"></div>
-    <div id="levels" class="levels"></div>
-    <div id="summary" class="summary"></div>
-    <div id="subjects" class="subjects"></div>
-  </div>
-</div></section> html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AstraLearn — Cours & fiches 5e → Terminale</title>
-<meta name="description" content="AstraLearn : programme scolaire complet de la 5e à la Terminale, fiches et quiz pour chaque chapitre.">
-<style>
-:root{
-  --bg:#060914;--panel:#0d1426;--panel2:#111b31;--line:#26365a;
-  --cyan:#67e8f9;--violet:#9b7bff;--pink:#ff78c8;--text:#f7fbff;--muted:#aab7cc;
-  --ok:#79e28f;--shadow:0 24px 80px rgba(0,0,0,.36)
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif;
-  background:
-    radial-gradient(circle at 12% 0%,rgba(103,232,249,.12),transparent 28%),
-    radial-gradient(circle at 88% 6%,rgba(155,123,255,.17),transparent 32%),
-    linear-gradient(180deg,#060914 0%,#091022 45%,#070b16 100%);
-  min-height:100vh;overflow-x:hidden
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;
-  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:36px 36px;mask-image:linear-gradient(to bottom,black,transparent 75%)
-}
-button,input,select{font:inherit}
-button{transition:.18s ease}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
-header{
-  position:sticky;top:0;z-index:80;background:rgba(6,9,20,.76);
-  border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px)
-}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand-wrap{display:flex;align-items:center;gap:11px}
-.brand-icon{
-  width:38px;height:38px;border-radius:13px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--cyan),var(--violet));color:#07101a;font-size:20px;
-  box-shadow:0 10px 35px rgba(103,232,249,.18)
-}
-.brand{font-size:24px;font-weight:900;letter-spacing:-.04em;background:linear-gradient(90deg,#fff,var(--cyan),var(--violet));-webkit-background-clip:text;color:transparent}
-.brand-sub{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-left:3px}
-.navright{display:flex;align-items:center;gap:10px}
-.nav a{color:var(--muted);text-decoration:none;margin:0 8px;font-size:14px;font-weight:650}
-.nav a:hover{color:#fff}
-#accountBtn{position:static!important}
-.hero{padding:74px 0 42px}
-.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:26px;align-items:stretch}
-.hero-copy{display:flex;flex-direction:column;justify-content:center}
-.hero h1{font-size:clamp(42px,6vw,74px);line-height:.98;letter-spacing:-.055em;margin:16px 0}
-.gradient{background:linear-gradient(100deg,var(--cyan),var(--violet) 55%,var(--pink));-webkit-background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:760px;margin:0}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-.hero-note{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.glass{
-  background:linear-gradient(145deg,rgba(17,27,49,.9),rgba(10,16,31,.86));
-  border:1px solid rgba(148,163,184,.18);border-radius:24px;
-  box-shadow:var(--shadow);position:relative;overflow:hidden
-}
-.glass:after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(120deg,rgba(255,255,255,.06),transparent 30%,transparent 70%,rgba(103,232,249,.03))
-}
-.hero-card{padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:315px}
-.hero-card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
-.hero-kicker{color:var(--muted);font-size:13px}
-.eva-preview{display:flex;align-items:center;gap:13px;margin:22px 0}
-.eva-avatar{
-  width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:35px;
-  background:linear-gradient(135deg,#182744,#19203a);border:1px solid #ffffff12
-}
-.eva-preview strong{display:block;font-size:17px}.eva-preview span{color:var(--muted);font-size:13px}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.stat{padding:13px;border-radius:16px;background:#ffffff05;border:1px solid #ffffff0e}
-.stat b{font-size:22px;display:block}.stat span{font-size:11px;color:var(--muted)}
-.hero-badge,.badge{
-  display:inline-flex;align-items:center;gap:7px;width:max-content;padding:7px 11px;border-radius:999px;
-  background:rgba(103,232,249,.08);color:var(--cyan);border:1px solid rgba(103,232,249,.18);
-  font-size:11px;font-weight:800;letter-spacing:.04em
-}
-.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin:20px 0 14px}
-.section-head h2{font-size:30px;margin:0;letter-spacing:-.03em}.section-head p{margin:5px 0 0;color:var(--muted);font-size:14px}
-.course-shell{padding-bottom:10px}
-.toolbar{padding:13px;display:grid;grid-template-columns:1fr 230px;gap:10px}
-.input,.select{
-  width:100%;padding:13px 14px;border-radius:14px;border:1px solid rgba(148,163,184,.18);
-  background:#060b18;color:var(--text);outline:none
-}
-.input:focus,.select:focus{border-color:rgba(103,232,249,.7);box-shadow:0 0 0 4px rgba(103,232,249,.08)}
-.levels{
-  display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px;padding:6px;
-  background:#081022;border:1px solid rgba(148,163,184,.13);border-radius:16px;width:max-content;max-width:100%
-}
-.level,.tab,.btn{
-  padding:10px 14px;border-radius:11px;border:1px solid rgba(148,163,184,.18);background:#ffffff06;
-  color:var(--text);cursor:pointer;font-weight:750
-}
-.level{min-width:72px}.level:hover,.btn:hover,.tab:hover,.eva-card:hover{transform:translateY(-1px);border-color:rgba(103,232,249,.46);background:#ffffff0a}
-.level.active,.tab.active,.btn.primary{
-  background:linear-gradient(135deg,var(--violet),var(--cyan));color:#07101a;border-color:transparent;
-  box-shadow:0 10px 28px rgba(103,232,249,.12)
-}
-.summary{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
-.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.subject{
-  padding:19px;border-radius:21px;background:rgba(13,20,38,.78);border:1px solid rgba(148,163,184,.14);
-  transition:.2s ease
-}
-.subject:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.28);box-shadow:0 18px 45px rgba(0,0,0,.2)}
-.subject h3{margin:8px 0 5px;font-size:19px}.subject p{color:var(--muted);line-height:1.55;font-size:13px}
-.subject .counts{display:inline-flex;margin-top:9px}
-.chapters{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:17px}
-.chapter{padding:15px;border-radius:17px;background:#ffffff03;border:1px solid #ffffff0e;cursor:pointer;transition:.18s}
-.chapter:hover{border-color:#67e8f980;transform:translateY(-2px);background:#ffffff06}
-.chapter small{color:var(--muted)}
-.modal{position:fixed;inset:0;background:#02050cdd;backdrop-filter:blur(8px);z-index:120;padding:18px;overflow:auto}
-.box{width:min(1050px,100%);margin:20px auto;padding:22px}.head{display:flex;justify-content:space-between;gap:15px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.lesson,.quiz{padding:20px;line-height:1.7}.lesson h3,.quiz h3{margin-top:0}
-.quiz-option{display:block;width:100%;text-align:left;margin:9px 0;padding:12px;border-radius:10px;border:1px solid var(--line);background:#ffffff06;color:var(--text);cursor:pointer}
-.quiz-option:hover{border-color:var(--cyan)}.result{margin-top:12px;font-weight:800}
-.close{font-size:18px}.counts{color:var(--muted)}
-#fallback{display:none!important}
-footer{padding:54px 0 70px;color:var(--muted);font-size:12px;line-height:1.7}
-.account-name{font-weight:700}
-.progressline{font-size:13px;opacity:.8;margin-top:8px}
-@media(max-width:900px){
- .hero-grid{grid-template-columns:1fr}.subjects{grid-template-columns:1fr 1fr}
-}
-@media(max-width:650px){
- .container{width:min(100% - 20px,1180px)}.navlinks{display:none}.brand-sub{display:none}
- .hero{padding:48px 0 30px}.hero h1{font-size:47px}.toolbar{grid-template-columns:1fr}
- .subjects,.chapters{grid-template-columns:1fr}.levels{width:100%}.level{flex:1;min-width:0}
- .stat-grid{grid-template-columns:1fr 1fr 1fr}.stat{padding:10px}.stat b{font-size:18px}
-}
-</style>
-<style>
-.auth{position:fixed;inset:0;background:rgba(4,8,20,.78);display:grid;place-items:center;z-index:150;backdrop-filter:blur(12px)}
-.auth[hidden]{display:none}.authbox{width:min(440px,92vw);padding:28px;border-radius:26px;background:#10182b;border:1px solid #ffffff16;color:#fff;box-shadow:0 30px 90px #0009}
-.authbox input{width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #34405e;background:#0b1020;color:#fff}
-.authrow{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}.mascot{
- position:fixed;right:22px;bottom:22px;width:68px;height:68px;border:1px solid #ffffff1b;border-radius:22px;font-size:34px;cursor:pointer;z-index:140;
- background:linear-gradient(145deg,#192744,#10182b);box-shadow:0 14px 40px #0007
-}
-.mascot:hover{transform:translateY(-3px) rotate(-2deg)}
-.eva{position:fixed;right:22px;bottom:102px;width:min(410px,calc(100vw - 32px));max-height:72vh;overflow:auto;padding:20px;border-radius:24px;background:#10182b;border:1px solid #ffffff14;color:#fff;z-index:139;box-shadow:0 24px 80px #0009}
-.eva[hidden]{display:none}.eva-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
-.eva-card{padding:13px;border:1px solid #34405e;border-radius:15px;background:#18213a;cursor:pointer;color:#fff;text-align:left}.eva-card:hover{background:#1c2946}
-</style></head>
-<body>
-<button id="mascot" class="mascot" title="EVA, ton assistant">🦫</button>
-<div id="auth" class="auth" hidden><div class="authbox">
-<h2>Bienvenue sur AstraLearn 👋</h2><p id="authIntro">Crée ton compte pour retrouver ta progression sur cet appareil.</p>
-<input id="authName" placeholder="Prénom / pseudo"><input id="authEmail" type="email" placeholder="E-mail">
-<div class="authrow"><button class="btn primary" id="signupBtn">Créer mon compte</button><button class="btn" id="loginBtn">Se connecter</button><button class="btn close" id="authClose">✕</button></div>
-<p class="progressline">La version GitHub Pages peut mémoriser le compte localement dans ton navigateur. Pour un vrai compte utilisable sur plusieurs appareils, il faudra connecter une base d'authentification.</p>
-</div></div>
-<div id="eva" class="eva" hidden><div style="display:flex;justify-content:space-between;align-items:center"><div><h2 style="margin:0">🦫 EVA</h2><small>Ton coach AstraLearn</small></div><button class="btn" id="evaClose">✕</button></div>
-<p id="evaHello">Je peux t'aider à réviser.</p><div class="eva-grid">
-<button class="eva-card" data-ai="flash">🃏 Flashcards</button><button class="eva-card" data-ai="quiz">🧠 Quiz express</button>
-<button class="eva-card" data-ai="fiche">📚 Fiche express</button><button class="eva-card" data-ai="brevet">🏆 Mode brevet</button>
-<button class="eva-card" data-ai="terminale">🎓 Mode Terminale</button><button class="eva-card" data-ai="progress">📈 Ma progression</button>
-</div><div id="evaOut" style="margin-top:14px"></div></div>
-<header><div class="container nav">
-  <div class="brand-wrap">
-    <div class="brand-icon">✦</div>
-    <div><div class="brand">AstraLearn</div><div class="brand-sub">Réviser mieux · progresser vraiment</div></div>
-  </div>
-  <div class="navright">
-    <nav class="navlinks"><a href="#cours">Cours</a><a href="#programmes">Programmes</a><a href="#quiz">Quiz</a></nav>
-    <button id="accountBtn" class="btn">👤 Se connecter</button>
-  </div>
-</div></header>
+
 <main>
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="hero-badge">✦ PROGRAMME SCOLAIRE · 5e → TERMINALE</span>
-      <h1>Révise plus vite.<br><span class="gradient">Comprends vraiment.</span></h1>
-      <p>Les cours, fiches et quiz d’AstraLearn sont organisés par niveau et par matière pour retrouver rapidement ce que tu dois apprendre, sans te perdre dans des menus compliqués.</p>
+      <span class="hero-badge">✦ 5e → TERMINALE · UN SEUL ESPACE</span>
+      <h1>Révise simplement.<br><span class="gradient">Progresse vraiment.</span></h1>
+      <p>AstraLearn rassemble les cours, fiches, quiz, examens et outils d’EVA dans un seul espace. Choisis ton niveau, ta matière ou recherche directement une notion.</p>
       <div class="hero-actions">
-        <a class="btn primary" href="#cours" style="text-decoration:none">🚀 Commencer à réviser</a>
-        <button class="btn" onclick="document.getElementById('mascot').click()">🦫 Parler à EVA</button>
+        <a class="btn primary" href="#cours" style="text-decoration:none">🚀 Commencer</a>
+        <button class="btn" onclick="document.getElementById('mascot').click()">🦫 Ouvrir EVA</button>
       </div>
       <div class="hero-note">
-        <span class="badge">✓ 5e → Terminale</span>
-        <span class="badge">✓ 2 fiches / chapitre</span>
-        <span class="badge">✓ 2 quiz / chapitre</span>
+        <span class="badge">✓ Cours structurés</span><span class="badge">✓ 2 fiches / chapitre</span><span class="badge">✓ 2 quiz / chapitre</span>
       </div>
     </div>
     <div class="glass hero-card">
-      <div class="hero-card-top"><span class="eyebrow">TON ESPACE DE RÉVISION</span><span class="hero-kicker">AstraLearn 2.0</span></div>
-      <div class="eva-preview"><div class="eva-avatar">🦫</div><div><strong>EVA est là pour t’aider</strong><span>Quiz express · fiches · brevet · progression</span></div></div>
-      <div class="stat-grid"><div class="stat"><b>6</b><span>niveaux</span></div><div class="stat"><b>2×2</b><span>par chapitre</span></div><div class="stat"><b>∞</b><span>révisions</span></div></div>
+      <div class="hero-card-top"><span class="eyebrow">TON COACH DE RÉVISION</span><span class="hero-kicker">AstraLearn</span></div>
+      <div class="eva-preview"><div class="eva-avatar">🦫</div><div><strong>EVA, ton assistant</strong><span>Explique · Interroge · Fiche · Brevet · Terminale</span></div></div>
+      <div class="stat-grid"><div class="stat"><b>6</b><span>niveaux</span></div><div class="stat"><b>2×2</b><span>par chapitre</span></div><div class="stat"><b>∞</b><span>sessions</span></div></div>
     </div>
   </div>
-</section> html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AstraLearn — Cours & fiches 5e → Terminale</title>
-<meta name="description" content="AstraLearn : programme scolaire complet de la 5e à la Terminale, fiches et quiz pour chaque chapitre.">
-<style>
-:root{
-  --bg:#060914;--panel:#0d1426;--panel2:#111b31;--line:#26365a;
-  --cyan:#67e8f9;--violet:#9b7bff;--pink:#ff78c8;--text:#f7fbff;--muted:#aab7cc;
-  --ok:#79e28f;--shadow:0 24px 80px rgba(0,0,0,.36)
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;color:var(--text);font-family:Inter,Segoe UI,system-ui,sans-serif;
-  background:
-    radial-gradient(circle at 12% 0%,rgba(103,232,249,.12),transparent 28%),
-    radial-gradient(circle at 88% 6%,rgba(155,123,255,.17),transparent 32%),
-    linear-gradient(180deg,#060914 0%,#091022 45%,#070b16 100%);
-  min-height:100vh;overflow-x:hidden
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;
-  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:36px 36px;mask-image:linear-gradient(to bottom,black,transparent 75%)
-}
-button,input,select{font:inherit}
-button{transition:.18s ease}
-.container{width:min(1180px,calc(100% - 32px));margin:auto}
-header{
-  position:sticky;top:0;z-index:80;background:rgba(6,9,20,.76);
-  border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(20px)
-}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand-wrap{display:flex;align-items:center;gap:11px}
-.brand-icon{
-  width:38px;height:38px;border-radius:13px;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--cyan),var(--violet));color:#07101a;font-size:20px;
-  box-shadow:0 10px 35px rgba(103,232,249,.18)
-}
-.brand{font-size:24px;font-weight:900;letter-spacing:-.04em;background:linear-gradient(90deg,#fff,var(--cyan),var(--violet));-webkit-background-clip:text;color:transparent}
-.brand-sub{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-left:3px}
-.navright{display:flex;align-items:center;gap:10px}
-.nav a{color:var(--muted);text-decoration:none;margin:0 8px;font-size:14px;font-weight:650}
-.nav a:hover{color:#fff}
-#accountBtn{position:static!important}
-.hero{padding:74px 0 42px}
-.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:26px;align-items:stretch}
-.hero-copy{display:flex;flex-direction:column;justify-content:center}
-.hero h1{font-size:clamp(42px,6vw,74px);line-height:.98;letter-spacing:-.055em;margin:16px 0}
-.gradient{background:linear-gradient(100deg,var(--cyan),var(--violet) 55%,var(--pink));-webkit-background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:760px;margin:0}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-.hero-note{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.glass{
-  background:linear-gradient(145deg,rgba(17,27,49,.9),rgba(10,16,31,.86));
-  border:1px solid rgba(148,163,184,.18);border-radius:24px;
-  box-shadow:var(--shadow);position:relative;overflow:hidden
-}
-.glass:after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(120deg,rgba(255,255,255,.06),transparent 30%,transparent 70%,rgba(103,232,249,.03))
-}
-.hero-card{padding:22px;display:flex;flex-direction:column;justify-content:space-between;min-height:315px}
-.hero-card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
-.hero-kicker{color:var(--muted);font-size:13px}
-.eva-preview{display:flex;align-items:center;gap:13px;margin:22px 0}
-.eva-avatar{
-  width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:35px;
-  background:linear-gradient(135deg,#182744,#19203a);border:1px solid #ffffff12
-}
-.eva-preview strong{display:block;font-size:17px}.eva-preview span{color:var(--muted);font-size:13px}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.stat{padding:13px;border-radius:16px;background:#ffffff05;border:1px solid #ffffff0e}
-.stat b{font-size:22px;display:block}.stat span{font-size:11px;color:var(--muted)}
-.hero-badge,.badge{
-  display:inline-flex;align-items:center;gap:7px;width:max-content;padding:7px 11px;border-radius:999px;
-  background:rgba(103,232,249,.08);color:var(--cyan);border:1px solid rgba(103,232,249,.18);
-  font-size:11px;font-weight:800;letter-spacing:.04em
-}
-.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin:20px 0 14px}
-.section-head h2{font-size:30px;margin:0;letter-spacing:-.03em}.section-head p{margin:5px 0 0;color:var(--muted);font-size:14px}
-.course-shell{padding-bottom:10px}
-.toolbar{padding:13px;display:grid;grid-template-columns:1fr 230px;gap:10px}
-.input,.select{
-  width:100%;padding:13px 14px;border-radius:14px;border:1px solid rgba(148,163,184,.18);
-  background:#060b18;color:var(--text);outline:none
-}
-.input:focus,.select:focus{border-color:rgba(103,232,249,.7);box-shadow:0 0 0 4px rgba(103,232,249,.08)}
-.levels{
-  display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 12px;padding:6px;
-  background:#081022;border:1px solid rgba(148,163,184,.13);border-radius:16px;width:max-content;max-width:100%
-}
-.level,.tab,.btn{
-  padding:10px 14px;border-radius:11px;border:1px solid rgba(148,163,184,.18);background:#ffffff06;
-  color:var(--text);cursor:pointer;font-weight:750
-}
-.level{min-width:72px}.level:hover,.btn:hover,.tab:hover,.eva-card:hover{transform:translateY(-1px);border-color:rgba(103,232,249,.46);background:#ffffff0a}
-.level.active,.tab.active,.btn.primary{
-  background:linear-gradient(135deg,var(--violet),var(--cyan));color:#07101a;border-color:transparent;
-  box-shadow:0 10px 28px rgba(103,232,249,.12)
-}
-.summary{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
-.subjects{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.subject{
-  padding:19px;border-radius:21px;background:rgba(13,20,38,.78);border:1px solid rgba(148,163,184,.14);
-  transition:.2s ease
-}
-.subject:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.28);box-shadow:0 18px 45px rgba(0,0,0,.2)}
-.subject h3{margin:8px 0 5px;font-size:19px}.subject p{color:var(--muted);line-height:1.55;font-size:13px}
-.subject .counts{display:inline-flex;margin-top:9px}
-.chapters{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:17px}
-.chapter{padding:15px;border-radius:17px;background:#ffffff03;border:1px solid #ffffff0e;cursor:pointer;transition:.18s}
-.chapter:hover{border-color:#67e8f980;transform:translateY(-2px);background:#ffffff06}
-.chapter small{color:var(--muted)}
-.modal{position:fixed;inset:0;background:#02050cdd;backdrop-filter:blur(8px);z-index:120;padding:18px;overflow:auto}
-.box{width:min(1050px,100%);margin:20px auto;padding:22px}.head{display:flex;justify-content:space-between;gap:15px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.lesson,.quiz{padding:20px;line-height:1.7}.lesson h3,.quiz h3{margin-top:0}
-.quiz-option{display:block;width:100%;text-align:left;margin:9px 0;padding:12px;border-radius:10px;border:1px solid var(--line);background:#ffffff06;color:var(--text);cursor:pointer}
-.quiz-option:hover{border-color:var(--cyan)}.result{margin-top:12px;font-weight:800}
-.close{font-size:18px}.counts{color:var(--muted)}
-#fallback{display:none!important}
-footer{padding:54px 0 70px;color:var(--muted);font-size:12px;line-height:1.7}
-.account-name{font-weight:700}
-.progressline{font-size:13px;opacity:.8;margin-top:8px}
-@media(max-width:900px){
- .hero-grid{grid-template-columns:1fr}.subjects{grid-template-columns:1fr 1fr}
-}
-@media(max-width:650px){
- .container{width:min(100% - 20px,1180px)}.navlinks{display:none}.brand-sub{display:none}
- .hero{padding:48px 0 30px}.hero h1{font-size:47px}.toolbar{grid-template-columns:1fr}
- .subjects,.chapters{grid-template-columns:1fr}.levels{width:100%}.level{flex:1;min-width:0}
- .stat-grid{grid-template-columns:1fr 1fr 1fr}.stat{padding:10px}.stat b{font-size:18px}
-}
-</style>
-<style>
-.auth{position:fixed;inset:0;background:rgba(4,8,20,.78);display:grid;place-items:center;z-index:150;backdrop-filter:blur(12px)}
-.auth[hidden]{display:none}.authbox{width:min(440px,92vw);padding:28px;border-radius:26px;background:#10182b;border:1px solid #ffffff16;color:#fff;box-shadow:0 30px 90px #0009}
-.authbox input{width:100%;box-sizing:border-box;margin:8px 0;padding:13px;border-radius:12px;border:1px solid #34405e;background:#0b1020;color:#fff}
-.authrow{display:flex;gap:9px;margin-top:12px;flex-wrap:wrap}.mascot{
- position:fixed;right:22px;bottom:22px;width:68px;height:68px;border:1px solid #ffffff1b;border-radius:22px;font-size:34px;cursor:pointer;z-index:140;
- background:linear-gradient(145deg,#192744,#10182b);box-shadow:0 14px 40px #0007
-}
-.mascot:hover{transform:translateY(-3px) rotate(-2deg)}
-.eva{position:fixed;right:22px;bottom:102px;width:min(410px,calc(100vw - 32px));max-height:72vh;overflow:auto;padding:20px;border-radius:24px;background:#10182b;border:1px solid #ffffff14;color:#fff;z-index:139;box-shadow:0 24px 80px #0009}
-.eva[hidden]{display:none}.eva-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
-.eva-card{padding:13px;border:1px solid #34405e;border-radius:15px;background:#18213a;cursor:pointer;color:#fff;text-align:left}.eva-card:hover{background:#1c2946}
-</style></head>
-<body>
-<button id="mascot" class="mascot" title="EVA, ton assistant">🦫</button>
-<div id="auth" class="auth" hidden><div class="authbox">
-<h2>Bienvenue sur AstraLearn 👋</h2><p id="authIntro">Crée ton compte pour retrouver ta progression sur cet appareil.</p>
-<input id="authName" placeholder="Prénom / pseudo"><input id="authEmail" type="email" placeholder="E-mail">
-<div class="authrow"><button class="btn primary" id="signupBtn">Créer mon compte</button><button class="btn" id="loginBtn">Se connecter</button><button class="btn close" id="authClose">✕</button></div>
-<p class="progressline">La version GitHub Pages peut mémoriser le compte localement dans ton navigateur. Pour un vrai compte utilisable sur plusieurs appareils, il faudra connecter une base d'authentification.</p>
-</div></div>
-<div id="eva" class="eva" hidden><div style="display:flex;justify-content:space-between;align-items:center"><div><h2 style="margin:0">🦫 EVA</h2><small>Ton coach AstraLearn</small></div><button class="btn" id="evaClose">✕</button></div>
-<p id="evaHello">Je peux t'aider à réviser.</p><div class="eva-grid">
-<button class="eva-card" data-ai="flash">🃏 Flashcards</button><button class="eva-card" data-ai="quiz">🧠 Quiz express</button>
-<button class="eva-card" data-ai="fiche">📚 Fiche express</button><button class="eva-card" data-ai="brevet">🏆 Mode brevet</button>
-<button class="eva-card" data-ai="terminale">🎓 Mode Terminale</button><button class="eva-card" data-ai="progress">📈 Ma progression</button>
-</div><div id="evaOut" style="margin-top:14px"></div></div>
-<header><div class="container nav">
-  <div class="brand-wrap">
-    <div class="brand-icon">✦</div>
-    <div><div class="brand">AstraLearn</div><div class="brand-sub">Réviser mieux · progresser vraiment</div></div>
+</section>
+
+<section class="container">
+  <div class="home-grid">
+    <a class="home-card" href="#cours"><div class="home-card-icon">📚</div><strong>Cours</strong><span>Niveau → matière → chapitre</span></a>
+    <button class="home-card" onclick="document.getElementById('mascot').click()"><div class="home-card-icon">🧠</div><strong>Réviser avec EVA</strong><span>Explique-moi, interroge-moi, fiche express…</span></button>
+    <a class="home-card" href="#examens"><div class="home-card-icon">📝</div><strong>Examens</strong><span>Brevet, bac, entraînement et impression</span></a>
+    <a class="home-card" href="#progression"><div class="home-card-icon">📈</div><strong>Ma progression</strong><span>Quiz, XP, objectifs et séries</span></a>
   </div>
-  <div class="navright">
-    <nav class="navlinks"><a href="#cours">Cours</a><a href="#programmes">Programmes</a><a href="#quiz">Quiz</a></nav>
-    <button id="accountBtn" class="btn">👤 Se connecter</button>
+</section>
+
+<section id="cours" class="section"><div class="container">
+  <div class="section-head"><div><span class="eyebrow">BIBLIOTHÈQUE</span><h2>Choisis ton niveau</h2><p>Accède ensuite à ta matière et à ton chapitre.</p></div></div>
+  <div class="glass" style="padding:13px">
+    <div class="toolbar"><input id="search" class="input" placeholder="🔎  Rechercher une matière ou une notion…" oninput="render()"><select id="type" class="select" onchange="render()"><option value="all">Tous les enseignements</option><option value="college">Collège</option><option value="lycee">Lycée général</option><option value="specialite">Spécialités</option></select></div>
+    <div id="fallback"></div><div id="levels" class="levels"></div><div id="summary" class="summary"></div><div id="subjects" class="subjects"></div>
   </div>
-</div></header>
-<main>
-<section class="hero"><div class="container"><span class="badge">PROGRAMME COMPLET · 5e → TERMINALE</span><h1>Tout le programme.<br><span class="gradient">2 fiches + 2 quiz par chapitre.</span></h1><p>AstraLearn organise les enseignements et les axes des programmes officiels par niveau. Chaque entrée ouvre automatiquement deux fiches de révision et deux quiz. Les nouveaux programmes sont distingués par niveau pour suivre leur calendrier d'application.</p></div></section>
-<section id="cours"><div class="container"><div class="glass toolbar"><input id="search" class="input" placeholder="🔎 Rechercher une matière ou un chapitre…" oninput="render()"><select id="type" class="select" onchange="render()"><option value="all">Tous les enseignements</option><option value="college">Collège</option><option value="lycee">Lycée général</option><option value="specialite">Spécialités</option></select></div><div id="fallback" style="margin-top:18px"><div class="levels"><button class="level active" type="button">5e</button><button class="level" type="button">4e</button><button class="level" type="button">3e</button><button class="level" type="button">2nde</button><button class="level" type="button">1re</button><button class="level" type="button">Terminale</button></div><div class="summary"><span class="badge">Cours disponibles</span><span class="badge">Fiches + quiz</span></div></div><div id="levels" class="levels"></div><div id="summary" class="summary"></div><div id="subjects" class="subjects"></div></div></section>
+</div></section>
+
+<section id="revision" class="section"><div class="container">
+  <div class="section-head"><div><span class="eyebrow">EVA</span><h2>Réviser avec ton assistant</h2><p>Un point de départ rapide pour chaque type de révision.</p></div></div>
+  <div class="feature-grid">
+    <button class="feature" onclick="document.querySelector('[data-ai=flash]').click()"><div class="home-card-icon">🃏</div><h3>Flashcards</h3><p>Retenir les notions essentielles avec des cartes rapides.</p></button>
+    <button class="feature" onclick="document.querySelector('[data-ai=quiz]').click()"><div class="home-card-icon">🧠</div><h3>Quiz express</h3><p>Teste immédiatement ce que tu sais déjà.</p></button>
+    <button class="feature" onclick="document.querySelector('[data-ai=fiche]').click()"><div class="home-card-icon">📚</div><h3>Fiche express</h3><p>Une synthèse courte pour réactiver tes connaissances.</p></button>
+    <button class="feature" onclick="document.querySelector('[data-ai=brevet]').click()"><div class="home-card-icon">🏆</div><h3>Je prépare mon brevet</h3><p>Travaille les réflexes de compréhension, rédaction et méthode.</p></button>
+    <button class="feature" onclick="document.querySelector('[data-ai=terminale]').click()"><div class="home-card-icon">🎓</div><h3>Mode Terminale</h3><p>Passe à une approche plus approfondie et argumentée.</p></button>
+    <button class="feature" onclick="document.getElementById('mascot').click();setTimeout(()=>document.querySelector('[data-ai=progress]').click(),80)"><div class="home-card-icon">📈</div><h3>Ma progression</h3><p>Retrouve tes statistiques et ton évolution.</p></button>
+  </div>
+</div></section>
+
+<section id="examens" class="section"><div class="container">
+  <div class="section-head"><div><span class="eyebrow">S’ENTRAÎNER</span><h2>Examens & entraînements</h2><p>Un espace pensé pour les grandes échéances scolaires.</p></div></div>
+  <div class="exam-grid">
+    <div class="exam-card"><span class="badge">COLLÈGE</span><h3>Brevet</h3><p>Sujets, documents, questions, correction et entraînement chronométré.</p><button class="btn primary" onclick="document.querySelector('[data-ai=brevet]').click()">Démarrer avec EVA</button></div>
+    <div class="exam-card"><span class="badge">LYCÉE</span><h3>Bac</h3><p>Entraînement aux méthodes, analyse, argumentation et sujets types.</p><button class="btn" onclick="document.querySelector('[data-ai=terminale]').click()">Mode Terminale</button></div>
+    <div class="exam-card"><span class="badge">IMPRESSON A4</span><h3>Sujets à imprimer</h3><p>Le site garde un format pensé pour travailler sur feuille, avec questions séparées des réponses.</p><a class="btn" href="#cours" style="display:inline-block;text-decoration:none">Voir les cours</a></div>
+  </div>
+</div></section>
+
+<section id="progression" class="section"><div class="container">
+  <div class="section-head"><div><span class="eyebrow">SUIVI</span><h2>Ma progression</h2><p>La progression locale peut devenir ton tableau de bord personnel.</p></div></div>
+  <div class="progress-panel">
+    <div class="progress-main">
+      <div class="progress-stat"><span>Chapitres maîtrisés</span><strong>À suivre</strong></div>
+      <div class="progress-stat"><span>Moyenne aux quiz</span><strong>À suivre</strong></div>
+      <div class="progress-stat"><span>Temps de révision</span><strong>À suivre</strong></div>
+      <div class="progress-stat"><span>Série en cours</span><strong>À suivre</strong></div>
+      <div class="progress-stat"><span>Objectif du jour</span><strong>15 min</strong></div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+    </div>
+    <div class="tomorrow">
+      <span class="badge">DEMAIN</span><h3>📅 Je révise demain</h3>
+      <p style="color:#7f94ad;font-size:12px;line-height:1.6">Choisis une matière et EVA pourra te proposer une petite séance : rappel → flashcards → quiz → correction.</p>
+      <button class="btn primary" onclick="document.getElementById('mascot').click()">Construire ma séance</button>
+    </div>
+  </div>
+</div></section>
 </main>
-<div id="modal" class="modal" hidden><div id="box" class="glass box"></div></div>
 <footer><div class="container">AstraLearn est un projet indépendant. Les contenus de révision sont rédigés pour l'application. Les programmes sont structurés à partir des textes officiels de l'Éducation nationale et d'Éduscol ; ils ne sont pas reproduits intégralement.</div></footer>
 <script>
 const P={
