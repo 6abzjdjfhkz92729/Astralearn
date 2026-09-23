@@ -1,0 +1,31 @@
+name: AstraLearn V2
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  inject-v2:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inject V2 script
+        shell: bash
+        run: |
+          if ! grep -q 'astralearn-v2.js' index.html; then
+            python3 - <<'PY'
+from pathlib import Path
+p=Path('index.html')
+s=p.read_text(encoding='utf-8')
+needle='</body>'
+assert needle in s
+s=s.replace(needle,'<script src="astralearn-v2.js"></script>\n</body>',1)
+p.write_text(s,encoding='utf-8')
+PY
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add index.html
+            git commit -m 'chore: load AstraLearn V2 content'
+            git push
+          fi
